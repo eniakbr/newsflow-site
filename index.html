@@ -29,12 +29,12 @@
 
     /* Topbar */
     .topbar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:center;height:72px;background:var(--nf-header);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-    .topbar h1{margin:0;font-family:"Montserrat","Segoe UI",Roboto,Arial,sans-serif;font-weight:700;letter-spacing:.3px}
+    .topbar h1{margin:0;font-family:"Montserrat","Segoe UI",Roboto,Arial,sans-serif;font-weight:700;letter-spacing:.3px;font-size:clamp(24px,4.2vw,34px)}
 
     /* Layout */
     .content{padding:32px 20px}
     .container{max-width:var(--maxw);margin:0 auto}
-    section{margin:40px 0}
+    section{margin:56px 0}
 
     /* Hero modernizado */
     .hero{position:relative;border-radius:24px;padding:54px 28px;background:
@@ -94,7 +94,14 @@
       .content{padding:24px 16px}
     }
     @media (prefers-reduced-motion: reduce){ *{transition:none!important} }
-  </style>
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:960px){.cols-2{grid-template-columns:1fr}}
+.features{counter-reset:feat}
+.features .card{position:relative;padding-left:96px;min-height:120px}
+.features .card::before{content:counter(feat);counter-increment:feat;position:absolute;left:20px;top:18px;font-size:64px;font-weight:800;line-height:1;color:var(--nf-blue-dark);opacity:.22}
+.banner{display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(90deg,var(--nf-blue),var(--nf-blue-dark));color:#fff;padding:22px 24px;border-radius:20px;box-shadow:var(--shadow);font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:42px 0}
+.micro-callout{margin-top:12px;background:var(--nf-soft);border:1px dashed var(--nf-border);border-radius:12px;padding:10px 12px;font-weight:600;color:#334155}
+</style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"NewsFlow","url":"https://www.newsflow.com.br/","applicationCategory":"BusinessApplication","operatingSystem":"Web, Windows, macOS, Linux, iOS, Android","description":"Sistema de redação e telejornal de baixo custo para pequenas TVs e webTVs. Fluxo de telejornal, laudas, espelhos, TP, controle de programas ao vivo e integração com OBS/vMix.","offers":{"@type":"Offer","price":"Sob consulta","priceCurrency":"BRL"}}
   </script>
@@ -122,22 +129,22 @@
           <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
           <a class="btn btn-ghost" href="#aviso">Ser avisado no lançamento</a>
         </div>
-        <div class="callout">✨ <span>Menos retrabalho, mais <strong>tempo no ar</strong>.</span></div>
+        <div class="banner">✨ Menos retrabalho, mais <strong>tempo no ar</strong>.</div>
       </section>
 
-      <span class="divider" aria-hidden="true"></span>
+      <div class="banner">🛟 Tire dúvidas e avance com <strong>segurança</strong>.</div>nçamento e <strong>condições especiais</strong>.</div>g>pague pelo que usar</strong>.</div>m <strong>OBS e vMix</strong> sem retrabalho.</div>ganhe <strong>agilidade</strong> na redação.</div>
 
       <!-- RECURSOS -->
       <section id="recursos" aria-labelledby="tit-recursos">
         <h2 id="tit-recursos">Feito para redações ágeis</h2>
         <p class="lead">Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</p>
-        <div class="grid cols-auto" style="margin-top:14px">
-          <div class="card"><h3>Fluxo de Telejornal</h3><p>Crie e organize <strong>laudas</strong>, <strong>espelhos</strong> e blocos com tempos, status e PDF.</p><div class="callout"><small>⚡ Organize tudo em um só lugar e <strong>ganhe velocidade</strong>.</small></div></div>
-          <div class="card"><h3>Operação de TP</h3><p>Teleprompter integrado, controle por teclado, timers e conforto visual.</p><div class="callout"><small>🎯 Mais segurança no ar e <strong>menos improviso</strong>.</small></div></div>
-          <div class="card"><h3>Ao vivo</h3><p>Contagem de VTs, sincronia entre redação e estúdio e visão do espelho.</p><div class="callout"><small>📡 Ritmo do <strong>ao vivo</strong> com menos stress.</small></div></div>
-          <div class="card"><h3>Integrações</h3><p>Exporta GC/espelho (JSON, CSV, PDF) para <strong>OBS</strong> e <strong>vMix</strong>.</p><div class="callout"><small>🔌 Reduza erros de GC com <strong>exportação direta</strong>.</small></div></div>
-          <div class="card"><h3>Multi‑dispositivo</h3><p>Funciona bem em celular, tablet e desktop — no estúdio ou em externa.</p><div class="callout"><small>📱 Trabalhe no que você já tem: <strong>sem compras caras</strong>.</small></div></div>
-          <div class="card"><h3>Licenciamento Acessível</h3><p>Implantação simples para emissoras enxutas e projetos independentes.</p><div class="callout"><small>💸 Pague menos e mantenha o <strong>essencial</strong>.</small></div></div>
+        <div class="grid cols-2 features" style="margin-top:14px">
+          <div class="card"><h3>Fluxo de Telejornal</h3><p>Crie e organize <strong>laudas</strong>, <strong>espelhos</strong> e blocos com tempos, status e PDF.</p><div class="micro-callout"><small>⚡ Organize tudo em um só lugar e <strong>ganhe velocidade</strong>.</small></div></div>
+          <div class="card"><h3>Operação de TP</h3><p>Teleprompter integrado, controle por teclado, timers e conforto visual.</p><div class="micro-callout"><small>🎯 Mais segurança no ar e <strong>menos improviso</strong>.</small></div></div>
+          <div class="card"><h3>Ao vivo</h3><p>Contagem de VTs, sincronia entre redação e estúdio e visão do espelho.</p><div class="micro-callout"><small>📡 Ritmo do <strong>ao vivo</strong> com menos stress.</small></div></div>
+          <div class="card"><h3>Integrações</h3><p>Exporta GC/espelho (JSON, CSV, PDF) para <strong>OBS</strong> e <strong>vMix</strong>.</p><div class="micro-callout"><small>🔌 Reduza erros de GC com <strong>exportação direta</strong>.</small></div></div>
+          <div class="card"><h3>Multi‑dispositivo</h3><p>Funciona bem em celular, tablet e desktop — no estúdio ou em externa.</p><div class="micro-callout"><small>📱 Trabalhe no que você já tem: <strong>sem compras caras</strong>.</small></div></div>
+          <div class="card"><h3>Licenciamento Acessível</h3><p>Implantação simples para emissoras enxutas e projetos independentes.</p><div class="micro-callout"><small>💸 Pague menos e mantenha o <strong>essencial</strong>.</small></div></div>
         </div>
       </section>
 
@@ -152,7 +159,7 @@
             <li><strong>vMix</strong>: export de GC e cenas a partir do espelho.</li>
             <li><strong>JSON/CSV/PDF</strong>: interoperabilidade simples com outros fluxos.</li>
           </ul>
-          <div class="callout" style="margin-top:14px">🧩 <span>Conecte-se ao seu pipeline atual <strong>sem refazer tudo do zero</strong>.</span></div>
+          <div class="banner">🧩 Conecte-se ao seu pipeline atual <strong>sem refazer tudo do zero</strong>.</div>
         </div>
       </section>
 
