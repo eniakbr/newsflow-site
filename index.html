@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR">\>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +33,7 @@
     .content{padding:32px 20px}
     .container{max-width:var(--maxw);margin:0 auto}
 
-    /* HERO aprimorado */
+    /* HERO */
     .hero{position:relative;border-radius:20px;padding:48px 28px;background:radial-gradient(1200px 400px at 10% -10%, #eef2ff 0, transparent 55%),radial-gradient(900px 400px at 90% 0%, #e0f2fe 0, transparent 55%),linear-gradient(#fff,#fff)}
     .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#eef2ff;border:1px solid #dbeafe;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
     .hero h2{font-size:clamp(28px,5vw,44px);margin:10px 0 6px}
@@ -42,11 +42,17 @@
     .pillnav a{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:999px;border:1px solid var(--nf-border);background:#fff;color:#111827;font-weight:600}
     .pillnav a:hover{box-shadow:0 6px 16px rgba(0,0,0,.06);transform:translateY(-1px)}
     .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+    /* Buttons */
     .btn{display:inline-flex;align-items:center;gap:8px;border:none;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;transition:transform .15s ease,filter .2s ease,box-shadow .2s}
     .btn:focus{outline:2px solid #93c5fd;outline-offset:2px}
     .btn-primary{background:linear-gradient(90deg,var(--nf-blue),var(--nf-blue-dark));color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.25)}
     .btn-primary:hover{transform:translateY(-1px);filter:saturate(110%)}
     .btn-ghost{background:#fff;border:1px solid var(--nf-border);color:#111827}
+
+    /* Benefit Tips */
+    .benefit-tip{margin:16px 0;background:#f8fafc;border:1px dashed var(--nf-border);color:#0f172a;padding:12px 14px;border-radius:12px;font-weight:700;display:flex;align-items:center;gap:10px}
+    .benefit-tip small{font-weight:600;color:#334155}
 
     /* KPIs */
     .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
@@ -135,7 +141,10 @@
           <div class="kpi"><span class="num">02</span><div><strong>Ao vivo</strong><br/>Contagem de VTs & timers</div></div>
           <div class="kpi"><span class="num">03</span><div><strong>Integrações</strong><br/>OBS & vMix (GC/Telas)</div></div>
         </div>
+        <div class="benefit-tip">✨ <span>Menos retrabalho, mais <strong>tempo no ar</strong>.</span></div>
       </section>
+
+      <div class="benefit-tip">🧠 <span>Centralize sua produção: abandone planilhas e ganhe <strong>agilidade na redação</strong>.</span></div>
 
       <!-- RECURSOS -->
       <section id="recursos" aria-labelledby="tit-recursos">
@@ -143,13 +152,26 @@
         <p class="lead">Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</p>
         <div class="grid cols-3" style="margin-top:10px">
           <div class="card"><h3>Fluxo de Telejornal</h3><p>Crie e organize <strong>laudas</strong>, <strong>espelhos</strong> e blocos com tempos, status e PDF.</p></div>
+          <div class="benefit-tip">⚡ <small>Organize tudo em um só lugar e <strong>ganhe velocidade</strong>.</small></div>
+
           <div class="card"><h3>Operação de TP</h3><p>Teleprompter integrado, controle por teclado, timers e conforto visual.</p></div>
+          <div class="benefit-tip">🎯 <small>Mais segurança no ar e <strong>menos improviso</strong>.</small></div>
+
           <div class="card"><h3>Ao vivo</h3><p>Contagem de VTs, sincronia entre redação e estúdio e visão do espelho.</p></div>
+          <div class="benefit-tip">📡 <small>Sua equipe entra no ritmo do <strong>ao vivo</strong> com menos stress.</small></div>
+
           <div class="card"><h3>Integrações</h3><p>Exporta GC/espelho (JSON, CSV, PDF) para <strong>OBS</strong> e <strong>vMix</strong>.</p></div>
+          <div class="benefit-tip">🔌 <small>Reduza erros de GC com <strong>exportação direta</strong>.</small></div>
+
           <div class="card"><h3>Multi‑dispositivo</h3><p>Funciona bem em celular, tablet e desktop — no estúdio ou em externa.</p></div>
+          <div class="benefit-tip">📱 <small>Trabalhe no que você já tem: <strong>sem compras caras</strong>.</small></div>
+
           <div class="card"><h3>Licenciamento Acessível</h3><p>Implantação simples para emissoras enxutas e projetos independentes.</p></div>
+          <div class="benefit-tip">💸 <small>Pague menos e mantenha o <strong>essencial</strong> para o ar.</small></div>
         </div>
       </section>
+
+      <div class="benefit-tip">🚀 <span>Integre suas artes e <strong>vá ao ar mais rápido</strong>.</span></div>
 
       <!-- INTEGRAÇÕES -->
       <section id="integracoes" aria-labelledby="tit-integracoes">
@@ -161,7 +183,10 @@
             <li><strong>JSON/CSV/PDF</strong>: interoperabilidade simples com outros fluxos.</li>
           </ul>
         </div>
+        <div class="benefit-tip">🧩 <span>Conecte-se ao seu pipeline atual <strong>sem refazer tudo do zero</strong>.</span></div>
       </section>
+
+      <div class="benefit-tip">💼 <span>Planos sob medida: <strong>pague pelo que usar</strong>, sem surpresas.</span></div>
 
       <!-- PREÇO -->
       <section id="preco" aria-labelledby="tit-preco">
@@ -173,7 +198,10 @@
           <div class="price">Baixo custo</div>
           <div><a class="btn btn-primary" href="#contato">Solicitar proposta</a></div>
         </div>
+        <div class="benefit-tip">🤝 <span>Sem curva de adoção: equipe <strong>produtiva desde o primeiro dia</strong>.</span></div>
       </section>
+
+      <div class="benefit-tip">🎟️ <span>Garanta prioridade no lançamento e <strong>condições especiais</strong>.</span></div>
 
       <!-- AVISO / CAPTURA -->
       <section id="aviso" aria-labelledby="tit-aviso">
@@ -187,6 +215,8 @@
         </form>
         <p class="lead" style="font-size:14px;color:#6b7280;margin-top:6px">Prometemos não enviar spam. Você pode pedir a remoção a qualquer momento.</p>
       </section>
+
+      <div class="benefit-tip">🛟 <span>Tire dúvidas e avance com <strong>segurança</strong>.</span></div>
 
       <!-- FAQ -->
       <section aria-labelledby="tit-faq">
@@ -208,6 +238,8 @@
           <div style="margin-top:8px;color:#475569">O objetivo é ser acessível. Fale com a gente para uma proposta sob medida.</div>
         </details>
       </section>
+
+      <div class="benefit-tip">🏁 <span>Pronto para dar o próximo passo? <strong>Leve o NewsFlow</strong> para sua equipe.</span></div>
 
       <!-- CONTATO -->
       <section id="contato" aria-labelledby="tit-contato">
