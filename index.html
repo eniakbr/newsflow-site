@@ -29,7 +29,7 @@
 
     /* Topbar */
     .topbar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:center;height:72px;background:var(--nf-header);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-    .topbar h1{margin:0;font-family:"Montserrat","Segoe UI",Roboto,Arial,sans-serif;font-weight:700;letter-spacing:.3px;font-size:clamp(32px,6.4vw,48px)}
+    .topbar h1{margin:0;font-family:"Montserrat","Segoe UI",Roboto,Arial,sans-serif;font-weight:700;letter-spacing:.3px;font-size:clamp(36px,8vw,82px)}
 
     /* Layout */
     .content{padding:40px 24px}
@@ -101,6 +101,14 @@
 .features .card::before{content:counter(feat);counter-increment:feat;position:absolute;left:20px;top:18px;font-size:64px;font-weight:800;line-height:1;color:var(--nf-blue-dark);opacity:.22}
 .banner{display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(90deg,var(--nf-blue),var(--nf-blue-dark));color:#fff;padding:22px 24px;border-radius:20px;box-shadow:var(--shadow);font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:42px 0}
 .micro-callout{margin-top:12px;background:var(--nf-soft);border:1px dashed var(--nf-border);border-radius:12px;padding:10px 12px;font-weight:600;color:#334155}
+.hero{text-align:center}
+.pillnav{justify-content:center}
+.hero-cta{justify-content:center}
+.simple-box{background:#fff;border:1px solid var(--nf-border);border-radius:14px;padding:14px 16px;color:#0f172a;font-weight:700;display:flex;align-items:center;justify-content:center}
+.btn-demo{background:#2563eb;color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.20)}
+.btn-demo:hover{transform:translateY(-1px);filter:saturate(110%)}
+.list-btn{display:inline-block;margin-left:8px;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,var(--nf-blue),var(--nf-blue-dark));color:#fff;font-weight:700}
+@media (max-width:960px){.container{padding-left:20px;padding-right:20px}}
 </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"NewsFlow","url":"https://www.newsflow.com.br/","applicationCategory":"BusinessApplication","operatingSystem":"Web, Windows, macOS, Linux, iOS, Android","description":"Sistema de redação e telejornal de baixo custo para pequenas TVs e webTVs. Fluxo de telejornal, laudas, espelhos, TP, controle de programas ao vivo e integração com OBS/vMix.","offers":{"@type":"Offer","price":"Sob consulta","priceCurrency":"BRL"}}
@@ -117,8 +125,8 @@
       <!-- HERO / SOBRE -->
       <section id="sobre" class="hero" aria-labelledby="tit-sobre">
         <span class="eyebrow">Lançamento em breve</span>
-        <h2 id="tit-sobre">Redação e Telejornal em Tempo Real</h2>
-        <p class="lead">O NewsFlow organiza o fluxo do telejornal, laudas, espelhos e TP, com controle de programas ao vivo e integração com OBS e vMix — ideal para pequenas TVs e webTVs que precisam de <strong>versatilidade e baixo custo</strong>.</p>
+        <h2 id="tit-sobre" style="margin-left:auto;margin-right:auto">Redação e Telejornal em Tempo Real</h2>
+        <p class="lead" style="margin-left:auto;margin-right:auto">O NewsFlow organiza o fluxo do telejornal, laudas, espelhos e TP, com controle de programas ao vivo e integração com OBS e vMix — ideal para pequenas TVs e webTVs que precisam de <strong>versatilidade e baixo custo</strong>.</p>
         <div class="pillnav" role="navigation" aria-label="Atalhos">
           <a href="#recursos">Recursos</a>
           <a href="#integracoes">Integrações</a>
@@ -126,7 +134,7 @@
           <a href="#contato">Contato</a>
         </div>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
+          <a class="btn btn-demo" href="#contato">Solicitar demonstração</a>
           <a class="btn btn-ghost" href="#aviso">Ser avisado no lançamento</a>
         </div>
         <div class="banner">✨ Menos retrabalho, mais <strong>tempo no ar</strong>.</div>
@@ -159,23 +167,23 @@
             <li><strong>vMix</strong>: export de GC e cenas a partir do espelho.</li>
             <li><strong>JSON/CSV/PDF</strong>: interoperabilidade simples com outros fluxos.</li>
           </ul>
-          <div class="banner">🧩 Conecte-se ao seu pipeline atual <strong>sem refazer tudo do zero</strong>.</div>
         </div>
+        <div class="simple-box" style="margin-top:14px">🧩 Conecte-se ao seu pipeline atual</div>
       </section>
 
       <div class="banner">💸 Planos sob medida: <strong>pague pelo que usar</strong>.</div>
 
       <!-- PREÇO -->
       <section id="preco" aria-labelledby="tit-preco">
-        <div class="strip">
-          <div>
-            <h2 id="tit-preco" style="margin:0 0 4px">Planos sob medida</h2>
-            <p class="lead" style="margin:0">Fale com a gente e receba uma proposta personalizada para sua operação.</p>
-          </div>
-          <div class="price">Baixo custo</div>
-          <div><a class="btn btn-primary" href="#contato">Solicitar proposta</a></div>
+        <h2 id="tit-preco">Planos sob medida</h2>
+        <div class="card">
+          <ul style="margin:0;padding-left:18px;color:#374151">
+            <li>💸 <strong>Baixo custo</strong> para pequenas TVs e webTVs.</li>
+            <li>📄 <strong>Solicitar proposta</strong> — <a class="list-btn" href="#contato">Solicitar proposta</a></li>
+            <li>🤝 <strong>Equipe produtiva desde o primeiro dia.</strong></li>
+            <li>🎟️ <strong>Garanta prioridade no lançamento e condições especiais.</strong></li>
+          </ul>
         </div>
-        <div class="callout">🤝 <span>Equipe <strong>produtiva desde o primeiro dia</strong>.</span></div>
       </section>
 
       <div class="banner">🎟️ Garanta prioridade no lançamento e <strong>condições especiais</strong>.</div>
