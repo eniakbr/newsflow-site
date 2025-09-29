@@ -97,8 +97,8 @@
   .cols-2{grid-template-columns:repeat(2,1fr)}
 @media (max-width:960px){.cols-2{grid-template-columns:1fr}}
 .features{counter-reset:feat}
-.features .card{position:relative;padding-left:96px;min-height:120px}
-.features .card::before{content:counter(feat);counter-increment:feat;position:absolute;left:20px;top:18px;font-size:64px;font-weight:800;line-height:1;color:var(--nf-blue-dark);opacity:.22}
+.features .card{position:relative;padding:20px 20px 16px 96px;min-height:120px}
+.features .card::before{content:counter(feat);counter-increment:feat;position:absolute;left:24px;top:14px;font-size:56px;font-weight:800;line-height:1;color:var(--nf-blue-dark);opacity:.18}
 .banner{display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(90deg,var(--nf-blue),var(--nf-blue-dark));color:#fff;padding:22px 24px;border-radius:20px;box-shadow:var(--shadow);font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:42px 0}
 .micro-callout{margin-top:12px;background:var(--nf-soft);border:1px dashed var(--nf-border);border-radius:12px;padding:10px 12px;font-weight:600;color:#334155}
 .hero{text-align:center}
@@ -109,6 +109,14 @@
 .btn-demo:hover{transform:translateY(-1px);filter:saturate(110%)}
 .list-btn{display:inline-block;margin-left:8px;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,var(--nf-blue),var(--nf-blue-dark));color:#fff;font-weight:700}
 @media (max-width:960px){.container{padding-left:20px;padding-right:20px}}
+p, li, .banner, .card{word-break:normal;overflow-wrap:anywhere;hyphens:auto}
+.banner{width:100%;max-width:var(--maxw);margin:42px auto}
+@media (max-width:600px){
+  .features .card{padding:64px 16px 16px 16px}
+  .features .card::before{left:16px;top:10px;font-size:44px}
+  .pillnav{justify-content:center}
+  .hero-cta{justify-content:center}
+}
 </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"NewsFlow","url":"https://www.newsflow.com.br/","applicationCategory":"BusinessApplication","operatingSystem":"Web, Windows, macOS, Linux, iOS, Android","description":"Sistema de redação e telejornal de baixo custo para pequenas TVs e webTVs. Fluxo de telejornal, laudas, espelhos, TP, controle de programas ao vivo e integração com OBS/vMix.","offers":{"@type":"Offer","price":"Sob consulta","priceCurrency":"BRL"}}
@@ -179,7 +187,7 @@
         <div class="card">
           <ul style="margin:0;padding-left:18px;color:#374151">
             <li>💸 <strong>Baixo custo</strong> para pequenas TVs e webTVs.</li>
-            <li>📄 <strong>Solicitar proposta</strong> — <a class="list-btn" href="#contato">Solicitar proposta</a></li>
+            <li>📄 <strong>Solicitar proposta</strong><br/><a class="list-btn" href="#contato">Solicitar proposta</a></li>
             <li>🤝 <strong>Equipe produtiva desde o primeiro dia.</strong></li>
             <li>🎟️ <strong>Garanta prioridade no lançamento e condições especiais.</strong></li>
           </ul>
