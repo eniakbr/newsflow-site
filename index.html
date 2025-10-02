@@ -48,14 +48,20 @@
     .media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
     .section{margin:56px 0}
 
-    /* Hero centralizado */
-    .hero-block{text-align:center;max-width:900px;margin:0 auto}
-    .hero-block h2{font-size:clamp(34px,6vw,56px)}
-    .hero-block p{font-size:18px}
+    /* Hero centralizado (2 colunas) */
+    .hero-block{text-align:center;max-width:980px;margin:0 auto}
+    .hero-block h2{font-size:clamp(34px,6vw,56px);margin-left:auto;margin-right:auto}
+    .hero-block p{font-size:18px;margin-left:auto;margin-right:auto}
     .actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
-    /* Banners */
-    .banner{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:center;background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:#fff;padding:18px 22px;border-radius:18px;box-shadow:var(--shadow);font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:34px 0}
+    /* Card/Banner azul (1 coluna) */
+    .banner{
+      display:grid;grid-template-columns:1fr;gap:16px;align-items:center;
+      background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:#fff;
+      padding:18px 22px;border-radius:18px;box-shadow:var(--shadow);
+      font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:34px 0;
+      text-align:center
+    }
     .banner img{width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
 
     /* Features */
@@ -79,7 +85,6 @@
     /* Responsivo */
     @media (max-width:980px){
       .twocol{grid-template-columns:1fr;gap:16px}
-      .banner{grid-template-columns:1fr}
       .cards-grid{grid-template-columns:1fr}
       .topbar h1{font-size:clamp(32px,9vw,64px)}
     }
@@ -107,11 +112,8 @@
         </div>
       </section>
 
-      <!-- Banner com o título '⚡ ...' + espelho ao lado -->
-      <div class="banner">
-        <div>⚡ Centralize sua produção e ganhe <strong>agilidade</strong> na redação</div>
-        <img src="espelho.png" alt="Espelho do jornal (ilustração)">
-      </div>
+      <!-- Card azul: ⚡ Centralize... (sem imagem) -->
+      <div class="banner">⚡ Centralize sua produção e ganhe <strong>agilidade</strong> na redação</div>
 
       <!-- Feito para redações ágeis + ESPÊLHO (2 colunas) + cards em 2 colunas -->
       <section class="section">
@@ -160,30 +162,11 @@
         </div>
       </section>
 
-      <!-- Subtítulo '🔌 Integre...' com MENU REP à esquerda e benefícios à direita -->
-      <section class="section">
-        <h2 style="margin-bottom:12px">🔌 Integre tarjas e telas com OBS e vMix sem retrabalho</h2>
-        <div class="twocol">
-          <figure class="media"><img src="menu%20reportagens.png" alt="Menu de módulos (ilustração)"></figure>
-          <div>
-            <h3>Integrações que facilitam o ar</h3>
-            <ul class="list">
-              <li><strong>OBS Studio</strong>: uso de fontes dinâmicas com dados do espelho/GC.</li>
-              <li><strong>vMix</strong>: export de GC e cenas a partir do espelho.</li>
-              <li><strong>JSON/CSV/PDF</strong>: interoperabilidade simples com outros fluxos.</li>
-            </ul>
-            <ul class="list" style="margin-top:10px">
-              <li>🤝 <strong>Equipe produtiva desde o primeiro dia.</strong></li>
-              <li>🎟️ <strong>Garanta prioridade no lançamento e condições especiais.</strong></li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <!-- Card azul: 🔌 Integre... como os outros -->
+      <div class="banner">🔌 Integre tarjas e telas com <strong>OBS e vMix</strong> sem retrabalho</div>
 
-      <!-- (Opcional) Banner de custo/benefício -->
-      <div class="banner" style="grid-template-columns:1fr">
-        💸 Baixo custo e alta produtividade
-      </div>
+      <!-- Banner de custo/benefício -->
+      <div class="banner" style="grid-template-columns:1fr">💸 Baixo custo e alta produtividade</div>
 
       <!-- Contato / Aviso -->
       <section id="contato" class="section">
