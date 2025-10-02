@@ -4,251 +4,208 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NewsFlow — Sistema de Redação e Telejornal em Tempo Real</title>
-  <meta name="description" content="NewsFlow é um sistema versátil e de baixo custo para pequenas TVs e webTVs: fluxo de telejornal, laudas, espelhos, TP, controle de programas ao vivo e integração com OBS e vMix. Funciona em dispositivos móveis e computadores." />
+  <meta name="description" content="NewsFlow: fluxo de telejornal, laudas, espelhos e TP, controle de programas ao vivo e integração com OBS/vMix. Versátil e de baixo custo para pequenas TVs e webTVs." />
   <link rel="canonical" href="https://www.newsflow.com.br/" />
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-  <meta name="theme-color" content="#1e40af" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#1e3a8a" />
   <meta property="og:title" content="NewsFlow — Sistema de Redação e Telejornal em Tempo Real" />
-  <meta property="og:description" content="Versátil e acessível para pequenas TVs e webTVs. Multi-dispositivo, controle de programas ao vivo e integração com OBS/vMix." />
+  <meta property="og:description" content="Versátil e acessível: telejornal ao vivo, laudas, espelhos, TP e integração OBS/vMix." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.newsflow.com.br/" />
   <meta property="og:site_name" content="NewsFlow" />
-  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/favicon.ico" />
   <style>
-    :root{
-      --nf-blue:#2563eb;--nf-blue-dark:#1e3a8a;--nf-header:#1e3a8a;--nf-bg:#ffffff;--nf-surface:#ffffff;--nf-text:#1f2937;--nf-muted:#475569;--nf-border:#e5e7eb;--nf-soft:#f8fafc;--radius:16px;--shadow:0 10px 30px rgba(2,6,23,.08);--maxw:1040px
-    }
-    *,*::before,*::after{box-sizing:border-box}
+    :root{--blue:#2563eb;--blue-dark:#1e3a8a;--ink:#0f172a;--text:#1f2937;--muted:#475569;--soft:#f8fafc;--border:#e5e7eb;--radius:18px;--shadow:0 12px 30px rgba(2,6,23,.08);--w:1180px}
+    *,*:before,*:after{box-sizing:border-box}
     html{scroll-behavior:smooth;text-size-adjust:100%}
-    body{margin:0;background:var(--nf-bg);color:var(--nf-text);font-family:"Poppins","Segoe UI",Roboto,Arial,sans-serif;line-height:1.7}
+    body{margin:0;background:#fff;color:var(--text);font-family:"Poppins","Segoe UI",Roboto,Arial,sans-serif;line-height:1.7}
+    h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0 0 10px}
+    p{margin:0 0 12px;max-width:68ch;text-wrap:pretty}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
-    p{max-width:68ch;text-wrap:pretty}
-    h1,h2,h3{line-height:1.2;text-wrap:balance}
 
-    /* Topbar */
-    .topbar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:center;height:72px;background:var(--nf-header);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-    .topbar h1{margin:0;font-family:"Montserrat","Segoe UI",Roboto,Arial,sans-serif;font-weight:700;letter-spacing:.3px;font-size:clamp(36px,8vw,82px)}
+    /* TOPBAR */
+    .topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:center;height:86px;background:#1e3a8a;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+    .topbar h1{margin:0;font-family:"Montserrat","Segoe UI",Roboto,Arial,sans-serif;font-weight:700;letter-spacing:.3px;font-size:clamp(40px,7.8vw,84px)}
 
-    /* Layout */
-    .content{padding:40px 24px}
-    .container{max-width:var(--maxw);margin:0 auto;padding-left:16px;padding-right:16px}
-    section{margin:56px 0}
-
-    /* Hero modernizado */
-    .hero{position:relative;border-radius:24px;padding:54px 28px;background:
-      radial-gradient(1200px 400px at 10% -10%, #eef2ff 0, transparent 55%),
-      radial-gradient(900px 400px at 90% 0%, #e0f2fe 0, transparent 55%),
-      linear-gradient(#fff,#fff);
-      border:1px solid var(--nf-border);box-shadow:var(--shadow)}
+    /* LAYOUT */
+    main{padding:36px 24px}
+    .container{max-width:var(--w);margin:0 auto}
+    .twocol{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:center}
+    .twocol .media{border:1px solid var(--border);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+    .section{margin:56px 0}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#eef2ff;border:1px solid #dbeafe;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
-    .hero h2{font-size:clamp(30px,5.4vw,48px);margin:12px 0 8px}
-    .lead{font-size:18px;color:var(--nf-muted)}
-    .pillnav{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
-    .pillnav a{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:999px;border:1px solid var(--nf-border);background:#fff;color:#111827;font-weight:600}
-    .pillnav a:hover{box-shadow:0 6px 16px rgba(0,0,0,.06);transform:translateY(-1px)}
-    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 
-    /* Buttons */
+    /* SUBTÍTULOS (BANNERS) */
+    .banner{display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:#fff;padding:18px 22px;border-radius:18px;box-shadow:var(--shadow);font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:34px 0}
+
+    /* FEATURES */
+    .features{display:grid;grid-template-columns:1fr;gap:14px}
+    .feature{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px 16px 12px;box-shadow:var(--shadow)}
+    .feature h3{margin-bottom:6px}
+    .adv{margin-top:10px;background:#f8fafc;border:1px dashed var(--border);border-radius:12px;padding:10px 12px;font-weight:700;color:#0f172a}
+
+    /* INTEGRAÇÕES / LISTAS */
+    ul.list{margin:10px 0 0;padding-left:18px;color:#374151}
+
+    /* CTA */
     .btn{display:inline-flex;align-items:center;gap:8px;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer;transition:transform .15s ease,filter .2s ease,box-shadow .2s}
     .btn:focus{outline:2px solid #93c5fd;outline-offset:2px}
-    .btn-primary{background:linear-gradient(90deg,var(--nf-blue),var(--nf-blue-dark));color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.20)}
+    .btn-primary{background:#2563eb;color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.20)}
     .btn-primary:hover{transform:translateY(-1px);filter:saturate(110%)}
-    .btn-ghost{background:#fff;border:1px solid var(--nf-border);color:#111827}
 
-    /* Divisores/Callouts (benefícios) */
-    .callout{display:flex;align-items:center;gap:10px;margin:22px 0;padding:14px 16px;background:linear-gradient(180deg,#f8fafc,#ffffff);border:1px dashed var(--nf-border);border-radius:14px;font-weight:700;color:#0f172a}
-    .callout small{font-weight:600;color:#334155}
-    .divider{display:block;height:1px;background:linear-gradient(to right,transparent,#e5e7eb,transparent);margin:34px 0}
+    /* FOOTER */
+    footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--border);color:#64748b}
 
-    /* Grids e Cards */
-    .grid{display:grid;gap:16px}
-    .cols-auto{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{background:var(--nf-surface);padding:20px;border-radius:18px;border:1px solid var(--nf-border);box-shadow:var(--shadow);transition:transform .15s ease,box-shadow .2s}
-    .card:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(0,0,0,.08)}
-    .card h3{margin:0 0 8px}
-
-    /* Strip / Pricing */
-    .strip{display:flex;gap:16px;align-items:center;justify-content:space-between;background:linear-gradient(90deg,rgba(37,99,235,.08),rgba(30,58,138,.08));border:1px solid var(--nf-border);border-radius:18px;padding:18px}
-    .price{font-weight:800;color:#111827}
-
-    /* FAQ */
-    details{background:#fff;border:1px solid var(--nf-border);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow)}
-    details:not(:last-child){margin-bottom:10px}
-    summary{cursor:pointer;font-weight:700;color:#0f172a}
-    summary::-webkit-details-marker{display:none}
-    summary:after{content:"+";float:right;color:#94a3b8}
-    details[open] summary:after{content:"−"}
-
-    /* FAB WhatsApp */
-    .fab{position:fixed;right:20px;bottom:20px;z-index:999;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:12px 16px;border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,.18);font-weight:800}
-    .fab:hover{transform:translateY(-1px)}
-
-    /* Back to top */
-    #totop{position:fixed;right:20px;bottom:78px;display:none;background:#111827;color:#fff;border:none;border-radius:999px;padding:10px 12px;font-weight:800;box-shadow:0 8px 22px rgba(0,0,0,.2)}
-
-    /* Mobile refinements */
-    @media (max-width: 960px){
-      .hero{padding:36px 20px}
-      .content{padding:24px 16px}
+    /* RESPONSIVO */
+    @media (max-width: 980px){
+      .twocol{grid-template-columns:1fr;gap:16px}
+      .topbar h1{font-size:clamp(32px,9vw,64px)}
     }
-    @media (prefers-reduced-motion: reduce){ *{transition:none!important} }
-  .cols-2{grid-template-columns:repeat(2,1fr)}
-@media (max-width:960px){.cols-2{grid-template-columns:1fr}}
-.features{counter-reset:feat}
-.features .card{position:relative;padding:20px 20px 16px 96px;min-height:120px}
-.features .card::before{content:counter(feat);counter-increment:feat;position:absolute;left:24px;top:14px;font-size:56px;font-weight:800;line-height:1;color:var(--nf-blue-dark);opacity:.18}
-.banner{display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(90deg,var(--nf-blue),var(--nf-blue-dark));color:#fff;padding:22px 24px;border-radius:20px;box-shadow:var(--shadow);font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:42px 0}
-.micro-callout{margin-top:12px;background:var(--nf-soft);border:1px dashed var(--nf-border);border-radius:12px;padding:10px 12px;font-weight:600;color:#334155}
-.hero{text-align:center}
-.pillnav{justify-content:center}
-.hero-cta{justify-content:center}
-.simple-box{background:#fff;border:1px solid var(--nf-border);border-radius:14px;padding:14px 16px;color:#0f172a;font-weight:700;display:flex;align-items:center;justify-content:center}
-.btn-demo{background:#2563eb;color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.20)}
-.btn-demo:hover{transform:translateY(-1px);filter:saturate(110%)}
-.list-btn{display:inline-block;margin-left:8px;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,var(--nf-blue),var(--nf-blue-dark));color:#fff;font-weight:700}
-@media (max-width:960px){.container{padding-left:20px;padding-right:20px}}
-p, li, .banner, .card{word-break:normal;overflow-wrap:anywhere;hyphens:auto}
-.banner{width:100%;max-width:var(--maxw);margin:42px auto}
-@media (max-width:600px){
-  .features .card{padding:64px 16px 16px 16px}
-  .features .card::before{left:16px;top:10px;font-size:44px}
-  .pillnav{justify-content:center}
-  .hero-cta{justify-content:center}
-}
-</style>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"NewsFlow","url":"https://www.newsflow.com.br/","applicationCategory":"BusinessApplication","operatingSystem":"Web, Windows, macOS, Linux, iOS, Android","description":"Sistema de redação e telejornal de baixo custo para pequenas TVs e webTVs. Fluxo de telejornal, laudas, espelhos, TP, controle de programas ao vivo e integração com OBS/vMix.","offers":{"@type":"Offer","price":"Sob consulta","priceCurrency":"BRL"}}
-  </script>
+  </style>
 </head>
 <body>
-  <div class="topbar">
-    <h1>NewsFlow</h1>
-  </div>
+  <div class="topbar"><h1>NewsFlow</h1></div>
 
-  <main class="content">
+  <main>
     <div class="container">
 
-      <!-- HERO / SOBRE -->
-      <section id="sobre" class="hero" aria-labelledby="tit-sobre">
-        <span class="eyebrow">Lançamento em breve</span>
-        <h2 id="tit-sobre" style="margin-left:auto;margin-right:auto">Redação e Telejornal em Tempo Real</h2>
-        <p class="lead" style="margin-left:auto;margin-right:auto">O NewsFlow organiza o fluxo do telejornal, laudas, espelhos e TP, com controle de programas ao vivo e integração com OBS e vMix — ideal para pequenas TVs e webTVs que precisam de <strong>versatilidade e baixo custo</strong>.</p>
-        <div class="pillnav" role="navigation" aria-label="Atalhos">
-          <a href="#recursos">Recursos</a>
-          <a href="#integracoes">Integrações</a>
-          <a href="#preco">Preços</a>
-          <a href="#contato">Contato</a>
-        </div>
-        <div class="hero-cta">
-          <a class="btn btn-demo" href="#contato">Solicitar demonstração</a>
-          <a class="btn btn-ghost" href="#aviso">Ser avisado no lançamento</a>
-        </div>
-        <div class="banner">✨ Menos retrabalho, mais <strong>tempo no ar</strong>.</div>
-      </section>
-
-      <div class="banner">⚡ Centralize sua produção e ganhe <strong>agilidade</strong> na redação.</div>
-
-      <!-- RECURSOS -->
-      <section id="recursos" aria-labelledby="tit-recursos">
-        <h2 id="tit-recursos">Feito para redações ágeis</h2>
-        <p class="lead">Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</p>
-        <div class="grid cols-2 features" style="margin-top:14px">
-          <div class="card"><h3>Fluxo de Telejornal</h3><p>Crie e organize <strong>laudas</strong>, <strong>espelhos</strong> e blocos com tempos, status e PDF.</p><div class="micro-callout"><small>⚡ Organize tudo em um só lugar e <strong>ganhe velocidade</strong>.</small></div></div>
-          <div class="card"><h3>Operação de TP</h3><p>Teleprompter integrado, controle por teclado, timers e conforto visual.</p><div class="micro-callout"><small>🎯 Mais segurança no ar e <strong>menos improviso</strong>.</small></div></div>
-          <div class="card"><h3>Ao vivo</h3><p>Contagem de VTs, sincronia entre redação e estúdio e visão do espelho.</p><div class="micro-callout"><small>📡 Ritmo do <strong>ao vivo</strong> com menos stress.</small></div></div>
-          <div class="card"><h3>Integrações</h3><p>Exporta GC/espelho (JSON, CSV, PDF) para <strong>OBS</strong> e <strong>vMix</strong>.</p><div class="micro-callout"><small>🔌 Reduza erros de GC com <strong>exportação direta</strong>.</small></div></div>
-          <div class="card"><h3>Multi‑dispositivo</h3><p>Funciona bem em celular, tablet e desktop — no estúdio ou em externa.</p><div class="micro-callout"><small>📱 Trabalhe no que você já tem: <strong>sem compras caras</strong>.</small></div></div>
-          <div class="card"><h3>Licenciamento Acessível</h3><p>Implantação simples para emissoras enxutas e projetos independentes.</p><div class="micro-callout"><small>💸 Pague menos e mantenha o <strong>essencial</strong>.</small></div></div>
+      <!-- HERO: TÍTULO + PARÁGRAFO + IMAGEM (home) -->
+      <section class="section">
+        <div class="twocol">
+          <div>
+            <span class="eyebrow">Lançamento em breve</span>
+            <h2 style="margin:10px 0 6px">Redação e Telejornal em Tempo Real</h2>
+            <p>O NewsFlow organiza o fluxo do telejornal, laudas, espelhos e TP, com controle de programas ao vivo e integração com OBS e vMix — ideal para pequenas TVs e webTVs que precisam de <strong>versatilidade e baixo custo</strong>.</p>
+            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
+              <a class="btn" style="background:#fff;border:1px solid var(--border)" href="#aviso">Ser avisado no lançamento</a>
+            </div>
+          </div>
+          <figure class="media"><img src="home.png" alt="Tela inicial do NewsFlow (ilustração)"/></figure>
         </div>
       </section>
 
-      <div class="banner">🔌 Integre tarjas e telas com <strong>OBS e vMix</strong> sem retrabalho.</div>
+      <div class="banner">✨ Menos retrabalho, mais tempo no ar</div>
+      <div class="banner">⚡ Centralize sua produção e ganhe agilidade na redação</div>
 
-      <!-- INTEGRAÇÕES -->
-      <section id="integracoes" aria-labelledby="tit-integracoes">
-        <h2 id="tit-integracoes">Integrações que facilitam o ar</h2>
-        <div class="card">
-          <ul style="margin:0;padding-left:18px;color:#374151">
-            <li><strong>OBS Studio</strong>: uso de fontes dinâmicas com dados do espelho/GC.</li>
-            <li><strong>vMix</strong>: export de GC e cenas a partir do espelho.</li>
-            <li><strong>JSON/CSV/PDF</strong>: interoperabilidade simples com outros fluxos.</li>
-          </ul>
+      <!-- FEITO PARA REDAÇÕES ÁGEIS + IMAGEM (menu reportagens) -->
+      <section class="section">
+        <div class="twocol">
+          <div>
+            <h2>Feito para redações ágeis</h2>
+            <p>Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</p>
+
+            <div class="features" style="margin-top:12px">
+              <article class="feature">
+                <h3>Fluxo de Telejornal</h3>
+                <p>Crie e organize <strong>laudas</strong>, <strong>espelhos</strong> e blocos com tempos, status e PDF.</p>
+                <div class="adv">⚡ Organize tudo em um só lugar e <strong>ganhe velocidade</strong>.</div>
+              </article>
+              <article class="feature">
+                <h3>Operação de TP</h3>
+                <p>Teleprompter integrado, controle por teclado, timers e conforto visual.</p>
+                <div class="adv">🎯 Mais segurança no ar e <strong>menos improviso</strong>.</div>
+              </article>
+              <article class="feature">
+                <h3>Ao vivo</h3>
+                <p>Contagem de VTs, sincronia entre redação e estúdio e visão do espelho.</p>
+                <div class="adv">📡 Ritmo do <strong>ao vivo</strong> com menos stress.</div>
+              </article>
+              <article class="feature">
+                <h3>Integrações</h3>
+                <p>Exporta GC/espelho (JSON, CSV, PDF) para <strong>OBS</strong> e <strong>vMix</strong>.</p>
+                <div class="adv">🔌 Reduza erros de GC com <strong>exportação direta</strong>.</div>
+              </article>
+              <article class="feature">
+                <h3>Multi‑dispositivo</h3>
+                <p>Funciona bem em celular, tablet e desktop — no estúdio ou em externa.</p>
+                <div class="adv">📱 Trabalhe no que você já tem: <strong>sem compras caras</strong>.</div>
+              </article>
+              <article class="feature">
+                <h3>Licenciamento Acessível</h3>
+                <p>Implantação simples para emissoras enxutas e projetos independentes.</p>
+                <div class="adv">💸 Pague menos e <strong>mantenha o essencial</strong>.</div>
+              </article>
+            </div>
+          </div>
+          <figure class="media"><img src="menu%20reportagens.png" alt="Menu de módulos (ilustração)"/></figure>
         </div>
-        <div class="simple-box" style="margin-top:14px">🧩 Conecte-se ao seu pipeline atual</div>
       </section>
 
-      <div class="banner">💸 Planos sob medida: <strong>pague pelo que usar</strong>.</div>
+      <div class="banner">🔌 Integre tarjas e telas com OBS e vMix sem retrabalho</div>
 
-      <!-- PREÇO -->
-      <section id="preco" aria-labelledby="tit-preco">
-        <h2 id="tit-preco">Planos sob medida</h2>
-        <div class="card">
-          <ul style="margin:0;padding-left:18px;color:#374151">
-            <li>💸 <strong>Baixo custo</strong> para pequenas TVs e webTVs.</li>
-            <li>📄 <strong>Solicitar proposta</strong><br/><a class="list-btn" href="#contato">Solicitar proposta</a></li>
-            <li>🤝 <strong>Equipe produtiva desde o primeiro dia.</strong></li>
-            <li>🎟️ <strong>Garanta prioridade no lançamento e condições especiais.</strong></li>
-          </ul>
+      <!-- INTEGRAÇÕES + IMAGEM (espelho) -->
+      <section class="section">
+        <div class="twocol">
+          <div>
+            <h2>Integrações que facilitam o ar</h2>
+            <ul class="list">
+              <li><strong>OBS Studio</strong>: uso de fontes dinâmicas com dados do espelho/GC.</li>
+              <li><strong>vMix</strong>: export de GC e cenas a partir do espelho.</li>
+              <li><strong>JSON/CSV/PDF</strong>: interoperabilidade simples com outros fluxos.</li>
+            </ul>
+          </div>
+          <figure class="media"><img src="espelho.png" alt="Visualização de espelho do jornal (ilustração)"/></figure>
         </div>
       </section>
 
-      <div class="banner">🎟️ Garanta prioridade no lançamento e <strong>condições especiais</strong>.</div>
+      <div class="banner">💸 Baixo custo e alta produtividade</div>
 
-      <!-- AVISO / CAPTURA -->
-      <section id="aviso" aria-labelledby="tit-aviso">
-        <h2 id="tit-aviso">Seja avisado no lançamento</h2>
-        <form id="notifyForm" class="card" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:16px" aria-label="Formulário de aviso de lançamento">
-          <label for="email" class="sr-only" style="position:absolute;left:-9999px">Seu e‑mail</label>
-          <input id="email" name="email" type="email" required placeholder="seu@email.com" aria-label="Seu e‑mail"
-                 style="flex:1;min-width:240px;padding:12px 14px;border-radius:12px;border:1px solid var(--nf-border)" />
-          <button class="btn btn-primary" type="submit">Quero ser avisado</button>
-          <p id="notifyMsg" style="margin:0;color:#6b7280"></p>
-        </form>
-        <p class="lead" style="font-size:14px;color:#6b7280;margin-top:6px">Prometemos não enviar spam. Você pode pedir a remoção a qualquer momento.</p>
+      <!-- PLANOS + IMAGEM (pautas) -->
+      <section class="section">
+        <div class="twocol">
+          <div>
+            <ul class="list">
+              <li>💸 <strong>Baixo custo</strong> para pequenas TVs e webTVs.</li>
+              <li>📄 <strong>Solicitar proposta</strong> — <a class="btn btn-primary" href="#contato" style="margin-left:6px">Solicitar proposta</a></li>
+              <li>🤝 <strong>Equipe produtiva desde o primeiro dia.</strong></li>
+              <li>🎟️ <strong>Garanta prioridade no lançamento e condições especiais.</strong></li>
+            </ul>
+          </div>
+          <figure class="media"><img src="pautas%20cadastradas.png" alt="Tabela de pautas cadastradas (ilustração)"/></figure>
+        </div>
       </section>
 
-      <div class="banner">🛟 Tire dúvidas e avance com <strong>segurança</strong>.</div>
+      <div class="banner">🛟 Tire dúvidas e avance com <strong>segurança</strong></div>
 
-      <!-- FAQ -->
-      <section aria-labelledby="tit-faq">
-        <h2 id="tit-faq">Perguntas frequentes</h2>
-        <details>
-          <summary>Funciona em celular e computador?</summary>
-          <div style="margin-top:8px;color:#475569">Sim. A interface é responsiva e funciona bem em dispositivos móveis e desktops.</div>
-        </details>
-        <details>
-          <summary>Precisa de cloud?</summary>
-          <div style="margin-top:8px;color:#475569">Não obrigatoriamente. Você pode rodar localmente/na emissora. Para a landing, basta hospedagem estática.</div>
-        </details>
-        <details>
-          <summary>Integrações OBS/vMix</summary>
-          <div style="margin-top:8px;color:#475569">Exportamos dados do espelho/GC (JSON, CSV, PDF) para uso como fontes dinâmicas.</div>
-        </details>
-        <details>
-          <summary>Quanto custa?</summary>
-          <div style="margin-top:8px;color:#475569">O objetivo é ser acessível. Fale com a gente para uma proposta sob medida.</div>
-        </details>
+      <!-- CONTATO / AVISO -->
+      <section id="contato" class="section">
+        <div class="twocol">
+          <div>
+            <h2>Fale com a gente</h2>
+            <p>Quer uma demonstração, proposta ou tirar dúvidas? Envie uma mensagem:</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+              <a class="btn btn-primary" href="mailto:contato@newsflow.com.br?subject=Quero%20conhecer%20o%20NewsFlow">contato@newsflow.com.br</a>
+              <a class="btn" style="background:#fff;border:1px solid var(--border)" href="https://wa.me/5599999999999?text=Quero%20conhecer%20o%20NewsFlow" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            </div>
+          </div>
+          <div>
+            <h2 id="aviso">Seja avisado no lançamento</h2>
+            <form id="notifyForm" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+              <label for="email" class="sr-only" style="position:absolute;left:-9999px">Seu e‑mail</label>
+              <input id="email" name="email" type="email" required placeholder="seu@email.com" aria-label="Seu e‑mail" style="flex:1;min-width:220px;padding:12px 14px;border-radius:12px;border:1px solid var(--border)" />
+              <button class="btn btn-primary" type="submit">Quero ser avisado</button>
+              <p id="notifyMsg" style="width:100%;margin:0;color:#6b7280"></p>
+            </form>
+          </div>
+        </div>
       </section>
 
-      <footer style="margin-top:28px;padding-top:16px;border-top:1px solid var(--nf-border);color:#6b7280">
+      <footer>
         <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
           <span>© <span id="year"></span> NewsFlow — Todos os direitos reservados.</span>
-          <span><a href="#sobre">Sobre</a> • <a href="#recursos">Recursos</a> • <a href="#integracoes">Integrações</a> • <a href="#preco">Preços</a> • <a href="#contato">Contato</a></span>
+          <span><a href="#top">Topo</a></span>
         </div>
       </footer>
 
     </div>
   </main>
 
-  <!-- CONTATO (fixo) -->
-  <a class="fab" href="https://wa.me/5599999999999?text=Quero%20conhecer%20o%20NewsFlow" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">WhatsApp</a>
-  <button id="totop" aria-label="Voltar ao topo">↑</button>
-
-  <script defer>
+  <script>
     document.addEventListener('DOMContentLoaded',()=>{
       const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+      // Form: abre email do usuário
       const form=document.getElementById('notifyForm');
       if(form){
         form.addEventListener('submit',(e)=>{
@@ -262,11 +219,6 @@ p, li, .banner, .card{word-break:normal;overflow-wrap:anywhere;hyphens:auto}
           msg.textContent='Abrimos seu app de e‑mail para enviar o pedido. Se preferir, fale com a gente no WhatsApp.';
         });
       }
-      // back to top
-      const totop=document.getElementById('totop');
-      const toggleToTop=()=>{ totop.style.display = window.scrollY>400 ? 'inline-flex':'none'; };
-      window.addEventListener('scroll',toggleToTop); toggleToTop();
-      totop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
     });
   </script>
 </body>
