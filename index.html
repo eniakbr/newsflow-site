@@ -54,15 +54,14 @@
     .hero-block p{font-size:18px;margin-left:auto;margin-right:auto}
     .actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
-    /* Card/Banner azul (1 coluna) */
+    /* Card/Banner azul (1 linha, centralizados) */
     .banner{
-      display:grid;grid-template-columns:1fr;gap:16px;align-items:center;
+      display:flex;align-items:center;justify-content:center;text-align:center;
       background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:#fff;
       padding:18px 22px;border-radius:18px;box-shadow:var(--shadow);
       font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:34px 0;
-      text-align:center
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis
     }
-    .banner img{width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
 
     /* Features */
     .cards-grid{grid-column:1 / -1;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
@@ -112,7 +111,7 @@
         </div>
       </section>
 
-      <!-- Card azul: ⚡ Centralize... (sem imagem) -->
+      <!-- Card azul: ⚡ Centralize... (sem imagem, linha única) -->
       <div class="banner">⚡ Centralize sua produção e ganhe <strong>agilidade</strong> na redação</div>
 
       <!-- Feito para redações ágeis + ESPÊLHO (2 colunas) + cards em 2 colunas -->
@@ -162,11 +161,11 @@
         </div>
       </section>
 
-      <!-- Card azul: 🔌 Integre... como os outros -->
+      <!-- Card azul: 🔌 Integre... (linha única) -->
       <div class="banner">🔌 Integre tarjas e telas com <strong>OBS e vMix</strong> sem retrabalho</div>
 
-      <!-- Banner de custo/benefício -->
-      <div class="banner" style="grid-template-columns:1fr">💸 Baixo custo e alta produtividade</div>
+      <!-- (Opcional) Banner de custo/benefício -->
+      <div class="banner" style="white-space:normal">💸 Baixo custo e alta produtividade</div>
 
       <!-- Contato / Aviso -->
       <section id="contato" class="section">
