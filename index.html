@@ -39,16 +39,32 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0}
 .span-2{grid-column:1 / -1}
 
-.brand-hero{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(48px,7.8vw,92px);margin:0 0 4px;text-align:center;letter-spacing:.2px}
-.slogan{font-family:"Roboto",sans-serif;font-weight:700;font-size:clamp(20px,3.2vw,28px);line-height:1.2;margin:0 auto 10px;text-align:center;text-wrap:balance;opacity:.98}
-.hero-copy small{
-  display:inline-block;margin:12px 0 8px;background:#eaf2ff;color:#18328a;
-  padding:8px 12px;border-radius:999px;font-weight:800;letter-spacing:.5px;
-  font-size:clamp(14px,1.8vw,18px);text-transform:uppercase
+.brand-hero{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(62px,9vw,120px);margin:0 0 6px;text-align:center;letter-spacing:.2px}
+.slogan{font-family:"Roboto",sans-serif;font-weight:700;font-size:clamp(18px,2.8vw,24px);line-height:1.2;margin:0 auto 12px;text-align:center;max-width:28ch;text-wrap:balance;opacity:.98}
+
+/* Centralizar bloco entre colunas */
+.hero-copy{
+  grid-column:1 / -1;
+  justify-self:center;
+  text-align:center;
+  max-width:min(70ch, 100%);
+  margin-inline:auto;
 }
+
+/* “lançamento em breve” — respiro FORA do box */
+.hero-copy small{
+  display:inline-block;
+  background:#eaf2ff; color:#18328a;
+  padding:10px 14px;border-radius:999px;
+  font-weight:800; letter-spacing:.6px;
+  font-size:clamp(16px,2vw,20px); text-transform:uppercase; line-height:1;
+  margin-block:24px; /* respiro acima e abaixo */
+}
+
+/* Parágrafo do hero */
 .hero p{color:#e6edff;max-width:70ch;margin:0 auto 0;text-align:center}
 
-/* Carousel base */
+/* Carousel */
 .carousel{position:relative;overflow:hidden;border-radius:22px;background:#0b1e4d;border:1px solid rgba(255,255,255,.15);box-shadow:var(--shadow)}
 .track{display:flex;transition:transform .6s ease}
 .slide{min-width:100%}
@@ -57,7 +73,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
 .dot{width:8px;height:8px;border-radius:50%;background:#8aa3ff88}
 .dot.active{background:#fff}
-/* imagens dentro do carrossel */
 .carousel .slide img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
 
 /* Sections */
@@ -71,15 +86,23 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
 .media img{display:block;width:100%;height:auto}
 
-/* Cards (6 itens) */
+/* Cards (6 itens) — ícone maior e em duas linhas */
 .cards-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.minicard{position:relative;background:linear-gradient(180deg,var(--tone-bg1),var(--tone-bg2));border:1px solid var(--tone-border);border-radius:16px;padding:16px 16px 12px;box-shadow:var(--shadow);overflow:hidden}
+.minicard{
+  position:relative;background:linear-gradient(180deg,var(--tone-bg1),var(--tone-bg2));
+  border:1px solid var(--tone-border);border-radius:16px;padding:16px;box-shadow:var(--shadow);overflow:hidden;
+  display:grid; grid-template-columns:56px 1fr; column-gap:14px; align-items:start;
+}
 .minicard::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--tone) 0%,transparent 40%);opacity:.08;pointer-events:none}
-.minicard .head{display:grid;grid-template-columns:48px 1fr;column-gap:12px;align-items:start;margin-bottom:6px}
-.ico{width:48px;height:48px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in oklab, var(--tone) 18%, white)}
-.ico svg{width:22px;height:22px;color:var(--tone)}
-.minicard .title{font-family:"Roboto",sans-serif;font-weight:900;margin:0;color:#0f172a;line-height:1.2}
-.minicard .desc{margin:2px 0 0;color:#1f2937}
+.head{display:contents}
+.ico{
+  grid-column:1; grid-row:1 / span 2;
+  width:56px;height:56px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;
+  background:color-mix(in oklab, var(--tone) 18%, white)
+}
+.ico svg{width:26px;height:26px;color:var(--tone)}
+.minicard .title{grid-column:2;grid-row:1;font-family:"Roboto",sans-serif;font-weight:900;margin:0;color:#0f172a;line-height:1.2}
+.minicard .desc{grid-column:2;grid-row:2;margin:4px 0 0;color:#1f2937}
 /* tons NewsFlow */
 .tone1{--tone:#2563eb; --tone-bg1:#eef4ff; --tone-bg2:#e3edff; --tone-border:#d7e6ff}
 .tone2{--tone:#1e3a8a; --tone-bg1:#e7ebff; --tone-bg2:#dee5ff; --tone-border:#cfd9ff}
@@ -102,6 +125,11 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .footer a{color:#334155;text-decoration:none;font-size:14px}
 .copy{border-top:1px solid #e5e7eb;padding:16px 0;color:#64748b;font-size:13px;text-align:center}
 
+/* Botões harmonizados */
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:13px;padding:12px 18px;font-weight:700;cursor:pointer;text-decoration:none}
+.btn-primary{background:#2563eb;color:#fff;box-shadow:0 10px 24px rgba(37,99,235,.25)}
+.btn-primary:hover{filter:brightness(.98)}
+
 @media (max-width:980px){
   .hero-grid, .twocol{grid-template-columns:1fr}
   .grid-3{grid-template-columns:1fr;gap:14px}
@@ -120,7 +148,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
       <a href="#integracoes">Integrações</a>
       <a href="#planos">Planos</a>
       <a href="#faq">FAQ</a>
-      <a class="cta" href="#contato">Solicitar demo</a>
+      <a class="cta btn btn-primary" href="#contato">Solicitar demo</a>
     </div>
   </nav>
 </header>
@@ -132,14 +160,13 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
       <h1 class="brand-hero">NewsFlow</h1>
       <p class="slogan">Seu telejornal no flow com baixo custo</p>
       <small>lançamento em breve</small>
-      <p>O NewsFlow centraliza laudas, espelhos e TP; integra ao OBS/vMix e mantém redação e estúdio no mesmo ritmo — pensado para pequenas TVs e webTVs que precisam de versatilidade e baixo custo.</p>
+      <p>O NewsFlow centraliza produção, reportagens, edição, espelhos e TP; integra ao OBS/vMix e mantém redação e estúdio no mesmo ritmo — pensado para pequenas TVs e webTVs que precisam de versatilidade e baixo custo.</p>
     </div>
 
-    <!-- CARROSSEL DAS 4 IMAGENS — ocupa DUAS COLUNAS -->
+    <!-- CARROSSEL (duas colunas) — sem espelho.png -->
     <figure class="span-2 carousel" aria-roledescription="carousel">
       <div class="track" id="track" aria-live="polite">
         <div class="slide"><img src="home.png" alt="Tela inicial do NewsFlow"></div>
-        <div class="slide"><img src="espelho.png" alt="Espelho do telejornal"></div>
         <div class="slide"><img src="menu%20reportagens.png" alt="Menu de módulos do NewsFlow"></div>
         <div class="slide"><img src="pautas%20cadastradas.png" alt="Tela de pautas cadastradas"></div>
       </div>
@@ -158,16 +185,14 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
         <h2>Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</h2>
         <p class="lead">Fluxo do telejornal com laudas, espelhos e blocos; operação de TP integrada; e visão do ao vivo para redação e estúdio.</p>
       </div>
-      <!-- Imagem do espelho ajustada para a largura da coluna -->
       <figure class="media">
         <img src="espelho.png" alt="Visual do espelho do telejornal no NewsFlow">
       </figure>
     </div>
 
-    <!-- 6 CARDS COM ÍCONES (sem emojis nos textos) -->
+    <!-- 6 CARDS (sem linhas vazias extras) -->
     <div class="section" style="padding-top:32px;padding-bottom:0">
       <div class="cards-2col">
-        <!-- 1: Fluxo -->
         <article class="minicard tone1">
           <div class="head">
             <span class="ico" aria-hidden="true">
@@ -178,7 +203,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <p class="desc">Crie e organize laudas, espelhos e blocos com tempos, status e PDF.</p>
         </article>
 
-        <!-- 2: Velocidade -->
         <article class="minicard tone4">
           <div class="head">
             <span class="ico" aria-hidden="true">
@@ -189,7 +213,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <p class="desc">Centralizando tudo em um só lugar.</p>
         </article>
 
-        <!-- 3: TP -->
         <article class="minicard tone2">
           <div class="head">
             <span class="ico" aria-hidden="true">
@@ -200,7 +223,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <p class="desc">Teleprompter integrado, timers e controle por teclado.</p>
         </article>
 
-        <!-- 4: Segurança -->
         <article class="minicard tone5">
           <div class="head">
             <span class="ico" aria-hidden="true">
@@ -211,7 +233,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <p class="desc">E menos improviso no estúdio.</p>
         </article>
 
-        <!-- 5: Ao vivo -->
         <article class="minicard tone3">
           <div class="head">
             <span class="ico" aria-hidden="true">
@@ -222,7 +243,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <p class="desc">Contagem de VTs, sincronia entre equipes e visão do espelho.</p>
         </article>
 
-        <!-- 6: Menos stress -->
         <article class="minicard tone6">
           <div class="head">
             <span class="ico" aria-hidden="true">
@@ -234,7 +254,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
         </article>
       </div>
     </div>
-    <!-- FIM 6 CARDS -->
   </div>
 </section>
 
@@ -244,27 +263,27 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
     <div class="twocol">
       <div class="card">
         <h2 style="margin-top:0">Integrações que facilitam o ar</h2>
-        <ul>
-          <li><strong>OBS Studio</strong>: fontes dinâmicas e GC com dados do espelho.</li>
-          <li><strong>vMix</strong>: export de GC e cenas a partir do espelho.</li>
-          <li><strong>JSON/CSV/PDF</strong>: interoperabilidade simples com outros fluxos.</li>
+        <ul style="margin:0 0 10px 18px">
+          <li><strong>OBS Studio</strong>: fontes dinâmicas alimentadas por espelho/GC.</li>
+          <li><strong>vMix</strong>: exportação de GC e cenas diretamente do espelho.</li>
+          <li><strong>JSON / CSV / PDF</strong>: interoperabilidade simples com outros fluxos.</li>
         </ul>
-        <ul>
-          <li>🤝 Equipe produtiva desde o primeiro dia.</li>
-          <li>🎟️ Garanta prioridade no lançamento e condições especiais.</li>
-        </ul>
+        <p style="margin:8px 0 0;color:#374151">Implantação guiada para colocar sua equipe no ar desde o primeiro dia.</p>
+        <p style="margin:6px 0 0;color:#374151">Lista de espera com prioridade no lançamento e condições especiais.</p>
       </div>
       <div class="card">
         <h2 style="margin-top:0">Multi-dispositivo & Licenciamento</h2>
-        <p>Funciona no celular, tablet e desktop — no estúdio ou em externa.</p>
-        <p>Implantação simples e acessível para emissoras enxutas e projetos independentes.</p>
-        <p><strong>💸 Baixo custo</strong> sem abrir mão do essencial.</p>
+        <ul style="margin:0 0 10px 18px">
+          <li><strong>Multi-dispositivo</strong>: celular, tablet e desktop — no estúdio ou em externa.</li>
+          <li><strong>Implantação simples</strong>: pensado para emissoras enxutas e projetos independentes.</li>
+          <li><strong>Licenciamento acessível</strong>: pague só o essencial e cresça conforme a operação.</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA Band (texto ampliado + ironia sem citar concorrente) -->
+<!-- CTA -->
 <section class="band" id="planos">
   <div class="container">
     <h3>Baixo custo e alta produtividade para sua operação</h3>
@@ -298,7 +317,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   </div>
 </section>
 
-<!-- FAQ (colapsável) -->
+<!-- FAQ -->
 <section class="section" id="faq">
   <div class="container">
     <h2 style="text-align:center;margin-bottom:18px">Perguntas frequentes</h2>
@@ -356,7 +375,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   window.addEventListener('scroll', onScroll, {passive:true});
 })();
 
-/* Carrossel (4 imagens) */
+/* Carrossel (3 imagens) */
 (function(){
   const track = document.getElementById('track');
   if(!track) return;
@@ -366,7 +385,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   const prev = document.getElementById('prev');
   const next = document.getElementById('next');
 
-  // Dots
   slides.forEach((_,i)=>{
     const d = document.createElement('div');
     d.className = 'dot' + (i===0?' active':'');
