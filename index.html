@@ -19,8 +19,15 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.7}
 
-/* Header / Nav */
-.header{position:sticky;top:0;z-index:50;background:#112a73;color:#fff}
+/* Header / Nav — aparece só após rolar */
+.header{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  background:#112a73; color:#fff;
+  transform:translateY(-100%); opacity:0; pointer-events:none;
+  transition:transform .35s ease, opacity .35s ease;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.header.show{ transform:translateY(0); opacity:1; pointer-events:auto; }
 .nav{max-width:var(--w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-family:"Montserrat",sans-serif;font-weight:700;font-size:22px;letter-spacing:.3px}
 .nav a{color:#cfe0ff;text-decoration:none;margin:0 12px;font-size:14px}
@@ -31,10 +38,11 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .container{max-width:var(--w);margin:0 auto;padding:0 20px}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0}
 .span-2{grid-column:1 / -1}
-.hero h1{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(34px,5.5vw,56px);line-height:1.1;margin:0 0 10px;text-wrap:balance}
-.hero p{color:#e6edff;max-width:60ch;margin:0 auto 0}
+.brand-hero{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(32px,6vw,60px);margin:0 0 8px;text-align:center;letter-spacing:.2px}
+.hero h1{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(28px,5.2vw,44px);line-height:1.1;margin:0 0 10px;text-wrap:balance}
+.hero p{color:#e6edff;max-width:70ch;margin:0 auto 0}
 .hero-copy{text-align:center;grid-column:1/-1}
-.hero-copy small{display:inline-block;margin-bottom:10px;background:#eaf2ff;color:#18328a;padding:6px 10px;border-radius:999px;font-weight:700;letter-spacing:.3px}
+.hero-copy small{display:inline-block;margin:10px 0;background:#eaf2ff;color:#18328a;padding:6px 10px;border-radius:999px;font-weight:700;letter-spacing:.3px}
 
 /* Carousel base */
 .carousel{position:relative;overflow:hidden;border-radius:22px;background:#0b1e4d;border:1px solid rgba(255,255,255,.15);box-shadow:var(--shadow)}
@@ -56,6 +64,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .badge{display:inline-flex;gap:8px;align-items:center;background:#eef2ff;border:1px solid #dbeafe;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
 .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 18px 14px;box-shadow:var(--shadow)}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
 
 /* NOVA seção: cards 2 colunas (6 itens) */
 .cards-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -94,8 +103,8 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
+<!-- HEADER (aparece só após rolar) -->
+<header class="header" id="topbar">
   <nav class="nav">
     <div class="brand">NewsFlow</div>
     <div>
@@ -112,6 +121,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
+      <h2 class="brand-hero">NewsFlow</h2>
       <small>lançamento em breve</small>
       <h1>Seu telejornal no flow com baixo custo</h1>
       <p>O NewsFlow centraliza laudas, espelhos e TP; integra ao OBS/vMix e mantém redação e estúdio no mesmo ritmo — pensado para pequenas TVs e webTVs que precisam de versatilidade e baixo custo.</p>
@@ -141,25 +151,10 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
         <h2>Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</h2>
         <p class="lead">Fluxo do telejornal com laudas, espelhos e blocos; operação de TP integrada; e visão do ao vivo para redação e estúdio.</p>
       </div>
-      <div class="card">
-        <div class="grid-3">
-          <div>
-            <h3 style="margin:0 0 6px;font-family:Roboto">Fluxo de Telejornal</h3>
-            <p>Crie e organize laudas, espelhos e blocos com tempos, status e PDF.</p>
-            <p><strong>⚡ Ganhe velocidade</strong> centralizando tudo.</p>
-          </div>
-          <div>
-            <h3 style="margin:0 0 6px;font-family:Roboto">Operação de TP</h3>
-            <p>Teleprompter integrado, timers e controle por teclado.</p>
-            <p><strong>🎯 Mais segurança</strong> e menos improviso.</p>
-          </div>
-          <div>
-            <h3 style="margin:0 0 6px;font-family:Roboto">Ao vivo</h3>
-            <p>Contagem de VTs, sincronia entre equipes e visão do espelho.</p>
-            <p><strong>📡 Menos stress</strong> no ritmo do ao vivo.</p>
-          </div>
-        </div>
-      </div>
+      <!-- Substituí o card pela imagem do espelho -->
+      <figure class="media">
+        <img src="espelho.png" alt="Visual do espelho do telejornal no NewsFlow">
+      </figure>
     </div>
 
     <!-- 6 CARDS COM TONS E ÍCONES -->
@@ -342,6 +337,17 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 </footer>
 
 <script>
+/* Mostrar top bar só após rolar ~120px */
+(function(){
+  const hdr = document.getElementById('topbar');
+  const onScroll = () => {
+    if (window.scrollY > 120) hdr.classList.add('show');
+    else hdr.classList.remove('show');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+
 /* Carrossel (4 imagens) */
 (function(){
   const track = document.getElementById('track');
