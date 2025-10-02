@@ -14,17 +14,29 @@
   <meta property="og:url" content="https://www.newsflow.com.br/" />
   <meta property="og:site_name" content="NewsFlow" />
   <link rel="icon" href="/favicon.ico" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@400;500;700;900&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    :root{--blue:#2563eb;--blue-dark:#1e3a8a;--ink:#0f172a;--text:#1f2937;--muted:#475569;--soft:#f8fafc;--border:#e5e7eb;--radius:18px;--shadow:0 12px 30px rgba(2,6,23,.08);--w:1180px}
-    *,*:before,*:after{box-sizing:border-box}
+    :root{
+      --blue:#2563eb; --blue-dark:#1e3a8a;
+      --ink:#0f172a; --text:#1f2937; --muted:#475569;
+      --soft:#f8fafc; --border:#e5e7eb;
+      --radius:18px; --shadow:0 12px 30px rgba(2,6,23,.08);
+      --w:1180px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth;text-size-adjust:100%}
-    body{margin:0;background:#fff;color:var(--text);font-family:"Poppins","Segoe UI",Roboto,Arial,sans-serif;line-height:1.7}
-    h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0 0 10px}
+    body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans","Segoe UI",Arial,Helvetica,sans-serif;line-height:1.7}
+    h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0 0 10px;font-family:"Roboto","Segoe UI",Arial,Helvetica,sans-serif}
     p{margin:0 0 12px;max-width:68ch;text-wrap:pretty}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
 
-    /* TOPBAR */
+    /* TOPBAR (Montserrat 700) */
     .topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:center;height:86px;background:#1e3a8a;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06)}
     .topbar h1{margin:0;font-family:"Montserrat","Segoe UI",Roboto,Arial,sans-serif;font-weight:700;letter-spacing:.3px;font-size:clamp(40px,7.8vw,84px)}
 
@@ -32,47 +44,46 @@
     main{padding:36px 24px}
     .container{max-width:var(--w);margin:0 auto}
     .twocol{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:center}
-    .twocol .media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+    .span-2{grid-column:1 / -1}
+    .media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
     .section{margin:56px 0}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#eef2ff;border:1px solid #dbeafe;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
 
-    /* SUBTÍTULOS (BANNERS) */
-    .banner{display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:#fff;padding:18px 22px;border-radius:18px;box-shadow:var(--shadow);font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:34px 0}
+    /* Hero centralizado */
+    .hero-block{text-align:center;max-width:900px;margin:0 auto}
+    .hero-block h2{font-size:clamp(34px,6vw,56px)}
+    .hero-block p{font-size:18px}
+    .actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
-    /* FEATURES */
-    .features{display:grid;grid-template-columns:1fr;gap:14px}
+    /* Banners */
+    .banner{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:center;background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:#fff;padding:18px 22px;border-radius:18px;box-shadow:var(--shadow);font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.2px;margin:34px 0}
+    .banner img{width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
+
+    /* Features */
+    .cards-grid{grid-column:1 / -1;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
     .feature{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px 16px 12px;box-shadow:var(--shadow)}
     .feature h3{margin-bottom:6px}
     .adv{margin-top:10px;background:#f8fafc;border:1px dashed var(--border);border-radius:12px;padding:10px 12px;font-weight:700;color:#0f172a}
 
-    /* INTEGRAÇÕES / LISTAS */
+    /* Listas */
     ul.list{margin:10px 0 0;padding-left:18px;color:#374151}
 
-    /* CTA */
+    /* Botões */
     .btn{display:inline-flex;align-items:center;gap:8px;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer;transition:transform .15s ease,filter .2s ease,box-shadow .2s}
     .btn:focus{outline:2px solid #93c5fd;outline-offset:2px}
     .btn-primary{background:#2563eb;color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.20)}
     .btn-primary:hover{transform:translateY(-1px);filter:saturate(110%)}
 
-    /* FOOTER */
+    /* Rodapé */
     footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--border);color:#64748b}
 
-    /* RESPONSIVO */
-    @media (max-width: 980px){
+    /* Responsivo */
+    @media (max-width:980px){
       .twocol{grid-template-columns:1fr;gap:16px}
+      .banner{grid-template-columns:1fr}
+      .cards-grid{grid-template-columns:1fr}
       .topbar h1{font-size:clamp(32px,9vw,64px)}
     }
-  .span-2{grid-column:1 / -1}
-.cards-grid{grid-column:1 / -1;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.banner-media{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:center}
-.banner-media img{width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
-@media (max-width:980px){.cards-grid{grid-template-columns:1fr}.banner-media{grid-template-columns:1fr}}
-.sidenav a{font-size:.95rem}
-.hero-block{text-align:center;max-width:900px;margin:0 auto}
-.hero-block h2{font-size:clamp(34px,6vw,56px)}
-.hero-block p{font-size:18px}
-.actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-</style>
+  </style>
 </head>
 <body>
   <div class="topbar"><h1>NewsFlow</h1></div>
@@ -80,12 +91,82 @@
   <main>
     <div class="container">
 
-      <!-- HERO: TÍTULO + PARÁGRAFO + IMAGEM (home) -->
+      <!-- HERO centralizado (2 colunas) + imagem após o bloco -->
       <section class="section">
         <div class="twocol">
-          <figure class="media"><img src="menu%20reportagens.png" alt="Menu de módulos (ilustração)"/></figure>
+          <div class="span-2 hero-block">
+            <span class="eyebrow" style="display:inline-flex;align-items:center;gap:8px;background:#eef2ff;border:1px solid #dbeafe;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase">Lançamento em breve</span>
+            <h2 style="margin:10px 0 8px">Redação e Telejornal em Tempo Real</h2>
+            <p>O NewsFlow organiza o fluxo do telejornal, laudas, espelhos e TP, com controle de programas ao vivo e integração com OBS e vMix — ideal para pequenas TVs e webTVs que precisam de <strong>versatilidade e baixo custo</strong>.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
+              <a class="btn" style="background:#fff;border:1px solid var(--border)" href="#aviso">Ser avisado no lançamento</a>
+            </div>
+          </div>
+          <figure class="media span-2"><img src="home.png" alt="Tela inicial do NewsFlow (ilustração)"></figure>
+        </div>
+      </section>
+
+      <!-- Banner com o título '⚡ ...' + espelho ao lado -->
+      <div class="banner">
+        <div>⚡ Centralize sua produção e ganhe <strong>agilidade</strong> na redação</div>
+        <img src="espelho.png" alt="Espelho do jornal (ilustração)">
+      </div>
+
+      <!-- Feito para redações ágeis + ESPÊLHO (2 colunas) + cards em 2 colunas -->
+      <section class="section">
+        <div class="twocol">
+          <div class="span-2">
+            <h2>Feito para redações ágeis</h2>
+            <p>Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</p>
+          </div>
+
+          <!-- Espelho abaixo do título, ocupando 2 colunas -->
+          <figure class="media span-2"><img src="espelho.png" alt="Visualização do espelho do jornal (ilustração)"></figure>
+
+          <!-- Cards distribuídos em 2 colunas -->
+          <div class="cards-grid">
+            <article class="feature">
+              <h3>Fluxo de Telejornal</h3>
+              <p>Crie e organize <strong>laudas</strong>, <strong>espelhos</strong> e blocos com tempos, status e PDF.</p>
+              <div class="adv">⚡ Organize tudo em um só lugar e <strong>ganhe velocidade</strong>.</div>
+            </article>
+            <article class="feature">
+              <h3>Operação de TP</h3>
+              <p>Teleprompter integrado, controle por teclado, timers e conforto visual.</p>
+              <div class="adv">🎯 Mais segurança no ar e <strong>menos improviso</strong>.</div>
+            </article>
+            <article class="feature">
+              <h3>Ao vivo</h3>
+              <p>Contagem de VTs, sincronia entre redação e estúdio e visão do espelho.</p>
+              <div class="adv">📡 Ritmo do <strong>ao vivo</strong> com menos stress.</div>
+            </article>
+            <article class="feature">
+              <h3>Integrações</h3>
+              <p>Exporta GC/espelho (JSON, CSV, PDF) para <strong>OBS</strong> e <strong>vMix</strong>.</p>
+              <div class="adv">🔌 Reduza erros de GC com <strong>exportação direta</strong>.</div>
+            </article>
+            <article class="feature">
+              <h3>Multi-dispositivo</h3>
+              <p>Funciona bem em celular, tablet e desktop — no estúdio ou em externa.</p>
+              <div class="adv">📱 Trabalhe no que você já tem: <strong>sem compras caras</strong>.</div>
+            </article>
+            <article class="feature">
+              <h3>Licenciamento Acessível</h3>
+              <p>Implantação simples para emissoras enxutas e projetos independentes.</p>
+              <div class="adv">💸 Pague menos e <strong>mantenha o essencial</strong>.</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Subtítulo '🔌 Integre...' com MENU REP à esquerda e benefícios à direita -->
+      <section class="section">
+        <h2 style="margin-bottom:12px">🔌 Integre tarjas e telas com OBS e vMix sem retrabalho</h2>
+        <div class="twocol">
+          <figure class="media"><img src="menu%20reportagens.png" alt="Menu de módulos (ilustração)"></figure>
           <div>
-            <h2>Integrações que facilitam o ar</h2>
+            <h3>Integrações que facilitam o ar</h3>
             <ul class="list">
               <li><strong>OBS Studio</strong>: uso de fontes dinâmicas com dados do espelho/GC.</li>
               <li><strong>vMix</strong>: export de GC e cenas a partir do espelho.</li>
@@ -99,14 +180,17 @@
         </div>
       </section>
 
-      <div class="banner">🛟 Tire dúvidas e avance com segurança</div>
+      <!-- (Opcional) Banner de custo/benefício -->
+      <div class="banner" style="grid-template-columns:1fr">
+        💸 Baixo custo e alta produtividade
+      </div>
 
-      <!-- CONTATO / AVISO -->
+      <!-- Contato / Aviso -->
       <section id="contato" class="section">
         <div class="twocol">
           <div>
             <h2>Fale com a gente</h2>
-            <p>Quer uma demonstração, proposta ou tirar dúvidas? Envie uma mensagem:</p>
+            <p>Quer uma demonstração ou tirar dúvidas? Envie uma mensagem:</p>
             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
               <a class="btn btn-primary" href="mailto:contato@newsflow.com.br?subject=Quero%20conhecer%20o%20NewsFlow">contato@newsflow.com.br</a>
               <a class="btn" style="background:#fff;border:1px solid var(--border)" href="https://wa.me/5599999999999?text=Quero%20conhecer%20o%20NewsFlow" target="_blank" rel="noopener">Falar no WhatsApp</a>
@@ -115,8 +199,9 @@
           <div>
             <h2 id="aviso">Seja avisado no lançamento</h2>
             <form id="notifyForm" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-              <label for="email" class="sr-only" style="position:absolute;left:-9999px">Seu e‑mail</label>
-              <input id="email" name="email" type="email" required placeholder="seu@email.com" aria-label="Seu e‑mail" style="flex:1;min-width:220px;padding:12px 14px;border-radius:12px;border:1px solid var(--border)" />
+              <label for="email" class="sr-only" style="position:absolute;left:-9999px">Seu e-mail</label>
+              <input id="email" name="email" type="email" required placeholder="seu@email.com" aria-label="Seu e-mail"
+                     style="flex:1;min-width:220px;padding:12px 14px;border-radius:12px;border:1px solid var(--border)" />
               <button class="btn btn-primary" type="submit">Quero ser avisado</button>
               <p id="notifyMsg" style="width:100%;margin:0;color:#6b7280"></p>
             </form>
@@ -127,7 +212,7 @@
       <footer>
         <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
           <span>© <span id="year"></span> NewsFlow — Todos os direitos reservados.</span>
-          <span><a href="#top">Topo</a></span>
+          <span><a href="#">Topo</a></span>
         </div>
       </footer>
 
@@ -137,18 +222,18 @@
   <script>
     document.addEventListener('DOMContentLoaded',()=>{
       const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
-      // Form: abre email do usuário
+      // Form: abre o app de e-mail do usuário
       const form=document.getElementById('notifyForm');
       if(form){
         form.addEventListener('submit',(e)=>{
           e.preventDefault();
           const email=document.getElementById('email').value.trim();
           const msg=document.getElementById('notifyMsg');
-          if(!email){ msg.textContent='Digite um e‑mail válido.'; return; }
+          if(!email){ msg.textContent='Digite um e-mail válido.'; return; }
           const subject=encodeURIComponent('Aviso de lançamento — NewsFlow');
-          const body=encodeURIComponent(`Olá, quero ser avisado no lançamento. Meu e‑mail: ${email}`);
+          const body=encodeURIComponent(`Olá, quero ser avisado no lançamento. Meu e-mail: ${email}`);
           window.location.href=`mailto:contato@newsflow.com.br?subject=${subject}&body=${body}`;
-          msg.textContent='Abrimos seu app de e‑mail para enviar o pedido. Se preferir, fale com a gente no WhatsApp.';
+          msg.textContent='Abrimos seu app de e-mail para enviar o pedido. Se preferir, fale com a gente no WhatsApp.';
         });
       }
     });
