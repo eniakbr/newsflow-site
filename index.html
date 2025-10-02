@@ -67,6 +67,11 @@
 .banner-media{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:center}
 .banner-media img{width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
 @media (max-width:980px){.cards-grid{grid-template-columns:1fr}.banner-media{grid-template-columns:1fr}}
+.sidenav a{font-size:.95rem}
+.hero-block{text-align:center;max-width:900px;margin:0 auto}
+.hero-block h2{font-size:clamp(34px,6vw,56px)}
+.hero-block p{font-size:18px}
+.actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 </style>
 </head>
 <body>
@@ -78,83 +83,23 @@
       <!-- HERO: TÍTULO + PARÁGRAFO + IMAGEM (home) -->
       <section class="section">
         <div class="twocol">
-          <figure class="media span-2"><img src="home.png" alt="Tela inicial do NewsFlow (ilustração)"/></figure>
-          <div class="span-2">
-            <span class="eyebrow">Lançamento em breve</span>
-            <h2 style="margin:10px 0 6px">Redação e Telejornal em Tempo Real</h2>
-            <p>O NewsFlow organiza o fluxo do telejornal, laudas, espelhos e TP, com controle de programas ao vivo e integração com OBS e vMix — ideal para pequenas TVs e webTVs que precisam de <strong>versatilidade e baixo custo</strong>.</p>
-            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
-              <a class="btn" style="background:#fff;border:1px solid var(--border)" href="#aviso">Ser avisado no lançamento</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-      <div class="banner banner-media"><div>⚡ Centralize sua produção e ganhe <strong>agilidade</strong> na redação</div><img src="espelho.png" alt="Espelho do jornal (ilustração)"/></div>
-
-      <!-- FEITO PARA REDAÇÕES ÁGEIS + IMAGEM (menu reportagens) -->
-      <section class="section">
-        <div class="twocol">
-          <figure class="media span-2"><img src="menu%20reportagens.png" alt="Menu de módulos (ilustração)"/></figure>
-          <div class="span-2">
-            <h2>Feito para redações ágeis</h2>
-            <p>Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</p>
-          </div>
-          <div class="cards-grid">
-            <article class="feature">
-              <h3>Fluxo de Telejornal</h3>
-              <p>Crie e organize <strong>laudas</strong>, <strong>espelhos</strong> e blocos com tempos, status e PDF.</p>
-              <div class="adv">⚡ Organize tudo em um só lugar e <strong>ganhe velocidade</strong>.</div>
-            </article>
-            <article class="feature">
-              <h3>Operação de TP</h3>
-              <p>Teleprompter integrado, controle por teclado, timers e conforto visual.</p>
-              <div class="adv">🎯 Mais segurança no ar e <strong>menos improviso</strong>.</div>
-            </article>
-            <article class="feature">
-              <h3>Ao vivo</h3>
-              <p>Contagem de VTs, sincronia entre redação e estúdio e visão do espelho.</p>
-              <div class="adv">📡 Ritmo do <strong>ao vivo</strong> com menos stress.</div>
-            </article>
-            <article class="feature">
-              <h3>Integrações</h3>
-              <p>Exporta GC/espelho (JSON, CSV, PDF) para <strong>OBS</strong> e <strong>vMix</strong>.</p>
-              <div class="adv">🔌 Reduza erros de GC com <strong>exportação direta</strong>.</div>
-            </article>
-            <article class="feature">
-              <h3>Multi‑dispositivo</h3>
-              <p>Funciona bem em celular, tablet e desktop — no estúdio ou em externa.</p>
-              <div class="adv">📱 Trabalhe no que você já tem: <strong>sem compras caras</strong>.</div>
-            </article>
-            <article class="feature">
-              <h3>Licenciamento Acessível</h3>
-              <p>Implantação simples para emissoras enxutas e projetos independentes.</p>
-              <div class="adv">💸 Pague menos e <strong>mantenha o essencial</strong>.</div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <div class="banner">🔌 Integre tarjas e telas com OBS e vMix sem retrabalho</div>
-
-      <!-- INTEGRAÇÕES + IMAGEM (espelho) -->
-      <section class="section">
-        <div class="twocol">
+          <figure class="media"><img src="menu%20reportagens.png" alt="Menu de módulos (ilustração)"/></figure>
           <div>
             <h2>Integrações que facilitam o ar</h2>
             <ul class="list">
-              
+              <li><strong>OBS Studio</strong>: uso de fontes dinâmicas com dados do espelho/GC.</li>
+              <li><strong>vMix</strong>: export de GC e cenas a partir do espelho.</li>
+              <li><strong>JSON/CSV/PDF</strong>: interoperabilidade simples com outros fluxos.</li>
+            </ul>
+            <ul class="list" style="margin-top:10px">
               <li>🤝 <strong>Equipe produtiva desde o primeiro dia.</strong></li>
               <li>🎟️ <strong>Garanta prioridade no lançamento e condições especiais.</strong></li>
             </ul>
           </div>
-          <figure class="media"><img src="pautas%20cadastradas.png" alt="Tabela de pautas cadastradas (ilustração)"/></figure>
         </div>
       </section>
 
-      <div class="banner">🛟 Tire dúvidas e avance com <strong>segurança</strong></div>
+      <div class="banner">🛟 Tire dúvidas e avance com segurança</div>
 
       <!-- CONTATO / AVISO -->
       <section id="contato" class="section">
