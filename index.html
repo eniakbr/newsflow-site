@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NewsFlow — Redação e Telejornal em Tempo Real</title>
-<meta name="description" content="NewsFlow: fluxo de telejornal, laudas, espelhos e TP; ao vivo integrado; OBS/vMix; multi-dispositivo e baixo custo para pequenas TVs e webTVs." />
+<meta name="description" content="NewsFlow: fluxo de telejornal, laudas, espelhos e TP, ao vivo, integrações OBS/vMix. Versátil e de baixo custo para pequenas TVs e webTVs." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;700;900&family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -18,9 +18,6 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.7}
-h1,h2,h3{font-family:"Roboto",sans-serif;line-height:1.2;margin:0 0 10px}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;height:auto;display:block}
 
 /* Header / Nav */
 .header{position:sticky;top:0;z-index:50;background:#112a73;color:#fff}
@@ -32,56 +29,51 @@ img{max-width:100%;height:auto;display:block}
 /* Hero */
 .hero{background:linear-gradient(180deg,#18328a 0%, #1e3a8a 40%, #224196 100%);color:#fff}
 .container{max-width:var(--w);margin:0 auto;padding:0 20px}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:60px 0 28px}
-.hero-copy{grid-column:1/-1;text-align:center}
-.hero h1{font-weight:900;font-size:clamp(34px,5.5vw,56px);margin-bottom:6px;text-wrap:balance}
-.hero p{color:#e6edff;max-width:70ch;margin:0 auto 18px}
-.badge{display:inline-flex;gap:8px;align-items:center;background:#eaf2ff;color:#18328a;border:1px solid #dbeafe;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
-.pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0}
+.hero h1{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(34px,5.5vw,56px);line-height:1.1;margin:0 0 10px;text-wrap:balance}
+.hero p{color:#e6edff;max-width:60ch;margin:0 auto 18px}
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:13px;padding:12px 18px;font-weight:700;cursor:pointer}
 .btn-primary{background:#60a5fa;color:#0b1e4d;box-shadow:0 10px 24px rgba(99,102,241,.25)}
 .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.hero-copy{text-align:center;grid-column:1/-1}
+.hero-copy small{display:inline-block;margin-bottom:10px;background:#eaf2ff;color:#18328a;padding:6px 10px;border-radius:999px;font-weight:700;letter-spacing:.3px}
 
-/* 2-col layout */
-.section{padding:64px 0}
-.twocol{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
-.span-2{grid-column:1/-1}
-.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
-.lead{color:#374151}
-
-/* Carrossel genérico */
+/* Carousel base */
 .carousel{position:relative;overflow:hidden;border-radius:22px;background:#0b1e4d;border:1px solid rgba(255,255,255,.15);box-shadow:var(--shadow)}
 .track{display:flex;transition:transform .6s ease}
-.slide{min-width:100%;display:flex;align-items:center;justify-content:center}
-.slide img{display:block;width:100%;height:auto}
+.slide{min-width:100%}
 .controls{position:absolute;inset:auto 12px 12px 12px;display:flex;justify-content:space-between;pointer-events:none}
 .controls button{pointer-events:auto;border:0;border-radius:999px;width:42px;height:42px;background:#ffffff22;color:#fff;font-size:18px;backdrop-filter:blur(6px);cursor:pointer}
 .dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
 .dot{width:8px;height:8px;border-radius:50%;background:#8aa3ff88}
 .dot.active{background:#fff}
+/* imagens dentro do carrossel */
+.carousel .slide img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
 
-/* Carrossel de texto */
-.text-carousel{background:#f1f5ff;border:1px solid #e5e7eb;border-radius:18px;padding:18px 10px}
-.text-carousel .slide{min-width:100%;padding:28px}
-.text-big{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(22px,3.6vw,34px);text-align:center;color:#1e3a8a}
+/* Sections */
+.section{padding:72px 0}
+.twocol{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+.section h2{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(28px,4vw,42px);margin:0 0 8px}
+.section p.lead{color:#374151;max-width:60ch}
+.badge{display:inline-flex;gap:8px;align-items:center;background:#eef2ff;border:1px solid #dbeafe;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
+.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 18px 14px;box-shadow:var(--shadow)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 
-/* Illustra bands (SVG + texto) */
-.illus{border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
-
-/* Grids/Lists */
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-ul.clean{padding-left:18px;margin:8px 0 0}
-ul.clean li{margin:6px 0}
+/* CTA bands */
+.band{background:#f1f5ff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:64px 0;text-align:center}
+.band h3{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(24px,3.2vw,36px);margin:0 0 8px}
 
 /* Footer */
 .footer{background:#eef2ff;border-top:1px solid #e5e7eb}
 .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:18px;padding:32px 0;color:#334155}
-.footer h4{margin:0 0 8px}
+.footer h4{font-family:"Roboto";margin:0 0 8px}
+.footer a{color:#334155;text-decoration:none;font-size:14px}
 .copy{border-top:1px solid #e5e7eb;padding:16px 0;color:#64748b;font-size:13px;text-align:center}
 
 @media (max-width:980px){
-  .hero-grid,.twocol{grid-template-columns:1fr}
-  .grid-3{grid-template-columns:1fr}
+  .hero-grid, .twocol{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr;gap:14px}
 }
 </style>
 </head>
@@ -94,7 +86,7 @@ ul.clean li{margin:6px 0}
     <div>
       <a href="#recursos">Recursos</a>
       <a href="#integracoes">Integrações</a>
-      <a href="#multi">Multi-dispositivo</a>
+      <a href="#planos">Planos</a>
       <a href="#faq">FAQ</a>
       <a class="cta" href="#contato">Solicitar demo</a>
     </div>
@@ -105,30 +97,30 @@ ul.clean li{margin:6px 0}
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="badge">lançamento em breve</span>
-      <h1>Redação e Telejornal em Tempo Real</h1>
-      <p>O NewsFlow organiza laudas, espelhos e TP; integra ao OBS/vMix e mantém redação e estúdio no mesmo ritmo — ideal para pequenas TVs e webTVs que precisam de <strong>versatilidade e baixo custo</strong>.</p>
+      <small>lançamento em breve</small>
+      <h1>Seu telejornal, organizado e no ar</h1>
+      <p>O NewsFlow centraliza laudas, espelhos e TP; integra ao OBS/vMix e mantém redação e estúdio no mesmo ritmo — pensado para pequenas TVs e webTVs que precisam de <strong>versatilidade e baixo custo</strong>.</p>
       <div class="pills">
         <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
         <a class="btn btn-ghost" href="#aviso">Ser avisado no lançamento</a>
       </div>
     </div>
 
-    <!-- CARROSSEL 1 — IMAGENS (ocupa 2 colunas) -->
-    <figure class="span-2 carousel" id="carImgs" aria-roledescription="carousel">
-      <div class="track">
+    <!-- CARROSSEL DAS 4 IMAGENS — ocupa DUAS COLUNAS -->
+    <figure class="span-2 carousel" aria-roledescription="carousel">
+      <div class="track" id="track" aria-live="polite">
         <div class="slide"><img src="home.png" alt="Tela inicial do NewsFlow"></div>
         <div class="slide"><img src="espelho.png" alt="Espelho do telejornal"></div>
-        <div class="slide"><img src="menu%20reportagens.png" alt="Menu de módulos"></div>
-        <div class="slide"><img src="pautas%20cadastradas.png" alt="Pautas cadastradas"></div>
+        <div class="slide"><img src="menu%20reportagens.png" alt="Menu de módulos do NewsFlow"></div>
+        <div class="slide"><img src="pautas%20cadastradas.png" alt="Tela de pautas cadastradas"></div>
       </div>
-      <div class="controls"><button class="prev" aria-label="Anterior">‹</button><button class="next" aria-label="Próximo">›</button></div>
+      <div class="controls"><button id="prev" aria-label="Anterior">‹</button><button id="next" aria-label="Próximo">›</button></div>
     </figure>
-    <div class="dots" data-for="carImgs"></div>
+    <div class="dots" id="dots" aria-hidden="true"></div>
   </div>
 </section>
 
-<!-- Feito para redações ágeis -->
+<!-- Seção: Feito para redações ágeis -->
 <section class="section" id="recursos">
   <div class="container">
     <div class="twocol">
@@ -139,168 +131,101 @@ ul.clean li{margin:6px 0}
       </div>
       <div class="card">
         <div class="grid-3">
-          <div><h3>Fluxo de Telejornal</h3><p>Organize laudas, blocos e tempos com status e PDF.</p></div>
-          <div><h3>Operação de TP</h3><p>Teleprompter integrado, timers e controle por teclado.</p></div>
-          <div><h3>Ao vivo</h3><p>Contagem de VTs e sincronia com visão do espelho.</p></div>
+          <div>
+            <h3 style="margin:0 0 6px;font-family:Roboto">Fluxo de Telejornal</h3>
+            <p>Crie e organize laudas, espelhos e blocos com tempos, status e PDF.</p>
+            <p><strong>⚡ Ganhe velocidade</strong> centralizando tudo.</p>
+          </div>
+          <div>
+            <h3 style="margin:0 0 6px;font-family:Roboto">Operação de TP</h3>
+            <p>Teleprompter integrado, timers e controle por teclado.</p>
+            <p><strong>🎯 Mais segurança</strong> e menos improviso.</p>
+          </div>
+          <div>
+            <h3 style="margin:0 0 6px;font-family:Roboto">Ao vivo</h3>
+            <p>Contagem de VTs, sincronia entre equipes e visão do espelho.</p>
+            <p><strong>📡 Menos stress</strong> no ritmo do ao vivo.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Illustração 1 (Repórter) intercalada -->
-<section class="section">
-  <div class="container twocol">
-    <div class="illus">
-      <!-- SVG Repórter -->
-      <svg viewBox="0 0 800 400" aria-label="Repórter de TV" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ab4ff"/><stop offset="1" stop-color="#dbeafe"/></linearGradient></defs>
-        <rect width="800" height="400" rx="22" fill="url(#g1)"/>
-        <g opacity=".2"><circle cx="120" cy="120" r="60" fill="#0b1e4d"/><rect x="560" y="60" width="160" height="40" rx="8" fill="#0b1e4d"/></g>
-        <g transform="translate(120,150)"><circle cx="60" cy="38" r="22" fill="#fed7aa"/><rect x="42" y="56" width="36" height="78" rx="8" fill="#1e3a8a"/><path d="M58 134 l-30 46 a10 10 0 0 0 8 16 h28 z" fill="#2563eb"/><rect x="90" y="74" width="14" height="34" rx="6" fill="#111827"/><rect x="86" y="106" width="22" height="10" rx="4" fill="#2563eb"/></g>
-      </svg>
-    </div>
-    <div class="card">
-      <h2 style="margin-top:0">Reportagem com menos fricção</h2>
-      <p>Briefing claro, tempo no ar controlado e export de GC. O repórter acompanha atualizações da redação em tempo real.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Integrações (mesmo formato) -->
+<!-- Integrações -->
 <section class="section" id="integracoes">
   <div class="container">
     <div class="twocol">
-      <div>
-        <span class="badge">integrações que facilitam o ar</span>
-        <h2>OBS Studio, vMix e exportações simples (JSON/CSV/PDF).</h2>
-        <p class="lead">Reduza erros de GC e acelere a passagem do espelho para a playout.</p>
-      </div>
       <div class="card">
-        <ul class="clean">
-          <li><strong>OBS Studio</strong>: fontes dinâmicas com dados do espelho/GC.</li>
-          <li><strong>vMix</strong>: export direto de GC e cenas.</li>
-          <li><strong>JSON/CSV/PDF</strong>: interoperabilidade sem dor de cabeça.</li>
-          <li><strong>Automação leve</strong>: minimize retrabalho entre redação e estúdio.</li>
+        <h2 style="margin-top:0">Integrações que facilitam o ar</h2>
+        <ul>
+          <li><strong>OBS Studio</strong>: fontes dinâmicas e GC com dados do espelho.</li>
+          <li><strong>vMix</strong>: export de GC e cenas a partir do espelho.</li>
+          <li><strong>JSON/CSV/PDF</strong>: interoperabilidade simples com outros fluxos.</li>
+        </ul>
+        <ul>
+          <li>🤝 Equipe produtiva desde o primeiro dia.</li>
+          <li>🎟️ Garanta prioridade no lançamento e condições especiais.</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Illustração 2 (Cinegrafista) -->
-<section class="section">
-  <div class="container twocol">
-    <div class="card">
-      <h2 style="margin-top:0">Captação fluida no campo</h2>
-      <p>O cronograma da pauta e as notas ficam sincronizadas com a ilha e com o estúdio. Tudo visível no celular.</p>
-    </div>
-    <div class="illus">
-      <!-- SVG Cinegrafista -->
-      <svg viewBox="0 0 800 400" aria-label="Cinegrafista" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b3e0ff"/><stop offset="1" stop-color="#e0f2fe"/></linearGradient></defs>
-        <rect width="800" height="400" rx="22" fill="url(#g2)"/>
-        <g opacity=".15"><circle cx="680" cy="120" r="70" fill="#0b1e4d"/><circle cx="120" cy="280" r="90" fill="#0b1e4d"/></g>
-        <g transform="translate(320,90)"><rect x="34" y="80" width="96" height="44" rx="8" fill="#1f2937"/><rect x="110" y="90" width="14" height="14" rx="4" fill="#10b981"/></g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- Multi-dispositivo & Licenciamento (mesmo formato) -->
-<section class="section" id="multi">
-  <div class="container">
-    <div class="twocol">
-      <div>
-        <span class="badge">multi-dispositivo & licenciamento</span>
-        <h2>Funciona no celular, tablet e desktop. Implantação simples e acessível.</h2>
-        <p class="lead">Perfeito para emissoras enxutas e projetos independentes — pague pelo essencial.</p>
-      </div>
       <div class="card">
-        <ul class="clean">
-          <li><strong>Web app responsivo</strong> — estúdio, externa ou home office.</li>
-          <li><strong>Baixo custo</strong> e <strong>setup rápido</strong> para entrar no ar.</li>
-          <li><strong>Onboarding enxuto</strong> — equipe produtiva desde o primeiro dia.</li>
-          <li><strong>Escalonável</strong> — cresça com módulos conforme a necessidade.</li>
-        </ul>
+        <h2 style="margin-top:0">Multi-dispositivo & Licenciamento</h2>
+        <p>Funciona no celular, tablet e desktop — no estúdio ou em externa.</p>
+        <p>Implantação simples e acessível para emissoras enxutas e projetos independentes.</p>
+        <p><strong>💸 Baixo custo</strong> sem abrir mão do essencial.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Illustração 3 (Estúdio) -->
-<section class="section">
-  <div class="container twocol">
-    <div class="illus">
-      <!-- SVG Estúdio -->
-      <svg viewBox="0 0 800 400" aria-label="Estúdio de TV" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c7d2fe"/><stop offset="1" stop-color="#e5e7eb"/></linearGradient></defs>
-        <rect width="800" height="400" rx="22" fill="url(#g3)"/>
-        <rect x="120" y="80" width="560" height="140" rx="18" fill="#1e3a8a"/>
-        <rect x="140" y="100" width="200" height="100" rx="12" fill="#2563eb"/>
-        <rect x="360" y="100" width="300" height="100" rx="12" fill="#0ea5e9"/>
-      </svg>
-    </div>
-    <div class="card">
-      <h2 style="margin-top:0">Controle de estúdio descomplicado</h2>
-      <p>Espelho claro, contagens, timers e GC exportável — mais segurança no ar e menos improviso.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CARROSSEL 2 — TEXTO EM DESTAQUE -->
-<section class="section">
+<!-- CTA Band -->
+<section class="band" id="planos">
   <div class="container">
-    <div class="text-carousel carousel" id="carText" aria-roledescription="carousel">
-      <div class="track">
-        <div class="slide"><div class="text-big">Fluxo de Telejornal</div></div>
-        <div class="slide"><div class="text-big">Operação de TP</div></div>
-        <div class="slide"><div class="text-big">Ao vivo</div></div>
-        <div class="slide"><div class="text-big">⚡ Ganhe velocidade</div></div>
-        <div class="slide"><div class="text-big">🎯 Mais segurança</div></div>
-        <div class="slide"><div class="text-big">📡 Menos stress</div></div>
-      </div>
-      <div class="controls"><button class="prev" aria-label="Anterior">‹</button><button class="next" aria-label="Próximo">›</button></div>
-    </div>
-    <div class="dots" data-for="carText"></div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section" id="faq">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:18px">Perguntas frequentes</h2>
-    <div class="card">
-      <details open><summary><strong>1) O que é o NewsFlow?</strong></summary><p>É um sistema de redação e telejornal que organiza laudas, espelhos e TP, sincroniza redação/estúdio e integra com OBS e vMix.</p></details>
-      <details><summary><strong>2) Para quem ele é indicado?</strong></summary><p>Para pequenas TVs, webTVs, projetos independentes e equipes enxutas que precisam de organização e baixo custo.</p></details>
-      <details><summary><strong>3) Precisa instalar algo?</strong></summary><p>Não. É web: funciona no navegador (desktop, tablet e celular).</p></details>
-      <details><summary><strong>4) Como funciona a integração com OBS/vMix?</strong></summary><p>Você exporta GC/espelho em JSON/CSV/PDF. O OBS/vMix consome as informações e atualiza as tarjas/telas sem retrabalho.</p></details>
-      <details><summary><strong>5) O NewsFlow tem teleprompter?</strong></summary><p>Sim. TP integrado com controle por teclado e timers — pensado para conforto visual e segurança no ar.</p></details>
-      <details><summary><strong>6) Dá para operar o ao vivo?</strong></summary><p>Sim. Há contagem de VTs, cronômetros e visão do espelho, mantendo estúdio e redação no mesmo ritmo.</p></details>
-      <details><summary><strong>7) Como é a implantação?</strong></summary><p>Rápida. Onboarding simples e ambiente pronto para uso; sua equipe produz desde o primeiro dia.</p></details>
-      <details><summary><strong>8) Qual o modelo de licenciamento?</strong></summary><p>Acessível e escalonável: você paga pelo essencial e pode adicionar módulos conforme cresce.</p></details>
-      <details><summary><strong>9) É possível exportar relatórios e PDFs?</strong></summary><p>Sim. Espelhos e laudas podem ser impressos/exportados em PDF; dados também em CSV/JSON.</p></details>
-      <details><summary><strong>10) Como falo com o time?</strong></summary><p>Envie um e-mail para <a href="mailto:contato@newsflow.com.br">contato@newsflow.com.br</a> ou fale conosco pelo WhatsApp (link na seção de contato).</p></details>
+    <h3>Baixo custo e alta produtividade para sua operação</h3>
+    <p style="color:#475569">Menos retrabalho, mais tempo no ar. Simplifique seu pipeline hoje.</p>
+    <div style="margin-top:14px">
+      <a class="btn btn-primary" href="#contato">Quero conhecer</a>
     </div>
   </div>
 </section>
 
 <!-- Contato -->
 <section class="section" id="contato">
-  <div class="container twocol">
-    <div class="card">
-      <h2 style="margin-top:0">Fale com a gente</h2>
-      <p>Solicite uma demonstração e veja o NewsFlow em ação.</p>
-      <p><a class="btn btn-primary" href="mailto:contato@newsflow.com.br?subject=Quero%20conhecer%20o%20NewsFlow">contato@newsflow.com.br</a></p>
+  <div class="container">
+    <div class="twocol">
+      <div class="card">
+        <h2 style="margin-top:0">Fale com a gente</h2>
+        <p>Tire dúvidas, peça uma demonstração ou solicite condições de lançamento.</p>
+        <p><a class="btn btn-primary" href="mailto:contato@newsflow.com.br?subject=Quero%20conhecer%20o%20NewsFlow">contato@newsflow.com.br</a></p>
+      </div>
+      <div class="card" id="aviso">
+        <h2 style="margin-top:0">Seja avisado no lançamento</h2>
+        <form id="notify" style="display:flex;gap:10px;flex-wrap:wrap">
+          <input type="email" id="email" required placeholder="seu@email.com"
+                 style="flex:1;min-width:220px;padding:12px 14px;border-radius:12px;border:1px solid var(--border)">
+          <button class="btn btn-primary" type="submit">Quero ser avisado</button>
+          <span id="msg" style="color:#64748b"></span>
+        </form>
+      </div>
     </div>
-    <div class="card" id="aviso">
-      <h2 style="margin-top:0">Seja avisado no lançamento</h2>
-      <form id="notify" style="display:flex;gap:10px;flex-wrap:wrap">
-        <input type="email" id="email" required placeholder="seu@email.com"
-               style="flex:1;min-width:220px;padding:12px 14px;border-radius:12px;border:1px solid var(--border)">
-        <button class="btn btn-primary" type="submit">Quero ser avisado</button>
-        <span id="msg" style="color:#64748b"></span>
-      </form>
+  </div>
+</section>
+
+<!-- FAQ (colapsável) -->
+<section class="section" id="faq">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:18px">Perguntas frequentes</h2>
+    <div class="card">
+      <details><summary><strong>1) O que é o NewsFlow?</strong></summary><p>Um sistema de redação e telejornal: organiza laudas, espelhos e TP, sincroniza redação/estúdio e integra com OBS/vMix.</p></details>
+      <details><summary><strong>2) Para quem é indicado?</strong></summary><p>Pequenas TVs, webTVs e projetos independentes que precisam de agilidade e baixo custo.</p></details>
+      <details><summary><strong>3) Precisa instalar?</strong></summary><p>Não. É web: funciona no navegador em desktop, tablet e celular.</p></details>
+      <details><summary><strong>4) Como integro com OBS/vMix?</strong></summary><p>Exporte GC/espelho em JSON/CSV/PDF. O OBS/vMix consome os dados para tarjas e telas sem retrabalho.</p></details>
+      <details><summary><strong>5) Tem teleprompter (TP)?</strong></summary><p>Sim. TP integrado com controle por teclado, timers e conforto visual.</p></details>
+      <details><summary><strong>6) E o ao vivo?</strong></summary><p>Contagem de VTs, cronômetros e visão do espelho para manter ritmo e segurança no ar.</p></details>
+      <details><summary><strong>7) Como é a implantação?</strong></summary><p>Rápida: onboarding simples e ambiente pronto; equipe produtiva desde o primeiro dia.</p></details>
+      <details><summary><strong>8) Qual o licenciamento?</strong></summary><p>Acessível e escalonável. Você paga pelo essencial e adiciona módulos conforme crescer.</p></details>
+      <details><summary><strong>9) Posso exportar relatórios/PDF?</strong></summary><p>Sim. Espelhos e laudas em PDF; dados em CSV/JSON para outros sistemas.</p></details>
+      <details><summary><strong>10) Como falar com o time?</strong></summary><p>Envie e-mail para <a href="mailto:contato@newsflow.com.br">contato@newsflow.com.br</a> ou use o WhatsApp (link em Contato).</p></details>
     </div>
   </div>
 </section>
@@ -310,13 +235,13 @@ ul.clean li{margin:6px 0}
   <div class="container footer-grid">
     <div>
       <div class="brand" style="color:#1e3a8a">NewsFlow</div>
-      <p style="margin-top:6px;color:#334155">Laudas, espelhos, TP e integrações — tudo para ir ao ar sem estresse.</p>
+      <p style="margin-top:6px;color:#334155">Fluxo de telejornal completo: laudas, espelhos, TP e integrações.</p>
     </div>
     <div>
       <h4>Produtos</h4>
       <a href="#recursos">Recursos</a><br/>
       <a href="#integracoes">Integrações</a><br/>
-      <a href="#multi">Multi-dispositivo</a>
+      <a href="#planos">Planos</a>
     </div>
     <div>
       <h4>Suporte</h4>
@@ -333,19 +258,17 @@ ul.clean li{margin:6px 0}
 </footer>
 
 <script>
-/** util para criar carrossel em um container .carousel (por id) */
-function makeCarousel(id){
-  const root = document.getElementById(id);
-  if(!root) return;
-  const track = root.querySelector('.track') || root.firstElementChild;
-  const slides = [...track.children];
-  const prev = root.querySelector('.prev') || root.querySelector('button:first-of-type');
-  const next = root.querySelector('.next') || root.querySelector('button:last-of-type');
-  const dotsWrap = document.querySelector(`.dots[data-for="${id}"]`) || root.nextElementSibling;
-  let index = 0, timer;
+/* Carrossel (4 imagens) */
+(function(){
+  const track = document.getElementById('track');
+  if(!track) return;
+  const slides = Array.from(track.children);
+  let index = 0;
+  const dotsWrap = document.getElementById('dots');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
 
-  // dots
-  dotsWrap.innerHTML = '';
+  // Dots
   slides.forEach((_,i)=>{
     const d = document.createElement('div');
     d.className = 'dot' + (i===0?' active':'');
@@ -356,22 +279,17 @@ function makeCarousel(id){
   function go(i){
     index = (i+slides.length)%slides.length;
     track.style.transform = `translateX(-${index*100}%)`;
-    [...dotsWrap.children].forEach((el,di)=>el.classList.toggle('active', di===index));
+    Array.from(dotsWrap.children).forEach((el,di)=>el.classList.toggle('active', di===index));
   }
-  prev?.addEventListener('click', ()=>go(index-1));
-  next?.addEventListener('click', ()=>go(index+1));
+  prev.addEventListener('click', ()=>go(index-1));
+  next.addEventListener('click', ()=>go(index+1));
 
-  function start(){ timer = setInterval(()=>go(index+1), 5000); }
-  function stop(){ clearInterval(timer); }
-  root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', start);
-  root.addEventListener('focusin', stop); root.addEventListener('focusout', start);
+  let timer = setInterval(()=>go(index+1), 5000);
+  ['mouseenter','focusin'].forEach(evt=>track.addEventListener(evt, ()=>clearInterval(timer)));
+  ['mouseleave','focusout'].forEach(evt=>track.addEventListener(evt, ()=>timer=setInterval(()=>go(index+1),5000)));
+
   window.addEventListener('resize', ()=>go(index));
-  start();
-}
-
-/* Inicia carrosséis */
-makeCarousel('carImgs');
-makeCarousel('carText');
+})();
 
 /* Form: abre e-mail do usuário */
 document.getElementById('notify')?.addEventListener('submit', function(e){
