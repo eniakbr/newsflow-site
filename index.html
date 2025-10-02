@@ -30,12 +30,9 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .hero{background:linear-gradient(180deg,#18328a 0%, #1e3a8a 40%, #224196 100%);color:#fff}
 .container{max-width:var(--w);margin:0 auto;padding:0 20px}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0}
+.span-2{grid-column:1 / -1}
 .hero h1{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(34px,5.5vw,56px);line-height:1.1;margin:0 0 10px;text-wrap:balance}
-.hero p{color:#e6edff;max-width:60ch;margin:0 auto 18px}
-.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:13px;padding:12px 18px;font-weight:700;cursor:pointer}
-.btn-primary{background:#60a5fa;color:#0b1e4d;box-shadow:0 10px 24px rgba(99,102,241,.25)}
-.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.hero p{color:#e6edff;max-width:60ch;margin:0 auto 0}
 .hero-copy{text-align:center;grid-column:1/-1}
 .hero-copy small{display:inline-block;margin-bottom:10px;background:#eaf2ff;color:#18328a;padding:6px 10px;border-radius:999px;font-weight:700;letter-spacing:.3px}
 
@@ -60,6 +57,23 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 18px 14px;box-shadow:var(--shadow)}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 
+/* NOVA seção: cards 2 colunas (6 itens) */
+.cards-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.minicard{position:relative;background:linear-gradient(180deg,var(--tone-bg1),var(--tone-bg2));border:1px solid var(--tone-border);border-radius:16px;padding:16px 16px 12px;box-shadow:var(--shadow);overflow:hidden}
+.minicard::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--tone) 0%,transparent 40%);opacity:.08;pointer-events:none}
+.minicard .head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.minicard .title{font-family:"Roboto",sans-serif;font-weight:900;margin:0;color:#0f172a}
+.minicard .desc{margin:0;color:#1f2937}
+.ico{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in oklab, var(--tone) 18%, white)}
+.ico svg{width:18px;height:18px;color:var(--tone)}
+/* tons NewsFlow */
+.tone1{--tone:#2563eb; --tone-bg1:#eef4ff; --tone-bg2:#e3edff; --tone-border:#d7e6ff}
+.tone2{--tone:#1e3a8a; --tone-bg1:#e7ebff; --tone-bg2:#dee5ff; --tone-border:#cfd9ff}
+.tone3{--tone:#3b82f6; --tone-bg1:#e9f1ff; --tone-bg2:#e1ecff; --tone-border:#d4e0ff}
+.tone4{--tone:#60a5fa; --tone-bg1:#edf6ff; --tone-bg2:#e6f2ff; --tone-border:#d7eaff}
+.tone5{--tone:#1d4ed8; --tone-bg1:#e7efff; --tone-bg2:#dfe8ff; --tone-border:#cbd9ff}
+.tone6{--tone:#2a5bd7; --tone-bg1:#eaf1ff; --tone-bg2:#e3ecff; --tone-border:#d4e1ff}
+
 /* CTA bands */
 .band{background:#f1f5ff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:64px 0;text-align:center}
 .band h3{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(24px,3.2vw,36px);margin:0 0 8px}
@@ -74,6 +88,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 @media (max-width:980px){
   .hero-grid, .twocol{grid-template-columns:1fr}
   .grid-3{grid-template-columns:1fr;gap:14px}
+  .cards-2col{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -99,11 +114,8 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
     <div class="hero-copy">
       <small>lançamento em breve</small>
       <h1>Seu telejornal no flow com baixo custo</h1>
-      <p>O NewsFlow centraliza produção, reportagens, edição, espelhos e TP; integra ao OBS/vMix e mantém redação e estúdio no mesmo ritmo — pensado para pequenas TVs e webTVs que precisam de <strong>versatilidade e baixo custo</strong>.</p>
-      <div class="pills">
-        <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
-        <a class="btn btn-ghost" href="#aviso">Ser avisado no lançamento</a>
-      </div>
+      <p>O NewsFlow centraliza laudas, espelhos e TP; integra ao OBS/vMix e mantém redação e estúdio no mesmo ritmo — pensado para pequenas TVs e webTVs que precisam de versatilidade e baixo custo.</p>
+      <!-- botões removidos conforme pedido -->
     </div>
 
     <!-- CARROSSEL DAS 4 IMAGENS — ocupa DUAS COLUNAS -->
@@ -149,6 +161,78 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
         </div>
       </div>
     </div>
+
+    <!-- 6 CARDS COM TONS E ÍCONES -->
+    <div class="section" style="padding-top:32px;padding-bottom:0">
+      <div class="cards-2col">
+        <!-- 1: Fluxo -->
+        <article class="minicard tone1">
+          <div class="head">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="2"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <h3 class="title">Fluxo de Telejornal</h3>
+          </div>
+          <p class="desc">Crie e organize laudas, espelhos e blocos com tempos, status e PDF.</p>
+        </article>
+
+        <!-- 2: Velocidade -->
+        <article class="minicard tone4">
+          <div class="head">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="currentColor"/></svg>
+            </span>
+            <h3 class="title">⚡ Ganhe velocidade</h3>
+          </div>
+          <p class="desc">Centralizando tudo em um só lugar.</p>
+        </article>
+
+        <!-- 3: TP -->
+        <article class="minicard tone2">
+          <div class="head">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="8" y="18" width="8" height="2" rx="1" fill="currentColor"/></svg>
+            </span>
+            <h3 class="title">Operação de TP</h3>
+          </div>
+          <p class="desc">Teleprompter integrado, timers e controle por teclado.</p>
+        </article>
+
+        <!-- 4: Segurança -->
+        <article class="minicard tone5">
+          <div class="head">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 4v4M12 16v4M4 12h4M16 12h4" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <h3 class="title">🎯 Mais segurança</h3>
+          </div>
+          <p class="desc">E menos improviso no estúdio.</p>
+        </article>
+
+        <!-- 5: Ao vivo -->
+        <article class="minicard tone3">
+          <div class="head">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 18a8 8 0 0 1 0-12M8 16a5 5 0 0 1 0-8M16 8a5 5 0 0 1 0 8M20 6a8 8 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="title">Ao vivo</h3>
+          </div>
+          <p class="desc">Contagem de VTs, sincronia entre equipes e visão do espelho.</p>
+        </article>
+
+        <!-- 6: Menos stress -->
+        <article class="minicard tone6">
+          <div class="head">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-4 6-4 9 0s6 4 9 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="title">📡 Menos stress</h3>
+          </div>
+          <p class="desc">No ritmo do ao vivo, com previsibilidade.</p>
+        </article>
+      </div>
+    </div>
+    <!-- FIM 6 CARDS -->
   </div>
 </section>
 
