@@ -38,11 +38,15 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .container{max-width:var(--w);margin:0 auto;padding:0 20px}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0}
 .span-2{grid-column:1 / -1}
-.brand-hero{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(44px,7.5vw,86px);margin:0 0 8px;text-align:center;letter-spacing:.2px}
-.hero h1{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(28px,5.2vw,44px);line-height:1.1;margin:0 0 10px;text-wrap:balance}
-.hero p{color:#e6edff;max-width:70ch;margin:0 auto 0}
-.hero-copy{text-align:center;grid-column:1/-1}
-.hero-copy small{display:inline-block;margin:10px 0;background:#eaf2ff;color:#18328a;padding:6px 10px;border-radius:999px;font-weight:700;letter-spacing:.3px}
+
+.brand-hero{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(48px,7.8vw,92px);margin:0 0 4px;text-align:center;letter-spacing:.2px}
+.slogan{font-family:"Roboto",sans-serif;font-weight:700;font-size:clamp(20px,3.2vw,28px);line-height:1.2;margin:0 auto 10px;text-align:center;text-wrap:balance;opacity:.98}
+.hero-copy small{
+  display:inline-block;margin:12px 0 8px;background:#eaf2ff;color:#18328a;
+  padding:8px 12px;border-radius:999px;font-weight:800;letter-spacing:.5px;
+  font-size:clamp(14px,1.8vw,18px);text-transform:uppercase
+}
+.hero p{color:#e6edff;max-width:70ch;margin:0 auto 0;text-align:center}
 
 /* Carousel base */
 .carousel{position:relative;overflow:hidden;border-radius:22px;background:#0b1e4d;border:1px solid rgba(255,255,255,.15);box-shadow:var(--shadow)}
@@ -65,17 +69,17 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 18px 14px;box-shadow:var(--shadow)}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
-.media img{display:block;width:100%;height:auto} /* garante largura da coluna */
+.media img{display:block;width:100%;height:auto}
 
 /* Cards (6 itens) */
 .cards-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .minicard{position:relative;background:linear-gradient(180deg,var(--tone-bg1),var(--tone-bg2));border:1px solid var(--tone-border);border-radius:16px;padding:16px 16px 12px;box-shadow:var(--shadow);overflow:hidden}
 .minicard::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--tone) 0%,transparent 40%);opacity:.08;pointer-events:none}
-.minicard .head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.minicard .title{font-family:"Roboto",sans-serif;font-weight:900;margin:0;color:#0f172a}
-.minicard .desc{margin:0;color:#1f2937}
-.ico{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in oklab, var(--tone) 18%, white)}
-.ico svg{width:18px;height:18px;color:var(--tone)}
+.minicard .head{display:grid;grid-template-columns:48px 1fr;column-gap:12px;align-items:start;margin-bottom:6px}
+.ico{width:48px;height:48px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in oklab, var(--tone) 18%, white)}
+.ico svg{width:22px;height:22px;color:var(--tone)}
+.minicard .title{font-family:"Roboto",sans-serif;font-weight:900;margin:0;color:#0f172a;line-height:1.2}
+.minicard .desc{margin:2px 0 0;color:#1f2937}
 /* tons NewsFlow */
 .tone1{--tone:#2563eb; --tone-bg1:#eef4ff; --tone-bg2:#e3edff; --tone-border:#d7e6ff}
 .tone2{--tone:#1e3a8a; --tone-bg1:#e7ebff; --tone-bg2:#dee5ff; --tone-border:#cfd9ff}
@@ -125,9 +129,9 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <h2 class="brand-hero">NewsFlow</h2>
+      <h1 class="brand-hero">NewsFlow</h1>
+      <p class="slogan">Seu telejornal no flow com baixo custo</p>
       <small>lançamento em breve</small>
-      <h1>Seu telejornal no flow com baixo custo</h1>
       <p>O NewsFlow centraliza laudas, espelhos e TP; integra ao OBS/vMix e mantém redação e estúdio no mesmo ritmo — pensado para pequenas TVs e webTVs que precisam de versatilidade e baixo custo.</p>
     </div>
 
@@ -154,13 +158,13 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
         <h2>Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</h2>
         <p class="lead">Fluxo do telejornal com laudas, espelhos e blocos; operação de TP integrada; e visão do ao vivo para redação e estúdio.</p>
       </div>
-      <!-- Substituído o card pela imagem do espelho, ajustada à largura da coluna -->
+      <!-- Imagem do espelho ajustada para a largura da coluna -->
       <figure class="media">
         <img src="espelho.png" alt="Visual do espelho do telejornal no NewsFlow">
       </figure>
     </div>
 
-    <!-- 6 CARDS COM TONS E ÍCONES (2 colunas; 1 por linha em cada coluna) -->
+    <!-- 6 CARDS COM ÍCONES (sem emojis nos textos) -->
     <div class="section" style="padding-top:32px;padding-bottom:0">
       <div class="cards-2col">
         <!-- 1: Fluxo -->
@@ -180,7 +184,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
             <span class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="currentColor"/></svg>
             </span>
-            <h3 class="title">⚡ Ganhe velocidade</h3>
+            <h3 class="title">Ganhe velocidade</h3>
           </div>
           <p class="desc">Centralizando tudo em um só lugar.</p>
         </article>
@@ -202,7 +206,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
             <span class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 4v4M12 16v4M4 12h4M16 12h4" stroke="currentColor" stroke-width="2"/></svg>
             </span>
-            <h3 class="title">🎯 Mais segurança</h3>
+            <h3 class="title">Mais segurança</h3>
           </div>
           <p class="desc">E menos improviso no estúdio.</p>
         </article>
@@ -224,7 +228,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
             <span class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-4 6-4 9 0s6 4 9 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </span>
-            <h3 class="title">📡 Menos stress</h3>
+            <h3 class="title">Menos stress</h3>
           </div>
           <p class="desc">No ritmo do ao vivo, com previsibilidade.</p>
         </article>
