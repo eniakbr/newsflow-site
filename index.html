@@ -38,7 +38,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .container{max-width:var(--w);margin:0 auto;padding:0 20px}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0}
 .span-2{grid-column:1 / -1}
-.brand-hero{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(32px,6vw,60px);margin:0 0 8px;text-align:center;letter-spacing:.2px}
+.brand-hero{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(44px,7.5vw,86px);margin:0 0 8px;text-align:center;letter-spacing:.2px}
 .hero h1{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(28px,5.2vw,44px);line-height:1.1;margin:0 0 10px;text-wrap:balance}
 .hero p{color:#e6edff;max-width:70ch;margin:0 auto 0}
 .hero-copy{text-align:center;grid-column:1/-1}
@@ -65,8 +65,9 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 18px 14px;box-shadow:var(--shadow)}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.media img{display:block;width:100%;height:auto} /* garante largura da coluna */
 
-/* NOVA seção: cards 2 colunas (6 itens) */
+/* Cards (6 itens) */
 .cards-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .minicard{position:relative;background:linear-gradient(180deg,var(--tone-bg1),var(--tone-bg2));border:1px solid var(--tone-border);border-radius:16px;padding:16px 16px 12px;box-shadow:var(--shadow);overflow:hidden}
 .minicard::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--tone) 0%,transparent 40%);opacity:.08;pointer-events:none}
@@ -83,9 +84,12 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .tone5{--tone:#1d4ed8; --tone-bg1:#e7efff; --tone-bg2:#dfe8ff; --tone-border:#cbd9ff}
 .tone6{--tone:#2a5bd7; --tone-bg1:#eaf1ff; --tone-bg2:#e3ecff; --tone-border:#d4e1ff}
 
-/* CTA bands */
-.band{background:#f1f5ff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:64px 0;text-align:center}
-.band h3{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(24px,3.2vw,36px);margin:0 0 8px}
+/* CTA band */
+.band{background:#f1f5ff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:70px 0;text-align:center}
+.band h3{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(28px,3.6vw,44px);margin:0 0 10px}
+.band p{color:#475569;margin:8px auto 0;max-width:70ch}
+.band .quip{font-size:clamp(18px,2.2vw,22px)}
+.band .quip-iron{font-size:clamp(20px,2.6vw,26px);font-weight:800;color:#0f172a;margin-top:10px}
 
 /* Footer */
 .footer{background:#eef2ff;border-top:1px solid #e5e7eb}
@@ -125,7 +129,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
       <small>lançamento em breve</small>
       <h1>Seu telejornal no flow com baixo custo</h1>
       <p>O NewsFlow centraliza laudas, espelhos e TP; integra ao OBS/vMix e mantém redação e estúdio no mesmo ritmo — pensado para pequenas TVs e webTVs que precisam de versatilidade e baixo custo.</p>
-      <!-- botões removidos conforme pedido -->
     </div>
 
     <!-- CARROSSEL DAS 4 IMAGENS — ocupa DUAS COLUNAS -->
@@ -151,13 +154,13 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
         <h2>Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</h2>
         <p class="lead">Fluxo do telejornal com laudas, espelhos e blocos; operação de TP integrada; e visão do ao vivo para redação e estúdio.</p>
       </div>
-      <!-- Substituí o card pela imagem do espelho -->
+      <!-- Substituído o card pela imagem do espelho, ajustada à largura da coluna -->
       <figure class="media">
         <img src="espelho.png" alt="Visual do espelho do telejornal no NewsFlow">
       </figure>
     </div>
 
-    <!-- 6 CARDS COM TONS E ÍCONES -->
+    <!-- 6 CARDS COM TONS E ÍCONES (2 colunas; 1 por linha em cada coluna) -->
     <div class="section" style="padding-top:32px;padding-bottom:0">
       <div class="cards-2col">
         <!-- 1: Fluxo -->
@@ -177,7 +180,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
             <span class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="currentColor"/></svg>
             </span>
-            <h3 class="title">Ganhe velocidade</h3>
+            <h3 class="title">⚡ Ganhe velocidade</h3>
           </div>
           <p class="desc">Centralizando tudo em um só lugar.</p>
         </article>
@@ -199,7 +202,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
             <span class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 4v4M12 16v4M4 12h4M16 12h4" stroke="currentColor" stroke-width="2"/></svg>
             </span>
-            <h3 class="title">Mais segurança</h3>
+            <h3 class="title">🎯 Mais segurança</h3>
           </div>
           <p class="desc">E menos improviso no estúdio.</p>
         </article>
@@ -221,7 +224,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
             <span class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-4 6-4 9 0s6 4 9 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </span>
-            <h3 class="title">Menos stress</h3>
+            <h3 class="title">📡 Menos stress</h3>
           </div>
           <p class="desc">No ritmo do ao vivo, com previsibilidade.</p>
         </article>
@@ -257,12 +260,13 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   </div>
 </section>
 
-<!-- CTA Band -->
+<!-- CTA Band (texto ampliado + ironia sem citar concorrente) -->
 <section class="band" id="planos">
   <div class="container">
     <h3>Baixo custo e alta produtividade para sua operação</h3>
-    <p style="color:#475569">Menos retrabalho, mais tempo no ar. Simplifique seu pipeline hoje.</p>
-    <div style="margin-top:14px">
+    <p class="quip">Menos retrabalho, mais tempo no ar. Simplifique seu pipeline hoje.</p>
+    <p class="quip-iron">Chega de “soluções” que travam o fluxo, cobram caro e ainda pedem jeitinho. Com o NewsFlow, as notícias <em>fluem</em> — sem drama e sem pedágio.</p>
+    <div style="margin-top:18px">
       <a class="btn btn-primary" href="#contato">Quero conhecer</a>
     </div>
   </div>
