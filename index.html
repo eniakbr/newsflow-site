@@ -74,12 +74,11 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   background:linear-gradient(180deg,#18328a 0%, #1e3a8a 50%, #224196 100%);
   border-top:1px solid #1e3a8a;
   border-bottom:1px solid #1e3a8a;
-  padding:64px 0;               /* respiro maior */
-  margin:40px 0 44px;           /* espaço antes e depois, respiro antes dos cards */
+  padding:64px 0;
+  margin:40px 0 44px;
   color:#fff;
 }
 .value-prop.full-bleed{
-  /* estica o fundo até as bordas do viewport, mantendo o conteúdo centralizado */
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
 }
@@ -88,7 +87,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   text-align:center;
   font-family:"Roboto",sans-serif;
   font-weight:900;
-  font-size:clamp(20px,2.8vw,32px);  /* um pouco menor */
+  font-size:clamp(20px,2.8vw,32px);
   letter-spacing:-.015em;
   line-height:1.25;
   color:#fff;
@@ -116,9 +115,15 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 18px 14px;box-shadow:var(--shadow)}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 
-/* Imagem “espelho” maior */
+/* Imagem “espelho” maior (aumentado) */
 .media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
-.media img{display:block;width:115%;max-width:none;height:auto;transform:translateX(-7.5%)}
+.media img{
+  display:block;
+  width:130%;           /* antes 115% */
+  max-width:none;
+  height:auto;
+  transform:translateX(-15%); /* centraliza o crop */
+}
 
 /* Título dos cards */
 .features-title{
@@ -146,10 +151,6 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .tone4{--tone:#60a5fa; --tone-bg1:#edf6ff; --tone-bg2:#e6f2ff; --tone-border:#d7eaff}
 .tone5{--tone:#1d4ed8; --tone-bg1:#e7efff; --tone-bg2:#dfe8ff; --tone-border:#cbd9ff}
 .tone6{--tone:#2a5bd7; --tone-bg1:#eaf1ff; --tone-bg2:#e3ecff; --tone-border:#d4e1ff}
-
-/* Prova social */
-.trust{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:center;margin:18px 0 0;color:#cbd5e1}
-.trust img{height:28px;opacity:.85;filter:grayscale(100%);}
 
 /* CTA band */
 .band{background:#f1f5ff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:70px 0;text-align:center}
@@ -179,7 +180,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   .hero-grid, .twocol{grid-template-columns:1fr}
   .grid-3{grid-template-columns:1fr;gap:14px}
   .cards-2col{grid-template-columns:1fr}
-  .media img{width:100%;max-width:100%;transform:none}
+  .media img{width:100%;max-width:100%;transform:none} /* no mobile, ocupa 100% */
   .sticky-cta{display:flex; font-size:13px; padding:8px 10px;}
   .sticky-cta a{padding:6px 10px; font-weight:800;}
 }
@@ -208,11 +209,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
       <h1 class="brand-hero">NewsFlow</h1>
       <p class="slogan">Seu telejornal no flow com baixo custo</p>
       <small aria-label="Lançamento em breve">lançamento em breve</small>
-      <div class="trust" aria-label="Organizações que confiam">
-        <img src="/logos/logo1.svg" alt="Parceiro 1" width="120" height="28" loading="lazy" decoding="async" />
-        <img src="/logos/logo2.svg" alt="Parceiro 2" width="110" height="28" loading="lazy" decoding="async" />
-        <img src="/logos/logo3.svg" alt="Parceiro 3" width="100" height="28" loading="lazy" decoding="async" />
-      </div>
+      <!-- Parceiros removidos conforme pedido -->
     </div>
   </div>
 </section>
@@ -237,7 +234,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
         </figure>
       </div>
 
-      <!-- VALUE-PROP FULL-BLEED AZUL (agora acima dos cards) -->
+      <!-- VALUE-PROP FULL-BLEED AZUL (acima dos cards) -->
       <div class="value-prop full-bleed" aria-label="Proposta de valor">
         <div class="container">
           <h2>
