@@ -36,9 +36,7 @@
   --blue:#2563eb; --blue-dark:#1e3a8a; --ink:#0f172a; --text:#1f2937;
   --muted:#475569; --bg:#f8fafc; --border:#e5e7eb; --shadow:0 12px 30px rgba(2,6,23,.08);
   --radius:18px; --w:1180px;
-  /* CTA em AZUL */
-  --cta:#3b82f6;
-  --cta-ink:#ffffff;
+  --cta:#3b82f6; --cta-ink:#ffffff;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -70,25 +68,32 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .hero-copy small{display:inline-block;background:#eaf2ff;color:#18328a;padding:10px 14px;border-radius:999px;font-weight:800;letter-spacing:.6px;font-size:clamp(14px,1.8vw,18px);text-transform:uppercase;line-height:1;margin-block:20px}
 .hero p{color:#e6edff;max-width:70ch;margin:0 auto;text-align:center}
 
-/* VALUE PROP (grande destaque FORA do hero azul) */
+/* VALUE PROP — full-bleed azul */
 .value-prop{
-  background:#f8fbff;
-  border-top:1px solid #e5efff;
-  border-bottom:1px solid #e5efff;
-  padding:44px 0; /* mais espaço antes/depois */
-  margin: 8px 0 8px;
+  position:relative;
+  background:linear-gradient(180deg,#18328a 0%, #1e3a8a 50%, #224196 100%);
+  border-top:1px solid #1e3a8a;
+  border-bottom:1px solid #1e3a8a;
+  padding:64px 0;               /* respiro maior */
+  margin:40px 0 44px;           /* espaço antes e depois, respiro antes dos cards */
+  color:#fff;
+}
+.value-prop.full-bleed{
+  /* estica o fundo até as bordas do viewport, mantendo o conteúdo centralizado */
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
 }
 .value-prop h2{
   margin:0;
   text-align:center;
   font-family:"Roboto",sans-serif;
   font-weight:900;
-  font-size:clamp(22px,3.2vw,36px);
+  font-size:clamp(20px,2.8vw,32px);  /* um pouco menor */
   letter-spacing:-.015em;
   line-height:1.25;
-  color:#0f172a;
+  color:#fff;
 }
-.value-prop h2 strong{ color:#1e40af; }
+.value-prop h2 strong{ color:#dbeafe; }
 
 /* Carousel */
 .carousel{position:relative;overflow:hidden;border-radius:22px;background:#0b1e4d;border:1px solid rgba(255,255,255,.15);box-shadow:var(--shadow)}
@@ -115,13 +120,24 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
 .media img{display:block;width:115%;max-width:none;height:auto;transform:translateX(-7.5%)}
 
+/* Título dos cards */
+.features-title{
+  font-family:"Roboto",sans-serif;
+  font-weight:900;
+  font-size:clamp(22px,3vw,30px);
+  text-align:center;
+  margin:10px auto 18px;
+  color:#0f172a;
+  text-wrap:balance;
+}
+
 /* Cards (6 itens) */
 .cards-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.minicard{position:relative;background:linear-gradient(180deg,var(--tone-bg1),var(--tone-bg2));border:1px solid var(--tone-border);border-radius:16px;padding:16px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:56px 1fr;column-gap:14px;align-items:start}
+.minicard{position:relative;background:linear-gradient(180deg,var(--tone-bg1),var(--tone-bg2));border:1px solid var(--tone-border);border-radius:16px;padding:16px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:64px 1fr;column-gap:14px;align-items:start}
 .minicard::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--tone) 0%,transparent 40%);opacity:.08;pointer-events:none}
 .head{display:contents}
-.ico{grid-column:1; grid-row:1 / span 2; width:56px;height:56px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in oklab, var(--tone) 18%, white)}
-.ico svg{width:26px;height:26px;color:var(--tone)}
+.ico{grid-column:1; grid-row:1 / span 2; width:64px;height:64px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in oklab, var(--tone) 18%, white)}
+.ico svg{width:30px;height:30px;color:var(--tone)}
 .minicard .title{grid-column:2;grid-row:1;font-family:"Roboto",sans-serif;font-weight:900;margin:0;color:#0f172a;line-height:1.2}
 .minicard .desc{grid-column:2;grid-row:2;margin:4px 0 0;color:#1f2937}
 .tone1{--tone:#2563eb; --tone-bg1:#eef4ff; --tone-bg2:#e3edff; --tone-border:#d7e6ff}
@@ -131,7 +147,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .tone5{--tone:#1d4ed8; --tone-bg1:#e7efff; --tone-bg2:#dfe8ff; --tone-border:#cbd9ff}
 .tone6{--tone:#2a5bd7; --tone-bg1:#eaf1ff; --tone-bg2:#e3ecff; --tone-border:#d4e1ff}
 
-/* Prova social / logos */
+/* Prova social */
 .trust{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:center;margin:18px 0 0;color:#cbd5e1}
 .trust img{height:28px;opacity:.85;filter:grayscale(100%);}
 
@@ -164,13 +180,14 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   .grid-3{grid-template-columns:1fr;gap:14px}
   .cards-2col{grid-template-columns:1fr}
   .media img{width:100%;max-width:100%;transform:none}
-  .sticky-cta{display:flex}
+  .sticky-cta{display:flex; font-size:13px; padding:8px 10px;}
+  .sticky-cta a{padding:6px 10px; font-weight:800;}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER (aparece só após rolar) -->
+<!-- HEADER -->
 <header class="header" id="topbar" role="navigation" aria-label="Barra superior">
   <nav class="nav">
     <a class="brand" href="/" aria-label="Página inicial NewsFlow">NewsFlow</a>
@@ -184,15 +201,13 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   </nav>
 </header>
 
-<!-- HERO (sem formulário no topo) -->
+<!-- HERO -->
 <section class="hero" id="inicio">
   <div class="container hero-grid">
     <div class="hero-copy">
       <h1 class="brand-hero">NewsFlow</h1>
       <p class="slogan">Seu telejornal no flow com baixo custo</p>
       <small aria-label="Lançamento em breve">lançamento em breve</small>
-
-      <!-- Prova social -->
       <div class="trust" aria-label="Organizações que confiam">
         <img src="/logos/logo1.svg" alt="Parceiro 1" width="120" height="28" loading="lazy" decoding="async" />
         <img src="/logos/logo2.svg" alt="Parceiro 2" width="110" height="28" loading="lazy" decoding="async" />
@@ -202,18 +217,8 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   </div>
 </section>
 
-<!-- GRANDE DESTAQUE (fora do quadrado azul) -->
-<section class="value-prop" aria-label="Proposta de valor">
-  <div class="container">
-    <h2>
-      <strong>Redação, espelhos e teleprompter integrados</strong> para colocar seu telejornal no ar com
-      <strong>previsibilidade</strong> — simples, rápido e acessível, com exportação para <strong>OBS Studio</strong> e <strong>vMix</strong>.
-    </h2>
-  </div>
-</section>
-
 <main id="conteudo-principal">
-  <!-- Seção: Feito para redações ágeis -->
+  <!-- RECURSOS -->
   <section class="section" id="recursos">
     <div class="container">
       <div class="twocol">
@@ -232,13 +237,26 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
         </figure>
       </div>
 
+      <!-- VALUE-PROP FULL-BLEED AZUL (agora acima dos cards) -->
+      <div class="value-prop full-bleed" aria-label="Proposta de valor">
+        <div class="container">
+          <h2>
+            <strong>Redação, espelhos e teleprompter integrados</strong> para colocar seu telejornal no ar com
+            <strong>previsibilidade</strong> — simples, rápido e acessível, com exportação para <strong>OBS Studio</strong> e <strong>vMix</strong>.
+          </h2>
+        </div>
+      </div>
+
+      <!-- TÍTULO CRIATIVO DOS CARDS -->
+      <h3 class="features-title">Pronto para ver na prática?</h3>
+
       <!-- 6 CARDS -->
-      <div class="section" style="padding-top:28px;padding-bottom:0">
+      <div class="section" style="padding-top:18px;padding-bottom:0">
         <div class="cards-2col">
           <article class="minicard tone1">
             <div class="head">
               <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" width="26" height="26" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="2"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="2"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="2"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="2"/></svg>
               </span>
               <h3 class="title">Fluxo de Telejornal</h3>
             </div>
@@ -248,7 +266,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <article class="minicard tone4">
             <div class="head">
               <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" width="26" height="26"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="currentColor"/></svg>
               </span>
               <h3 class="title">Ganhe velocidade</h3>
             </div>
@@ -258,7 +276,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <article class="minicard tone2">
             <div class="head">
               <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" width="26" height="26"><rect x="3" y="4" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="8" y="18" width="8" height="2" rx="1" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="8" y="18" width="8" height="2" rx="1" fill="currentColor"/></svg>
               </span>
               <h3 class="title">Teleprompter integrado</h3>
             </div>
@@ -268,7 +286,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <article class="minicard tone5">
             <div class="head">
               <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" width="26" height="26"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 4v4M12 16v4M4 12h4M16 12h4" stroke="currentColor" stroke-width="2"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 4v4M12 16v4M4 12h4M16 12h4" stroke="currentColor" stroke-width="2"/></svg>
               </span>
               <h3 class="title">Segurança no ar</h3>
             </div>
@@ -278,7 +296,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <article class="minicard tone3">
             <div class="head">
               <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" width="26" height="26"><path d="M4 18a8 8 0 0 1 0-12M8 16a5 5 0 0 1 0-8M16 8a5 5 0 0 1 0 8M20 6a8 8 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 18a8 8 0 0 1 0-12M8 16a5 5 0 0 1 0-8M16 8a5 5 0 0 1 0 8M20 6a8 8 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </span>
               <h3 class="title">Ao vivo</h3>
             </div>
@@ -288,7 +306,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <article class="minicard tone6">
             <div class="head">
               <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" width="26" height="26"><path d="M3 12c3-4 6-4 9 0s6 4 9 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-4 6-4 9 0s6 4 9 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </span>
               <h3 class="title">Menos stress</h3>
             </div>
@@ -299,21 +317,15 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
     </div>
   </section>
 
-  <!-- Carrossel entre recursos e integrações -->
+  <!-- CARROSSEL -->
   <section class="section" aria-label="Demonstrações do produto" style="padding-top:28px; padding-bottom:0;">
     <div class="container">
       <div class="twocol">
         <figure class="span-2 carousel" aria-roledescription="carousel">
           <div class="track" id="track" aria-live="polite">
-            <div class="slide">
-              <img src="home.png" alt="Tela inicial do NewsFlow" width="1280" height="720" loading="lazy" decoding="async">
-            </div>
-            <div class="slide">
-              <img src="menu%20reportagens.png" alt="Menu de módulos do NewsFlow" width="1280" height="720" loading="lazy" decoding="async">
-            </div>
-            <div class="slide">
-              <img src="pautas%20cadastradas.png" alt="Tela de pautas cadastradas" width="1280" height="720" loading="lazy" decoding="async">
-            </div>
+            <div class="slide"><img src="home.png" alt="Tela inicial do NewsFlow" width="1280" height="720" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="menu%20reportagens.png" alt="Menu de módulos do NewsFlow" width="1280" height="720" loading="lazy" decoding="async"></div>
+            <div class="slide"><img src="pautas%20cadastradas.png" alt="Tela de pautas cadastradas" width="1280" height="720" loading="lazy" decoding="async"></div>
           </div>
           <div class="controls">
             <button id="prev" aria-label="Anterior">‹</button>
@@ -325,7 +337,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
     </div>
   </section>
 
-  <!-- Integrações -->
+  <!-- INTEGRAÇÕES -->
   <section class="section" id="integracoes">
     <div class="container">
       <div class="twocol">
@@ -369,7 +381,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
     </div>
   </section>
 
-  <!-- Contato -->
+  <!-- CONTATO -->
   <section class="section" id="contato">
     <div class="container">
       <div class="twocol">
@@ -491,7 +503,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   window.addEventListener('resize', ()=>go(index));
 })();
 
-/* Captura leve via mailto no formulário de aviso */
+/* Captura via mailto */
 function handleMailto(email, subject, body){
   window.location.href = `mailto:contato@newsflow.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
@@ -505,7 +517,7 @@ document.getElementById('notify')?.addEventListener('submit', function(e){
   msg.textContent='Abrimos seu app de e-mail para enviar o pedido. Obrigado!';
 });
 
-/* Focar o campo de e-mail ao clicar em "Quero ser contatado" */
+/* Focar e-mail ao clicar em "Quero ser contatado" */
 document.getElementById('btn-contato')?.addEventListener('click', function(){
   setTimeout(()=> document.getElementById('email')?.focus(), 100);
 });
