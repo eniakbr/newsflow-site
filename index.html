@@ -119,10 +119,10 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
 .media img{
   display:block;
-  width:130%;           /* antes 115% */
+  width:130%;
   max-width:none;
   height:auto;
-  transform:translateX(-15%); /* centraliza o crop */
+  transform:translateX(-15%);
 }
 
 /* Título dos cards */
@@ -152,6 +152,9 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
 .tone5{--tone:#1d4ed8; --tone-bg1:#e7efff; --tone-bg2:#dfe8ff; --tone-border:#cbd9ff}
 .tone6{--tone:#2a5bd7; --tone-bg1:#eaf1ff; --tone-bg2:#e3ecff; --tone-border:#d4e1ff}
 
+/* Títulos compactos (pedido) */
+.tight{ line-height:1.12; letter-spacing:-0.01em; }
+
 /* CTA band */
 .band{background:#f1f5ff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:70px 0;text-align:center}
 .band h3{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(28px,3.6vw,42px);margin:0 0 10px}
@@ -180,7 +183,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
   .hero-grid, .twocol{grid-template-columns:1fr}
   .grid-3{grid-template-columns:1fr;gap:14px}
   .cards-2col{grid-template-columns:1fr}
-  .media img{width:100%;max-width:100%;transform:none} /* no mobile, ocupa 100% */
+  .media img{width:100%;max-width:100%;transform:none}
   .sticky-cta{display:flex; font-size:13px; padding:8px 10px;}
   .sticky-cta a{padding:6px 10px; font-weight:800;}
 }
@@ -340,7 +343,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
     <div class="container">
       <div class="twocol">
         <div class="card">
-          <h2 style="margin-top:0">Integrações que colocam você no ar</h2>
+          <h2 class="tight" style="margin-top:0">Integrações que colocam você no ar</h2>
           <ul style="margin:0 0 10px 18px">
             <li><strong>OBS Studio & vMix</strong>: leve GC e cenas a partir do espelho, sem retrabalho.</li>
             <li><strong>Exportação em 1 clique</strong>: JSON, CSV e PDF para o seu pipeline de gráficos e automações.</li>
@@ -352,7 +355,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           </div>
         </div>
         <div class="card">
-          <h2 style="margin-top:0">Multi-dispositivo. Licenciamento que cabe na operação.</h2>
+          <h2 class="tight" style="margin-top:0">Multi-dispositivo. Licenciamento que cabe na operação.</h2>
           <ul style="margin:0 0 10px 18px">
             <li><strong>Onde a notícia estiver</strong>: desktop no estúdio, tablet na edição, celular em externa.</li>
             <li><strong>Implantação simples</strong>: comece leve e escale conforme a equipe cresce.</li>
@@ -391,7 +394,7 @@ body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-u
           <p style="color:#64748b;font-size:14px;margin-top:8px">Respondemos em até 1 dia útil.</p>
         </div>
         <div class="card" id="aviso">
-          <h2 style="margin-top:0">Seja avisado no lançamento</h2>
+          <h2 class="tight" style="margin-top:0">Seja avisado no lançamento</h2>
           <form id="notify" aria-label="Formulário de aviso de lançamento" style="display:flex;gap:10px;flex-wrap:wrap">
             <input type="email" id="email" name="email" required autocomplete="email" placeholder="seu@email.com"
                    aria-label="Seu e-mail"
