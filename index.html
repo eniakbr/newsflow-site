@@ -1,529 +1,1873 @@
+Abaixo está um **HTML completo**, em arquivo único, pronto para salvar como `index.html` e abrir no navegador.
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NewsFlow — Redação, Espelhos e TP integrados para Telejornais (OBS/vMix)</title>
-<meta name="description" content="O NewsFlow integra redação, laudas, espelhos e teleprompter com exportação para OBS Studio e vMix. Ideal para pequenas TVs e webTVs: rápido, confiável e acessível." />
-<link rel="canonical" href="https://www.seudominio.com/" />
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Open Graph -->
-<meta property="og:site_name" content="NewsFlow" />
-<meta property="og:title" content="NewsFlow — Redação, Espelhos e TP integrados para Telejornais" />
-<meta property="og:description" content="Laudas, espelhos e TP com integrações OBS/vMix. Simples para colocar seu jornal no ar com baixo custo." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.seudominio.com/" />
-<meta property="og:image" content="https://www.seudominio.com/og-cover.jpg" />
-<meta property="og:image:alt" content="Interface do NewsFlow mostrando espelho do telejornal" />
+  <title>NewsFlow | Sistema de Redação, Espelho e Teleprompter para Emissoras</title>
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="NewsFlow — Redação, Espelhos e TP integrados para Telejornais" />
-<meta name="twitter:description" content="Laudas, espelhos e TP com integrações OBS/vMix. Simples para colocar seu jornal no ar com baixo custo." />
-<meta name="twitter:image" content="https://www.seudominio.com/og-cover.jpg" />
+  <meta
+    name="description"
+    content="NewsFlow é um sistema web para organizar pautas, reportagens, edição, espelho, teleprompter, gaveta e programação em emissoras de TV, rádio e produção jornalística local."
+  />
 
-<link rel="icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#1e3a8a" />
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;700;900&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
-<style>
-:root{
-  --blue:#2563eb; --blue-dark:#1e3a8a; --ink:#0f172a; --text:#1f2937;
-  --muted:#475569; --bg:#f8fafc; --border:#e5e7eb; --shadow:0 12px 30px rgba(2,6,23,.08);
-  --radius:18px; --w:1180px;
-  --cta:#3b82f6; --cta-ink:#ffffff;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#fff;color:var(--text);font-family:"Open Sans",system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.65}
+  <style>
+    :root {
+      --azul: #1e3a8a;
+      --azul-escuro: #10245f;
+      --azul-claro: #eff6ff;
+      --azul-medio: #2563eb;
+      --verde: #16a34a;
+      --amarelo: #f59e0b;
+      --vermelho: #dc2626;
+      --texto: #0f172a;
+      --muted: #64748b;
+      --borda: #e2e8f0;
+      --fundo: #f8fafc;
+      --branco: #ffffff;
+      --sombra: 0 20px 50px rgba(15, 23, 42, 0.10);
+      --sombra-suave: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }
 
-/* Header / Nav — sticky depois da rolagem */
-.header{
-  position:fixed; top:0; left:0; right:0; z-index:50;
-  background:rgba(17,42,115,.92); backdrop-filter:saturate(1.2) blur(6px); color:#fff;
-  transform:translateY(-100%); opacity:0; pointer-events:none;
-  transition:transform .35s ease, opacity .35s ease;
-  box-shadow:0 2px 10px rgba(0,0,0,.06);
-}
-.header.show{ transform:translateY(0); opacity:1; pointer-events:auto; }
-.nav{max-width:var(--w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
-.brand{font-family:"Montserrat",sans-serif;font-weight:700;font-size:22px;letter-spacing:.3px}
-.nav a{color:#e6efff;text-decoration:none;margin:0 12px;font-size:14px}
-.nav .cta{background:var(--cta);color:var(--cta-ink);padding:10px 14px;border-radius:12px;font-weight:800;}
+    * {
+      box-sizing: border-box;
+    }
 
-/* Hero */
-.hero{background:linear-gradient(180deg,#18328a 0%, #1e3a8a 40%, #224196 100%);color:#fff}
-.container{max-width:var(--w);margin:0 auto;padding:0 20px}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:56px 0}
-.span-2{grid-column:1 / -1}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.brand-hero{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(58px,7.5vw,106px);margin:0 0 4px;text-align:center;letter-spacing:.2px}
-.slogan{font-family:"Roboto",sans-serif;font-weight:700;font-size:clamp(18px,2.6vw,24px);line-height:1.15;margin:0 auto 8px;text-align:center;max-width:28ch;text-wrap:balance;opacity:.98}
-.hero-copy{grid-column:1 / -1;justify-self:center;text-align:center;max-width:min(70ch,100%);margin-inline:auto}
-.hero-copy small{display:inline-block;background:#eaf2ff;color:#18328a;padding:10px 14px;border-radius:999px;font-weight:800;letter-spacing:.6px;font-size:clamp(14px,1.8vw,18px);text-transform:uppercase;line-height:1;margin-block:20px}
-.hero p{color:#e6edff;max-width:70ch;margin:0 auto;text-align:center}
+    body {
+      margin: 0;
+      font-family: "Montserrat", Arial, sans-serif;
+      color: var(--texto);
+      background: var(--fundo);
+      line-height: 1.5;
+    }
 
-/* VALUE PROP — full-bleed azul */
-.value-prop{
-  position:relative;
-  background:linear-gradient(180deg,#18328a 0%, #1e3a8a 50%, #224196 100%);
-  border-top:1px solid #1e3a8a;
-  border-bottom:1px solid #1e3a8a;
-  padding:64px 0;
-  margin:40px 0 44px;
-  color:#fff;
-}
-.value-prop.full-bleed{
-  margin-left:calc(50% - 50vw);
-  margin-right:calc(50% - 50vw);
-}
-.value-prop h2{
-  margin:0;
-  text-align:center;
-  font-family:"Roboto",sans-serif;
-  font-weight:900;
-  font-size:clamp(20px,2.8vw,32px);
-  letter-spacing:-.015em;
-  line-height:1.25;
-  color:#fff;
-}
-.value-prop h2 strong{ color:#dbeafe; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* Carousel */
-.carousel{position:relative;overflow:hidden;border-radius:22px;background:#0b1e4d;border:1px solid rgba(255,255,255,.15);box-shadow:var(--shadow)}
-.track{display:flex;transition:transform .6s ease}
-.slide{min-width:100%}
-.controls{position:absolute;inset:auto 12px 12px 12px;display:flex;justify-content:space-between;pointer-events:none}
-.controls button{pointer-events:auto;border:0;border-radius:999px;width:42px;height:42px;background:#ffffff22;color:#fff;font-size:18px;backdrop-filter:blur(6px);cursor:pointer}
-.dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
-.dot{width:8px;height:8px;border-radius:50%;background:#8aa3ff88}
-.dot.active{background:#fff}
-.carousel .slide img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-/* Sections */
-.section{padding:64px 0}
-.twocol{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
-.section h2{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(28px,4vw,40px);margin:0 0 8px}
-#recursos h2{ line-height:1.2 }
-.section p.lead{color:#374151;max-width:60ch}
-.badge{display:inline-flex;gap:8px;align-items:center;background:#eef2ff;border:1px solid #dbeafe;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
-.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 18px 14px;box-shadow:var(--shadow)}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
 
-/* Imagem “espelho” maior (aumentado) */
-.media{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
-.media img{
-  display:block;
-  width:130%;
-  max-width:none;
-  height:auto;
-  transform:translateX(-15%);
-}
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    }
 
-/* Título dos cards */
-.features-title{
-  font-family:"Roboto",sans-serif;
-  font-weight:900;
-  font-size:clamp(22px,3vw,30px);
-  text-align:center;
-  margin:10px auto 18px;
-  color:#0f172a;
-  text-wrap:balance;
-}
+    .topbar-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-/* Cards (6 itens) */
-.cards-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.minicard{position:relative;background:linear-gradient(180deg,var(--tone-bg1),var(--tone-bg2));border:1px solid var(--tone-border);border-radius:16px;padding:16px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:64px 1fr;column-gap:14px;align-items:start}
-.minicard::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--tone) 0%,transparent 40%);opacity:.08;pointer-events:none}
-.head{display:contents}
-.ico{grid-column:1; grid-row:1 / span 2; width:64px;height:64px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in oklab, var(--tone) 18%, white)}
-.ico svg{width:30px;height:30px;color:var(--tone)}
-.minicard .title{grid-column:2;grid-row:1;font-family:"Roboto",sans-serif;font-weight:900;margin:0;color:#0f172a;line-height:1.2}
-.minicard .desc{grid-column:2;grid-row:2;margin:4px 0 0;color:#1f2937}
-.tone1{--tone:#2563eb; --tone-bg1:#eef4ff; --tone-bg2:#e3edff; --tone-border:#d7e6ff}
-.tone2{--tone:#1e3a8a; --tone-bg1:#e7ebff; --tone-bg2:#dee5ff; --tone-border:#cfd9ff}
-.tone3{--tone:#3b82f6; --tone-bg1:#e9f1ff; --tone-bg2:#e1ecff; --tone-border:#d4e0ff}
-.tone4{--tone:#60a5fa; --tone-bg1:#edf6ff; --tone-bg2:#e6f2ff; --tone-border:#d7eaff}
-.tone5{--tone:#1d4ed8; --tone-bg1:#e7efff; --tone-bg2:#dfe8ff; --tone-border:#cbd9ff}
-.tone6{--tone:#2a5bd7; --tone-bg1:#eaf1ff; --tone-bg2:#e3ecff; --tone-border:#d4e1ff}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--azul);
+      font-size: 1.35rem;
+    }
 
-/* Títulos compactos (pedido) */
-.tight{ line-height:1.12; letter-spacing:-0.01em; }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--azul), var(--azul-medio));
+      box-shadow: 0 12px 24px rgba(30, 58, 138, 0.25);
+      letter-spacing: -0.05em;
+    }
 
-/* CTA band */
-.band{background:#f1f5ff;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:70px 0;text-align:center}
-.band h3{font-family:"Roboto",sans-serif;font-weight:900;font-size:clamp(28px,3.6vw,42px);margin:0 0 10px}
-.band p{color:#475569;margin:8px auto 0;max-width:70ch}
-.band .quip{font-size:clamp(18px,2.2vw,22px)}
-.band .quip-iron{font-size:clamp(20px,2.6vw,26px);font-weight:800;color:#0f172a;margin-top:10px}
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #334155;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
 
-/* Footer */
-.footer{background:#eef2ff;border-top:1px solid #e5e7eb}
-.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:18px;padding:32px 0;color:#334155}
-.footer h4{font-family:"Roboto";margin:0 0 8px}
-.footer a{color:#334155;text-decoration:none;font-size:14px}
-.copy{border-top:1px solid #e5e7eb;padding:16px 0;color:#64748b;font-size:13px;text-align:center}
+    .nav a {
+      transition: color .2s ease;
+    }
 
-/* Botões */
-.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:13px;padding:12px 18px;font-weight:800;cursor:pointer;text-decoration:none}
-.btn-primary{background:var(--cta);color:var(--cta-ink);box-shadow:0 10px 24px rgba(59,130,246,.25)}
-.btn-primary:hover{filter:brightness(1.05)}
+    .nav a:hover {
+      color: var(--azul);
+    }
 
-/* Sticky CTA (mobile) */
-.sticky-cta{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:#0b1220;color:#fff;padding:10px 12px;border:1px solid #1f2937;border-radius:999px;box-shadow:0 10px 26px rgba(0,0,0,.25);display:none;gap:8px;z-index:60}
-.sticky-cta a{background:var(--cta);color:var(--cta-ink);padding:8px 12px;border-radius:999px;font-weight:900}
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-/* Responsivo */
-@media (max-width:980px){
-  .hero-grid, .twocol{grid-template-columns:1fr}
-  .grid-3{grid-template-columns:1fr;gap:14px}
-  .cards-2col{grid-template-columns:1fr}
-  .media img{width:100%;max-width:100%;transform:none}
-  .sticky-cta{display:flex; font-size:13px; padding:8px 10px;}
-  .sticky-cta a{padding:6px 10px; font-weight:800;}
-}
-</style>
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: var(--azul);
+      box-shadow: 0 14px 30px rgba(30, 58, 138, 0.26);
+    }
+
+    .btn-primary:hover {
+      background: var(--azul-escuro);
+      box-shadow: 0 18px 38px rgba(30, 58, 138, 0.32);
+    }
+
+    .btn-secondary {
+      color: var(--azul);
+      background: #fff;
+      border-color: #c7d2fe;
+    }
+
+    .btn-secondary:hover {
+      background: #eef2ff;
+      border-color: #a5b4fc;
+    }
+
+    .btn-dark {
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .mobile-menu {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--borda);
+      background: #fff;
+      color: var(--azul);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.16), transparent 32%),
+        radial-gradient(circle at 92% 10%, rgba(30, 58, 138, 0.18), transparent 34%),
+        linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+      padding: 82px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: var(--azul);
+      font-weight: 900;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.35rem, 5vw, 5rem);
+      line-height: .98;
+      letter-spacing: -0.075em;
+      color: #0f172a;
+    }
+
+    .hero h1 span {
+      color: var(--azul);
+    }
+
+    .hero-text {
+      margin: 22px 0 0;
+      font-size: clamp(1rem, 1.6vw, 1.22rem);
+      color: #475569;
+      max-width: 660px;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .hero-proof {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .proof-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 999px;
+      color: #334155;
+      font-weight: 700;
+      font-size: .84rem;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .04);
+    }
+
+    .hero-panel {
+      position: relative;
+      min-height: 520px;
+    }
+
+    .mockup {
+      background: #fff;
+      border: 1px solid #dbeafe;
+      border-radius: 28px;
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      transform: rotate(1.2deg);
+    }
+
+    .mockup-top {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+
+    .dot.red { background: #fb7185; }
+    .dot.yellow { background: #fbbf24; }
+    .dot.green { background: #34d399; }
+
+    .mockup-body {
+      padding: 18px;
+      background: linear-gradient(180deg, #fff, #f8fafc);
+    }
+
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: var(--azul);
+      color: #fff;
+      border-radius: 18px;
+      margin-bottom: 14px;
+    }
+
+    .app-header strong {
+      font-size: 1.02rem;
+    }
+
+    .app-status {
+      padding: 7px 10px;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 800;
+    }
+
+    .timers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .timer {
+      padding: 14px;
+      border-radius: 16px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+    }
+
+    .timer small {
+      display: block;
+      color: #475569;
+      font-weight: 800;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 3px;
+    }
+
+    .timer b {
+      display: block;
+      color: var(--azul);
+      font-size: 1.25rem;
+      letter-spacing: -0.05em;
+    }
+
+    .rundown {
+      display: grid;
+      gap: 9px;
+    }
+
+    .rundown-row {
+      display: grid;
+      grid-template-columns: 54px 1fr 72px;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .tag {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 30px;
+      border-radius: 9px;
+      background: #dbeafe;
+      color: var(--azul);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .row-title {
+      min-width: 0;
+    }
+
+    .row-title strong {
+      display: block;
+      font-size: .88rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .row-title small {
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .time {
+      text-align: right;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    .float-card {
+      position: absolute;
+      right: -10px;
+      bottom: 34px;
+      width: 250px;
+      padding: 18px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid #bfdbfe;
+      box-shadow: 0 18px 42px rgba(30, 58, 138, .18);
+    }
+
+    .float-card strong {
+      display: block;
+      color: var(--azul);
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+    }
+
+    .float-card p {
+      margin: 0;
+      color: #475569;
+      font-weight: 600;
+      font-size: .88rem;
+    }
+
+    .section {
+      padding: 78px 0;
+    }
+
+    .section.white {
+      background: #fff;
+    }
+
+    .section-head {
+      max-width: 820px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      color: var(--azul);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-size: .78rem;
+      margin-bottom: 8px;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: clamp(2rem, 3.6vw, 3.35rem);
+      line-height: 1.05;
+      letter-spacing: -0.065em;
+      color: #0f172a;
+    }
+
+    .section-desc {
+      margin: 16px auto 0;
+      color: #475569;
+      font-size: 1.06rem;
+      font-weight: 500;
+      max-width: 760px;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .problem-card {
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(15,23,42,.04);
+    }
+
+    .problem-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #fee2e2;
+      color: var(--vermelho);
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+    }
+
+    .problem-card strong {
+      display: block;
+      font-size: .98rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .problem-card p {
+      margin: 0;
+      color: #64748b;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+
+    .flow-box {
+      background: var(--azul);
+      color: #fff;
+      border-radius: 30px;
+      padding: 26px;
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .flow-box::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 300px;
+      height: 300px;
+      background: rgba(255,255,255,.09);
+      border-radius: 50%;
+    }
+
+    .flow {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 10px;
+    }
+
+    .flow-step {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 18px;
+      padding: 16px 12px;
+      text-align: center;
+      min-height: 106px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .flow-step b {
+      font-size: .9rem;
+    }
+
+    .flow-step span {
+      color: #bfdbfe;
+      font-size: 1.3rem;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .module-card {
+      padding: 22px;
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 22px;
+      box-shadow: 0 12px 30px rgba(15,23,42,.05);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .module-card:hover {
+      transform: translateY(-3px);
+      border-color: #bfdbfe;
+      box-shadow: var(--sombra-suave);
+    }
+
+    .module-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: var(--azul-claro);
+      color: var(--azul);
+      font-size: 1.35rem;
+      margin-bottom: 14px;
+    }
+
+    .module-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      letter-spacing: -0.035em;
+    }
+
+    .module-card p {
+      margin: 0;
+      color: #64748b;
+      font-size: .92rem;
+      font-weight: 500;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .compare-card {
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid var(--borda);
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(15,23,42,.05);
+    }
+
+    .compare-card.bad {
+      border-color: #fecaca;
+      background: #fff7f7;
+    }
+
+    .compare-card.good {
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+    }
+
+    .compare-card h3 {
+      margin: 0 0 16px;
+      font-size: 1.22rem;
+      letter-spacing: -0.04em;
+    }
+
+    .compare-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .compare-list li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      color: #334155;
+      font-weight: 600;
+      font-size: .94rem;
+    }
+
+    .compare-list span {
+      flex: 0 0 auto;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-size: .78rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .bad .compare-list span {
+      background: var(--vermelho);
+    }
+
+    .good .compare-list span {
+      background: var(--verde);
+    }
+
+    .demo-card {
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, .18), transparent 35%),
+        #0f172a;
+      color: #fff;
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: var(--sombra);
+    }
+
+    .demo-card h2 {
+      color: #fff;
+      font-size: clamp(1.9rem, 3.2vw, 3rem);
+    }
+
+    .demo-card p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .feature-item b {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .feature-item small {
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(15,23,42,.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-card.highlight {
+      border-color: #93c5fd;
+      box-shadow: 0 24px 56px rgba(30, 58, 138, .16);
+      transform: translateY(-8px);
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: var(--azul);
+      font-size: .72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .price-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+    }
+
+    .price-card p {
+      margin: 0 0 22px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .price {
+      margin: 0 0 18px;
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      color: var(--azul);
+    }
+
+    .price small {
+      font-size: .9rem;
+      color: #64748b;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .price-list {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .price-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: #334155;
+      font-weight: 600;
+      font-size: .93rem;
+    }
+
+    .price-list li::before {
+      content: "✓";
+      color: var(--verde);
+      font-weight: 900;
+    }
+
+    .price-card .btn {
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .lead-box {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 28px;
+      padding: 34px;
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 32px;
+      box-shadow: var(--sombra-suave);
+      align-items: center;
+    }
+
+    .lead-download {
+      padding: 28px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #dbeafe, #eef2ff);
+      border: 1px solid #bfdbfe;
+    }
+
+    .lead-download h3 {
+      margin: 0 0 10px;
+      font-size: 1.6rem;
+      letter-spacing: -0.055em;
+    }
+
+    .lead-download p {
+      margin: 0;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: .8rem;
+      font-weight: 900;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 0 14px;
+      outline: none;
+      font: inherit;
+      color: var(--texto);
+      background: #fff;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .field textarea {
+      min-height: 96px;
+      padding-top: 12px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--azul-medio);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, .10);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .faq {
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(15,23,42,.04);
+    }
+
+    .faq h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      letter-spacing: -0.035em;
+    }
+
+    .faq p {
+      margin: 0;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .final-cta {
+      text-align: center;
+      padding: 72px 24px;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.15), transparent 35%),
+        linear-gradient(135deg, var(--azul), #0f172a);
+      color: #fff;
+      box-shadow: var(--sombra);
+    }
+
+    .final-cta h2 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      letter-spacing: -0.07em;
+      line-height: 1.03;
+    }
+
+    .final-cta p {
+      max-width: 760px;
+      margin: 16px auto 28px;
+      color: #dbeafe;
+      font-size: 1.08rem;
+      font-weight: 500;
+    }
+
+    .final-cta .btn-secondary {
+      color: var(--azul);
+      border-color: rgba(255,255,255,.6);
+    }
+
+    .footer {
+      padding: 40px 0;
+      background: #0f172a;
+      color: #cbd5e1;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .footer h4 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: .94rem;
+    }
+
+    .footer p,
+    .footer a {
+      color: #94a3b8;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+
+    .footer a {
+      display: block;
+      margin: 8px 0;
+    }
+
+    .footer-bottom {
+      margin-top: 30px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: #94a3b8;
+      font-size: .86rem;
+      font-weight: 500;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(20px);
+      z-index: 200;
+      min-width: min(520px, calc(100% - 32px));
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: #0f172a;
+      color: #fff;
+      box-shadow: var(--sombra);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .split,
+      .lead-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        min-height: auto;
+      }
+
+      .float-card {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 16px;
+      }
+
+      .problem-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .module-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .flow {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav,
+      .top-actions {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: grid;
+        place-items: center;
+      }
+
+      .topbar.open .nav {
+        display: grid;
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 76px;
+        padding: 18px;
+        background: #fff;
+        border: 1px solid var(--borda);
+        border-radius: 18px;
+        box-shadow: var(--sombra-suave);
+      }
+
+      .topbar.open .top-actions {
+        display: grid;
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 338px;
+        padding: 18px;
+        background: #fff;
+        border: 1px solid var(--borda);
+        border-radius: 18px;
+        box-shadow: var(--sombra-suave);
+      }
+
+      .pricing-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card.highlight {
+        transform: none;
+      }
+
+      .compare {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .hero-actions,
+      .final-cta .hero-actions {
+        display: grid;
+      }
+
+      .hero-actions .btn,
+      .final-cta .btn {
+        width: 100%;
+      }
+
+      .problem-grid,
+      .module-grid,
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .timers {
+        grid-template-columns: 1fr;
+      }
+
+      .rundown-row {
+        grid-template-columns: 46px 1fr;
+      }
+
+      .rundown-row .time {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .lead-box,
+      .demo-card {
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      .final-cta {
+        padding: 48px 18px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <header class="topbar" id="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#inicio" aria-label="NewsFlow">
+        <span class="brand-mark">NF</span>
+        <span>NewsFlow</span>
+      </a>
 
-<!-- HEADER -->
-<header class="header" id="topbar" role="navigation" aria-label="Barra superior">
-  <nav class="nav">
-    <a class="brand" href="/" aria-label="Página inicial NewsFlow">NewsFlow</a>
-    <div>
-      <a href="#recursos">Recursos</a>
-      <a href="#integracoes">Integrações</a>
-      <a href="#planos">Planos</a>
-      <a href="#faq">FAQ</a>
-      <a class="cta btn" href="#contato" aria-label="Solicitar demonstração">Solicitar demo</a>
+      <nav class="nav" aria-label="Menu principal">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#planos">Planos</a>
+        <a href="#faq">Dúvidas</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="top-actions">
+        <a class="btn btn-secondary" href="#lead">Baixar checklist</a>
+        <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
+      </div>
+
+      <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">☰</button>
     </div>
-  </nav>
-</header>
+  </header>
 
-<!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <h1 class="brand-hero">NewsFlow</h1>
-      <p class="slogan">Seu telejornal no flow com baixo custo</p>
-      <small aria-label="Lançamento em breve">lançamento em breve</small>
-      <!-- Parceiros removidos conforme pedido -->
-    </div>
-  </div>
-</section>
-
-<main id="conteudo-principal">
-  <!-- RECURSOS -->
-  <section class="section" id="recursos">
-    <div class="container">
-      <div class="twocol">
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
         <div>
-          <span class="badge">feito para redações ágeis</span>
-          <h2>Colaboração em tempo real, impressão em PDF e integrações para ir ao ar sem estresse.</h2>
-          <p class="lead">Fluxo completo do telejornal: <strong>laudas</strong>, <strong>espelhos</strong> e <strong>blocos</strong>; <strong>teleprompter integrado</strong>; visão do <strong>ao vivo</strong> para redação e estúdio. Exportação de dados para automações e gráficos.</p>
-          <ul aria-label="Benefícios principais" style="margin:12px 0 0 18px;color:#334155">
-            <li>Organize blocos, metas de tempo e status das matérias;</li>
-            <li>Gere PDF do espelho e compartilhe com a equipe;</li>
-            <li>Sincronia entre produção, edição e apresentação.</li>
-          </ul>
-        </div>
-        <figure class="media" id="espelho-fig">
-          <img src="espelho.png" alt="Espelho do telejornal no NewsFlow" width="1280" height="720" loading="lazy" decoding="async">
-        </figure>
-      </div>
+          <div class="eyebrow">Sistema para redações, TV e rádio</div>
 
-      <!-- VALUE-PROP FULL-BLEED AZUL (acima dos cards) -->
-      <div class="value-prop full-bleed" aria-label="Proposta de valor">
-        <div class="container">
-          <h2>
-            <strong>Redação, espelhos e teleprompter integrados</strong> para colocar seu telejornal no ar com
-            <strong>previsibilidade</strong> — simples, rápido e acessível, com exportação para <strong>OBS Studio</strong> e <strong>vMix</strong>.
-          </h2>
-        </div>
-      </div>
+          <h1>
+            Coloque seu jornal no ar com <span>menos improviso</span>.
+          </h1>
 
-      <!-- TÍTULO CRIATIVO DOS CARDS -->
-      <h3 class="features-title">Pronto para ver na prática?</h3>
+          <p class="hero-text">
+            O NewsFlow centraliza pauta, reportagem, edição, espelho, direção,
+            teleprompter, gaveta e programação em um único sistema web feito
+            para a rotina de emissoras locais.
+          </p>
 
-      <!-- 6 CARDS -->
-      <div class="section" style="padding-top:18px;padding-bottom:0">
-        <div class="cards-2col">
-          <article class="minicard tone1">
-            <div class="head">
-              <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="2"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="2"/></svg>
-              </span>
-              <h3 class="title">Fluxo de Telejornal</h3>
-            </div>
-            <p class="desc">Laudas, espelhos e blocos com tempos, status e PDF.</p>
-          </article>
-
-          <article class="minicard tone4">
-            <div class="head">
-              <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="currentColor"/></svg>
-              </span>
-              <h3 class="title">Ganhe velocidade</h3>
-            </div>
-            <p class="desc">Centralize módulos e reduza retrabalhos.</p>
-          </article>
-
-          <article class="minicard tone2">
-            <div class="head">
-              <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="8" y="18" width="8" height="2" rx="1" fill="currentColor"/></svg>
-              </span>
-              <h3 class="title">Teleprompter integrado</h3>
-            </div>
-            <p class="desc">Controle por teclado, timers e conforto visual.</p>
-          </article>
-
-          <article class="minicard tone5">
-            <div class="head">
-              <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 4v4M12 16v4M4 12h4M16 12h4" stroke="currentColor" stroke-width="2"/></svg>
-              </span>
-              <h3 class="title">Segurança no ar</h3>
-            </div>
-            <p class="desc">Menos improviso e mais previsibilidade no estúdio.</p>
-          </article>
-
-          <article class="minicard tone3">
-            <div class="head">
-              <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M4 18a8 8 0 0 1 0-12M8 16a5 5 0 0 1 0-8M16 8a5 5 0 0 1 0 8M20 6a8 8 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              </span>
-              <h3 class="title">Ao vivo</h3>
-            </div>
-            <p class="desc">Contagem de VTs e sincronia entre as equipes.</p>
-          </article>
-
-          <article class="minicard tone6">
-            <div class="head">
-              <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-4 6-4 9 0s6 4 9 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              </span>
-              <h3 class="title">Menos stress</h3>
-            </div>
-            <p class="desc">Produção, reportagem e edição no flow que leva o jornal ao ar.</p>
-          </article>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CARROSSEL -->
-  <section class="section" aria-label="Demonstrações do produto" style="padding-top:28px; padding-bottom:0;">
-    <div class="container">
-      <div class="twocol">
-        <figure class="span-2 carousel" aria-roledescription="carousel">
-          <div class="track" id="track" aria-live="polite">
-            <div class="slide"><img src="home.png" alt="Tela inicial do NewsFlow" width="1280" height="720" loading="lazy" decoding="async"></div>
-            <div class="slide"><img src="menu%20reportagens.png" alt="Menu de módulos do NewsFlow" width="1280" height="720" loading="lazy" decoding="async"></div>
-            <div class="slide"><img src="pautas%20cadastradas.png" alt="Tela de pautas cadastradas" width="1280" height="720" loading="lazy" decoding="async"></div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
+            <a class="btn btn-secondary" href="#como-funciona">Ver como funciona</a>
           </div>
-          <div class="controls">
-            <button id="prev" aria-label="Anterior">‹</button>
-            <button id="next" aria-label="Próximo">›</button>
-          </div>
-          <div class="dots" id="dots" aria-hidden="true"></div>
-        </figure>
-      </div>
-    </div>
-  </section>
 
-  <!-- INTEGRAÇÕES -->
-  <section class="section" id="integracoes">
-    <div class="container">
-      <div class="twocol">
-        <div class="card">
-          <h2 class="tight" style="margin-top:0">Integrações que colocam você no ar</h2>
-          <ul style="margin:0 0 10px 18px">
-            <li><strong>OBS Studio & vMix</strong>: leve GC e cenas a partir do espelho, sem retrabalho.</li>
-            <li><strong>Exportação em 1 clique</strong>: JSON, CSV e PDF para o seu pipeline de gráficos e automações.</li>
-            <li><strong>Fluxo contínuo</strong>: redação entrega, estúdio dispara — tudo no mesmo compasso.</li>
-          </ul>
-          <p style="margin:8px 0 0;color:#374151">Do roteiro ao ar com menos atrito: ganhe ritmo e previsibilidade na bancada.</p>
-          <div style="margin-top:12px">
-            <a class="btn btn-primary" href="#contato">Quero integrar agora</a>
+          <div class="hero-proof">
+            <span class="proof-pill">⚡ Fluxo em tempo real</span>
+            <span class="proof-pill">🎙️ Pensado para telejornal</span>
+            <span class="proof-pill">💻 Instalação local ou em nuvem</span>
           </div>
         </div>
-        <div class="card">
-          <h2 class="tight" style="margin-top:0">Multi-dispositivo que cabe na operação.</h2>
-          <ul style="margin:0 0 10px 18px">
-            <li><strong>Onde a notícia estiver</strong>: desktop no estúdio, tablet na edição, celular em externa.</li>
-            <li><strong>Implantação simples</strong>: comece leve e escale conforme a equipe cresce.</li>
-            <li><strong>Preço que faz sentido</strong>: invista no essencial e pague só pelo que usar.</li>
-          </ul>
-          <p style="margin:8px 0 0;color:#374151">Sem amarras e sem susto no orçamento — pensado para TVs ágeis e projetos independentes.</p>
-          <div style="margin-top:12px">
-            <a class="btn btn-primary" href="#planos">Ver opções de licenciamento</a>
+
+        <div class="hero-panel" aria-label="Prévia visual do NewsFlow">
+          <div class="mockup">
+            <div class="mockup-top">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+
+            <div class="mockup-body">
+              <div class="app-header">
+                <strong>Espelho do Jornal</strong>
+                <span class="app-status">AO VIVO</span>
+              </div>
+
+              <div class="timers">
+                <div class="timer">
+                  <small>Previsto</small>
+                  <b>00:42:00</b>
+                </div>
+                <div class="timer">
+                  <small>Cronometrado</small>
+                  <b>00:39:18</b>
+                </div>
+                <div class="timer">
+                  <small>Diferença</small>
+                  <b>-02:42</b>
+                </div>
+              </div>
+
+              <div class="rundown">
+                <div class="rundown-row">
+                  <span class="tag">VT</span>
+                  <div class="row-title">
+                    <strong>ABERTURA / MANCHETES DO DIA</strong>
+                    <small>Bloco 1 · Jornalismo Diário</small>
+                  </div>
+                  <div class="time">01:20</div>
+                </div>
+
+                <div class="rundown-row">
+                  <span class="tag">LINK</span>
+                  <div class="row-title">
+                    <strong>ENTRADA AO VIVO DA REPORTAGEM</strong>
+                    <small>Repórter · Centro</small>
+                  </div>
+                  <div class="time">03:40</div>
+                </div>
+
+                <div class="rundown-row">
+                  <span class="tag">NOTA</span>
+                  <div class="row-title">
+                    <strong>GIRO DE SERVIÇOS E PREVISÃO</strong>
+                    <small>Apresentador · Estúdio</small>
+                  </div>
+                  <div class="time">00:55</div>
+                </div>
+
+                <div class="rundown-row">
+                  <span class="tag">BREAK</span>
+                  <div class="row-title">
+                    <strong>INTERVALO ENTRE BLOCOS</strong>
+                    <small>Controle automático de tempo</small>
+                  </div>
+                  <div class="time">02:30</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="float-card">
+            <strong>Menos planilha. Mais controle.</strong>
+            <p>
+              Todos acompanham a mesma informação, atualizada em tempo real,
+              do produtor ao diretor.
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="band" id="planos" aria-label="Chamada para ação">
-    <div class="container">
-      <h3>Acelere sua redação e vá ao ar com previsibilidade</h3>
-      <p class="quip-iron">Chega de soluções caras e confusas. Com o NewsFlow, as notícias <em>fluem</em> — sem drama.</p>
-      <div style="margin-top:18px">
-        <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTATO -->
-  <section class="section" id="contato">
-    <div class="container">
-      <div class="twocol">
-        <div class="card">
-          <h2 style="margin-top:0">Fale com a gente</h2>
-          <p>Tire dúvidas, peça uma demonstração ou solicite condições de lançamento.</p>
-          <div style="margin-top:10px">
-            <a class="btn btn-primary" href="#contato" id="btn-contato">Quero ser contatado</a>
-          </div>
-          <p style="color:#64748b;font-size:14px;margin-top:8px">Respondemos em até 1 dia útil.</p>
+    <section class="section" id="problema">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">O problema</div>
+          <h2>Sua redação ainda depende de planilhas, grupos e memória?</h2>
+          <p class="section-desc">
+            Em emissoras pequenas, a operação costuma funcionar no improviso.
+            O resultado é retrabalho, atraso, ruído entre equipes e risco no fechamento.
+          </p>
         </div>
-        <div class="card" id="aviso">
-          <h2 class="tight" style="margin-top:0">Seja avisado no lançamento</h2>
-          <form id="notify" aria-label="Formulário de aviso de lançamento" style="display:flex;gap:10px;flex-wrap:wrap">
-            <input type="email" id="email" name="email" required autocomplete="email" placeholder="seu@email.com"
-                   aria-label="Seu e-mail"
-                   style="flex:1;min-width:220px;padding:12px 14px;border-radius:12px;border:1px solid var(--border)">
-            <button class="btn btn-primary" type="submit">Quero ser avisado</button>
-            <span id="msg" style="color:#64748b"></span>
+
+        <div class="problem-grid">
+          <article class="problem-card">
+            <div class="problem-icon">⚠️</div>
+            <strong>Espelho desatualizado</strong>
+            <p>Uma mudança acontece e nem todo mundo fica sabendo a tempo.</p>
+          </article>
+
+          <article class="problem-card">
+            <div class="problem-icon">📲</div>
+            <strong>Informação espalhada</strong>
+            <p>Roteiros, VTs, pautas e avisos ficam perdidos entre conversas.</p>
+          </article>
+
+          <article class="problem-card">
+            <div class="problem-icon">⏱️</div>
+            <strong>Tempo conferido no manual</strong>
+            <p>O fechamento exige cálculo, conferência e ajustes de última hora.</p>
+          </article>
+
+          <article class="problem-card">
+            <div class="problem-icon">🎬</div>
+            <strong>VT pronto sem controle</strong>
+            <p>Material finalizado depende de aviso informal para chegar ao espelho.</p>
+          </article>
+
+          <article class="problem-card">
+            <div class="problem-icon">🧩</div>
+            <strong>Sistemas desconectados</strong>
+            <p>Redação, direção e teleprompter não conversam no mesmo fluxo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="como-funciona">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Como funciona</div>
+          <h2>Um fluxo único, do planejamento ao ar</h2>
+          <p class="section-desc">
+            O NewsFlow conecta as principais etapas da rotina jornalística,
+            reduzindo ruídos entre produção, reportagem, edição e operação.
+          </p>
+        </div>
+
+        <div class="flow-box">
+          <div class="flow">
+            <div class="flow-step">
+              <span>📝</span>
+              <b>Pauta</b>
+            </div>
+            <div class="flow-step">
+              <span>🎤</span>
+              <b>Reportagem</b>
+            </div>
+            <div class="flow-step">
+              <span>✂️</span>
+              <b>Edição</b>
+            </div>
+            <div class="flow-step">
+              <span>🗃️</span>
+              <b>Gaveta</b>
+            </div>
+            <div class="flow-step">
+              <span>📋</span>
+              <b>Espelho</b>
+            </div>
+            <div class="flow-step">
+              <span>🎛️</span>
+              <b>Direção</b>
+            </div>
+            <div class="flow-step">
+              <span>🖥️</span>
+              <b>Teleprompter</b>
+            </div>
+            <div class="flow-step">
+              <span>📡</span>
+              <b>No ar</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="modulos">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Módulos</div>
+          <h2>Tudo que uma redação local precisa para operar melhor</h2>
+          <p class="section-desc">
+            Da reunião de pauta ao jornal no ar, o NewsFlow reúne recursos
+            práticos para organizar equipes, materiais e tempos.
+          </p>
+        </div>
+
+        <div class="module-grid">
+          <article class="module-card">
+            <div class="module-icon">📊</div>
+            <h3>Dashboard</h3>
+            <p>Avisos, agenda, plantão, RSS, previsão do tempo e alertas operacionais.</p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-icon">🗓️</div>
+            <h3>Pautas</h3>
+            <p>Organização de assuntos, equipes, datas, prioridades e produção.</p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-icon">📰</div>
+            <h3>Reportagens</h3>
+            <p>Controle de retrancas, editorias, textos, status e responsáveis.</p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-icon">🎞️</div>
+            <h3>Edição de VT</h3>
+            <p>Acompanhe o que está em produção, editado e pronto para uso.</p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-icon">📋</div>
+            <h3>Espelho</h3>
+            <p>Monte blocos, breaks, notas, VTs, links e telas com tempos automáticos.</p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-icon">🎛️</div>
+            <h3>Direção</h3>
+            <p>Tela operacional para acompanhar jornal no ar, cronometragem e diferença.</p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-icon">🖥️</div>
+            <h3>Teleprompter</h3>
+            <p>Textos integrados às laudas, com controle de fonte, velocidade e navegação.</p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-icon">🗃️</div>
+            <h3>Gaveta</h3>
+            <p>Materiais prontos e reutilizáveis, organizados por programa e tipo editorial.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="resultado">
+      <div class="container split">
+        <div>
+          <div class="section-kicker">Antes e depois</div>
+          <h2>O ganho aparece no fechamento do jornal</h2>
+          <p class="section-desc" style="margin-left:0;">
+            O NewsFlow não substitui a inteligência da equipe. Ele tira da frente
+            o trabalho repetitivo, a conferência manual e o ruído de comunicação.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contato">Quero ver uma demonstração</a>
+          </div>
+        </div>
+
+        <div class="compare">
+          <article class="compare-card bad">
+            <h3>Antes</h3>
+            <ul class="compare-list">
+              <li><span>×</span> Espelho em planilha</li>
+              <li><span>×</span> Roteiros espalhados</li>
+              <li><span>×</span> VT pronto no boca a boca</li>
+              <li><span>×</span> Tempo conferido manualmente</li>
+              <li><span>×</span> Direção sem visão integrada</li>
+            </ul>
+          </article>
+
+          <article class="compare-card good">
+            <h3>Com NewsFlow</h3>
+            <ul class="compare-list">
+              <li><span>✓</span> Espelho em tempo real</li>
+              <li><span>✓</span> Laudas centralizadas</li>
+              <li><span>✓</span> Gaveta organizada</li>
+              <li><span>✓</span> Cálculo automático de tempos</li>
+              <li><span>✓</span> Direção, TP e redação conectados</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="demo">
+      <div class="container">
+        <div class="demo-card split">
+          <div>
+            <div class="section-kicker" style="color:#93c5fd;">Demonstração</div>
+            <h2>Veja o NewsFlow funcionando com uma rotina real de telejornal</h2>
+            <p>
+              A melhor forma de entender o NewsFlow é vendo o fluxo completo:
+              da pauta ao espelho, da edição ao teleprompter, da direção ao ar.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
+              <a class="btn btn-secondary" href="#lead">Receber checklist</a>
+            </div>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <span>✅</span>
+              <div>
+                <b>Apresentação guiada</b>
+                <small>Mostramos o sistema a partir da rotina da sua emissora.</small>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <span>✅</span>
+              <div>
+                <b>Diagnóstico rápido</b>
+                <small>Identificamos gargalos de pauta, edição, espelho e operação.</small>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <span>✅</span>
+              <div>
+                <b>Proposta sob medida</b>
+                <small>Plano compatível com estrutura, equipe e volume de produção.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="planos">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Planos</div>
+          <h2>Escolha o nível ideal para sua operação</h2>
+          <p class="section-desc">
+            Os valores abaixo são sugestivos. Você pode trocar depois conforme
+            o posicionamento comercial do NewsFlow.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Essencial</h3>
+            <p>Para emissoras que querem sair das planilhas e organizar a redação.</p>
+            <div class="price">Sob consulta</div>
+
+            <ul class="price-list">
+              <li>Dashboard da redação</li>
+              <li>Pautas e reportagens</li>
+              <li>Espelho básico</li>
+              <li>Usuários por função</li>
+              <li>Suporte inicial</li>
+            </ul>
+
+            <a class="btn btn-secondary" href="#contato">Solicitar proposta</a>
+          </article>
+
+          <article class="price-card highlight">
+            <span class="badge">Mais indicado</span>
+            <h3>Profissional</h3>
+            <p>Para operação diária com edição, gaveta, direção e teleprompter.</p>
+            <div class="price">Sob consulta</div>
+
+            <ul class="price-list">
+              <li>Tudo do plano Essencial</li>
+              <li>Edição de texto e VT</li>
+              <li>Gaveta de materiais</li>
+              <li>Visualizar espelho / direção</li>
+              <li>Teleprompter integrado</li>
+              <li>Treinamento da equipe</li>
+            </ul>
+
+            <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
+          </article>
+
+          <article class="price-card">
+            <h3>Implantação Local</h3>
+            <p>Para emissoras que preferem instalar o NewsFlow no próprio servidor.</p>
+            <div class="price">Projeto</div>
+
+            <ul class="price-list">
+              <li>Instalação no ambiente da emissora</li>
+              <li>Configuração de usuários</li>
+              <li>Ajuste de telejornais e programas</li>
+              <li>Treinamento operacional</li>
+              <li>Suporte de implantação</li>
+            </ul>
+
+            <a class="btn btn-secondary" href="#contato">Falar com comercial</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lead">
+      <div class="container">
+        <div class="lead-box">
+          <div class="lead-download">
+            <div class="section-kicker">Material gratuito</div>
+            <h3>Checklist de fechamento de telejornal</h3>
+            <p>
+              Use este material para revisar espelho, tempos, VTs, notas,
+              chamadas, teleprompter e operação antes do jornal ir ao ar.
+            </p>
+          </div>
+
+          <form class="form" id="leadForm">
+            <div class="form-row">
+              <div class="field">
+                <label for="leadNome">Nome</label>
+                <input id="leadNome" name="nome" type="text" placeholder="Seu nome" required />
+              </div>
+
+              <div class="field">
+                <label for="leadEmissora">Emissora</label>
+                <input id="leadEmissora" name="emissora" type="text" placeholder="Nome da emissora" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="leadEmail">E-mail</label>
+                <input id="leadEmail" name="email" type="email" placeholder="voce@email.com" required />
+              </div>
+
+              <div class="field">
+                <label for="leadWhats">WhatsApp</label>
+                <input id="leadWhats" name="whatsapp" type="tel" placeholder="(00) 00000-0000" required />
+              </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+              Quero receber o checklist
+            </button>
           </form>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="section" id="faq">
+    <section class="section white" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Dúvidas frequentes</div>
+          <h2>Perguntas que uma emissora costuma fazer</h2>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq">
+            <h3>O NewsFlow funciona pela internet?</h3>
+            <p>
+              Sim. O sistema pode rodar em nuvem ou em servidor local,
+              dependendo da estrutura e da política da emissora.
+            </p>
+          </article>
+
+          <article class="faq">
+            <h3>Serve para emissoras pequenas?</h3>
+            <p>
+              Sim. A proposta é justamente profissionalizar a rotina de equipes
+              locais sem exigir estrutura de grandes redes.
+            </p>
+          </article>
+
+          <article class="faq">
+            <h3>Tem teleprompter integrado?</h3>
+            <p>
+              Sim. As laudas do espelho podem alimentar o teleprompter, evitando
+              retrabalho e reduzindo erros entre roteiro e operação.
+            </p>
+          </article>
+
+          <article class="faq">
+            <h3>É possível treinar a equipe?</h3>
+            <p>
+              Sim. A implantação pode incluir treinamento para produção,
+              reportagem, edição, chefia, direção e apresentação.
+            </p>
+          </article>
+
+          <article class="faq">
+            <h3>O sistema controla tempo de jornal?</h3>
+            <p>
+              Sim. O espelho trabalha com tempos previstos, cronometrados,
+              diferença e intervalos entre blocos.
+            </p>
+          </article>
+
+          <article class="faq">
+            <h3>Posso adaptar para rádio ou programas gravados?</h3>
+            <p>
+              Sim. O NewsFlow pode ser configurado para diferentes formatos,
+              incluindo telejornais, rádio, programas e produção especial.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container">
+        <div class="final-cta">
+          <h2>Pronto para organizar a rotina da sua redação?</h2>
+          <p>
+            Agende uma demonstração e veja como o NewsFlow pode ajudar sua
+            emissora a reduzir improviso, retrabalho e falhas no fechamento.
+          </p>
+
+          <div class="hero-actions" style="justify-content:center;">
+            <a class="btn btn-secondary" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
+              Chamar no WhatsApp
+            </a>
+            <a class="btn btn-primary" href="mailto:comercial@newsflow.com.br?subject=Quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20NewsFlow">
+              Enviar e-mail
+            </a>
+          </div>
+
+          <p style="font-size:.88rem; margin-top:20px; margin-bottom:0; color:#bfdbfe;">
+            Troque o número do WhatsApp e o e-mail no código antes de publicar.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
     <div class="container">
-      <h2 style="text-align:center;margin-bottom:18px">Perguntas frequentes</h2>
-      <div class="card" itemscope itemtype="https://schema.org/FAQPage">
-        <details><summary><strong>O que é o NewsFlow?</strong></summary><p>Um sistema de redação e telejornal que organiza laudas, espelhos e TP; sincroniza redação/estúdio e integra com OBS/vMix.</p></details>
-        <details><summary><strong>Para quem é indicado?</strong></summary><p>Pequenas TVs, webTVs e projetos independentes que precisam de agilidade e baixo custo.</p></details>
-        <details><summary><strong>Precisa instalar?</strong></summary><p>Não. É web: funciona no navegador em desktop, tablet e celular.</p></details>
-        <details><summary><strong>Como integro com OBS/vMix?</strong></summary><p>Exporte GC/espelho em JSON/CSV/PDF e consuma no OBS/vMix.</p></details>
-        <details><summary><strong>Teleprompter (TP)?</strong></summary><p>Sim. TP integrado com controle por teclado, timers e conforto visual.</p></details>
-        <details><summary><strong>E o ao vivo?</strong></summary><p>Contagem de VTs, cronômetros e visão do espelho para manter o ritmo no ar.</p></details>
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#inicio" style="color:#fff; margin-bottom:12px;">
+            <span class="brand-mark">NF</span>
+            <span>NewsFlow</span>
+          </a>
+          <p>
+            Sistema web para organizar redação, espelho, edição,
+            teleprompter, gaveta e programação em emissoras locais.
+          </p>
+        </div>
+
+        <div>
+          <h4>Produto</h4>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#modulos">Módulos</a>
+          <a href="#planos">Planos</a>
+        </div>
+
+        <div>
+          <h4>Comercial</h4>
+          <a href="#contato">Demonstração</a>
+          <a href="#lead">Checklist gratuito</a>
+          <a href="mailto:comercial@newsflow.com.br">Contato</a>
+        </div>
+
+        <div>
+          <h4>Para emissoras</h4>
+          <a href="#problema">Organização da redação</a>
+          <a href="#resultado">Fechamento do jornal</a>
+          <a href="#faq">Dúvidas frequentes</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> NewsFlow. Todos os direitos reservados.</span>
+        <span>Feito para redações que precisam de controle, velocidade e segurança.</span>
       </div>
     </div>
-  </section>
-</main>
+  </footer>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container footer-grid">
-    <div>
-      <div class="brand" style="color:#1e3a8a">NewsFlow</div>
-      <p style="margin-top:6px;color:#334155">Fluxo completo: laudas, espelhos, TP e integrações para OBS/vMix.</p>
-    </div>
-    <div>
-      <h4>Produtos</h4>
-      <a href="#recursos">Recursos</a><br/>
-      <a href="#integracoes">Integrações</a><br/>
-      <a href="#planos">Planos</a>
-    </div>
-    <div>
-      <h4>Suporte</h4>
-      <a href="#contato">Contato</a><br/>
-      <a href="#faq">Perguntas Frequentes</a>
-    </div>
-    <div>
-      <h4>Legal</h4>
-      <a href="#">Privacidade</a><br/>
-      <a href="#">Termos</a>
-    </div>
+  <div class="toast" id="toast">
+    Obrigado! Em uma versão publicada, este formulário pode ser ligado ao WhatsApp, e-mail ou CRM.
   </div>
-  <div class="copy">© <span id="year"></span> NewsFlow — Todos os direitos reservados.</div>
-</footer>
 
-<!-- Sticky CTA (mobile) -->
-<div class="sticky-cta" aria-hidden="true">
-  <span>Pronto para ver na prática?</span>
-  <a href="#contato">Solicitar demo</a>
-</div>
+  <script>
+    const topbar = document.getElementById("topbar");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const year = document.getElementById("year");
+    const leadForm = document.getElementById("leadForm");
+    const toast = document.getElementById("toast");
 
-<script defer>
-/* Mostrar top bar apenas após rolar ~120px */
-(function(){
-  const hdr = document.getElementById('topbar');
-  const onScroll = () => {
-    if (window.scrollY > 120) hdr.classList.add('show');
-    else hdr.classList.remove('show');
-  };
-  onScroll();
-  window.addEventListener('scroll', onScroll, {passive:true});
-})();
+    year.textContent = new Date().getFullYear();
 
-/* Carrossel (3 imagens) */
-(function(){
-  const track = document.getElementById('track');
-  if(!track) return;
-  const slides = Array.from(track.children);
-  let index = 0;
-  const dotsWrap = document.getElementById('dots');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
+    mobileMenu.addEventListener("click", () => {
+      topbar.classList.toggle("open");
+      mobileMenu.textContent = topbar.classList.contains("open") ? "×" : "☰";
+    });
 
-  slides.forEach((_,i)=>{
-    const d = document.createElement('div');
-    d.className = 'dot' + (i===0?' active':'');
-    d.setAttribute('role','button');
-    d.setAttribute('tabindex','0');
-    d.addEventListener('click', ()=>go(i));
-    d.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') go(i); });
-    dotsWrap.appendChild(d);
-  });
+    document.querySelectorAll("a[href^='#']").forEach((link) => {
+      link.addEventListener("click", () => {
+        topbar.classList.remove("open");
+        mobileMenu.textContent = "☰";
+      });
+    });
 
-  function go(i){
-    index = (i+slides.length)%slides.length;
-    track.style.transform = `translateX(-${index*100}%)`;
-    Array.from(dotsWrap.children).forEach((el,di)=>el.classList.toggle('active', di===index));
-  }
-  prev?.addEventListener('click', ()=>go(index-1));
-  next?.addEventListener('click', ()=>go(index+1));
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
 
-  let timer = setInterval(()=>go(index+1), 5000);
-  ['mouseenter','focusin'].forEach(evt=>track.addEventListener(evt, ()=>clearInterval(timer)));
-  ['mouseleave','focusout'].forEach(evt=>track.addEventListener(evt, ()=>timer=setInterval(()=>go(index+1),5000)));
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 4200);
+    }
 
-  window.addEventListener('resize', ()=>go(index));
-})();
+    leadForm.addEventListener("submit", (event) => {
+      event.preventDefault();
 
-/* Captura via mailto */
-function handleMailto(email, subject, body){
-  window.location.href = `mailto:contato@newsflow.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
+      const formData = new FormData(leadForm);
+      const nome = formData.get("nome") || "";
+      const emissora = formData.get("emissora") || "";
+      const email = formData.get("email") || "";
+      const whatsapp = formData.get("whatsapp") || "";
 
-document.getElementById('notify')?.addEventListener('submit', function(e){
-  e.preventDefault();
-  const email = document.getElementById('email').value.trim();
-  const msg = document.getElementById('msg');
-  if(!email){ msg.textContent='Digite um e-mail válido.'; return; }
-  handleMailto(email, 'Aviso de lançamento — NewsFlow', 'Olá, quero ser avisado no lançamento. Meu e-mail: '+email);
-  msg.textContent='Abrimos seu app de e-mail para enviar o pedido. Obrigado!';
-});
+      console.log("Lead capturado:", {
+        nome,
+        emissora,
+        email,
+        whatsapp
+      });
 
-/* Focar e-mail ao clicar em "Quero ser contatado" */
-document.getElementById('btn-contato')?.addEventListener('click', function(){
-  setTimeout(()=> document.getElementById('email')?.focus(), 100);
-});
+      leadForm.reset();
 
-/* Ano rodapé */
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+      showToast(
+        "Cadastro recebido! No site publicado, este formulário pode enviar os dados para e-mail, WhatsApp ou CRM."
+      );
+    });
+  </script>
 </body>
 </html>
+```
