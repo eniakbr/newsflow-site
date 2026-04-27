@@ -416,8 +416,8 @@
       text-align: center;
       font-size: clamp(3.8rem, 9vw, 8.6rem);
       line-height: .86;
-      letter-spacing: .055em;
-      font-weight: 900;
+      letter-spacing: .028em;
+      font-weight: 700;
       color: var(--azul);
       text-shadow: 0 18px 42px rgba(30, 58, 138, .14);
     }
@@ -1230,20 +1230,69 @@
       background: #fff;
       border: 1px solid var(--borda);
       border-radius: 22px;
-      padding: 22px;
+      padding: 0;
       box-shadow: 0 10px 24px rgba(15,23,42,.04);
+      overflow: hidden;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
     }
 
-    .faq h3 {
-      margin: 0 0 8px;
+    .faq:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 16px 34px rgba(30, 58, 138, .09);
+      transform: translateY(-1px);
+    }
+
+    .faq[open] {
+      border-color: #93c5fd;
+      box-shadow: 0 18px 42px rgba(30, 58, 138, .12);
+    }
+
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
       font-size: 1.05rem;
+      font-weight: 900;
       letter-spacing: -0.035em;
+      color: #0f172a;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq summary::after {
+      content: "+";
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #dbeafe;
+      color: var(--azul);
+      font-size: 1.35rem;
+      font-weight: 900;
+      line-height: 1;
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+
+    .faq[open] summary::after {
+      content: "–";
+      background: var(--azul);
+      color: #fff;
     }
 
     .faq p {
       margin: 0;
+      padding: 0 22px 22px;
       color: #64748b;
       font-weight: 500;
+      line-height: 1.6;
     }
 
     .final-cta {
@@ -1453,7 +1502,7 @@
       }
 
       .hero-title {
-        letter-spacing: .035em;
+        letter-spacing: .018em;
         margin-bottom: 12px;
       }
 
@@ -2084,107 +2133,107 @@
         </div>
 
         <div class="faq-grid">
-          <article class="faq">
-            <h3>O que é o NewsFlow?</h3>
+          <details class="faq">
+            <summary>O que é o NewsFlow?</summary>
             <p>
               O NewsFlow é um sistema web para redação de TV, rádio e emissoras
               locais, criado para organizar pauta, reportagem, edição, espelho,
               rundown, teleprompter, gaveta de VTs e programação.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>O NewsFlow é um sistema de baixo custo para emissoras?</h3>
+          <details class="faq">
+            <summary>O NewsFlow é um sistema de baixo custo para emissoras?</summary>
             <p>
               Sim. O NewsFlow foi pensado como uma solução acessível para pequenas
               emissoras, TVs locais, rádios e produtoras jornalísticas que precisam
               profissionalizar a rotina sem pagar o custo de grandes sistemas corporativos.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>Quanto custa um sistema de redação para TV?</h3>
+          <details class="faq">
+            <summary>Quanto custa um sistema de redação para TV?</summary>
             <p>
               O custo varia conforme número de usuários, módulos, implantação e suporte.
               O NewsFlow trabalha com proposta sob medida para ser uma alternativa
               de baixo custo para emissoras locais e pequenas redações.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>Existe sistema barato para montar espelho de telejornal?</h3>
+          <details class="faq">
+            <summary>Existe sistema barato para montar espelho de telejornal?</summary>
             <p>
               Sim. O NewsFlow pode substituir planilhas e controles manuais por um
               espelho de telejornal em tempo real, com blocos, tempos, laudas, VTs,
               notas, links e breaks, com custo pensado para operações menores.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>Existe alternativa acessível ao ENPS para emissoras pequenas?</h3>
+          <details class="faq">
+            <summary>Existe alternativa acessível ao ENPS para emissoras pequenas?</summary>
             <p>
               O NewsFlow pode ser uma alternativa acessível para emissoras pequenas
               que precisam de pauta, reportagem, espelho, rundown e teleprompter
               sem adotar soluções complexas e caras de grandes redes.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>O NewsFlow substitui planilhas de espelho?</h3>
+          <details class="faq">
+            <summary>O NewsFlow substitui planilhas de espelho?</summary>
             <p>
               Sim. O sistema permite montar o espelho do telejornal em tempo real,
               com blocos, breaks, laudas, tempos, VTs, notas, links e telas.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>O NewsFlow tem teleprompter integrado?</h3>
+          <details class="faq">
+            <summary>O NewsFlow tem teleprompter integrado?</summary>
             <p>
               Sim. As laudas do espelho podem alimentar o teleprompter, evitando
               retrabalho e reduzindo erro entre roteiro, direção e apresentação.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>O NewsFlow serve para emissoras pequenas?</h3>
+          <details class="faq">
+            <summary>O NewsFlow serve para emissoras pequenas?</summary>
             <p>
               Sim. A proposta é profissionalizar a rotina de equipes locais sem
               exigir a estrutura ou o custo de grandes redes de televisão.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>É melhor contratar um sistema ou continuar usando planilha?</h3>
+          <details class="faq">
+            <summary>É melhor contratar um sistema ou continuar usando planilha?</summary>
             <p>
               Planilhas podem funcionar no começo, mas tendem a gerar erro quando
               a rotina cresce. Um sistema como o NewsFlow centraliza informações,
               reduz retrabalho e ajuda a equipe a acompanhar alterações em tempo real.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>O sistema controla tempo de jornal?</h3>
+          <details class="faq">
+            <summary>O sistema controla tempo de jornal?</summary>
             <p>
               Sim. O espelho trabalha com tempos previstos, cronometrados,
               diferença, blocos e intervalos, ajudando a direção no fechamento.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>Funciona para rádio ou programas gravados?</h3>
+          <details class="faq">
+            <summary>Funciona para rádio ou programas gravados?</summary>
             <p>
               Sim. O NewsFlow pode ser configurado para TV, rádio, programas
               gravados, produção especial e diferentes formatos jornalísticos.
             </p>
-          </article>
+          </details>
 
-          <article class="faq">
-            <h3>O NewsFlow pode rodar no servidor da própria emissora?</h3>
+          <details class="faq">
+            <summary>O NewsFlow pode rodar no servidor da própria emissora?</summary>
             <p>
               Sim. A implantação pode ser feita em nuvem ou em ambiente local,
               conforme a infraestrutura, política de segurança e preferência da emissora.
             </p>
-          </article>
+          </details>
         </div>
       </div>
     </section>
@@ -2328,6 +2377,18 @@
       showToast(
         "Cadastro recebido! No site publicado, este formulário pode enviar os dados para e-mail, WhatsApp ou CRM."
       );
+    });
+
+    document.querySelectorAll(".faq").forEach((faqItem) => {
+      faqItem.addEventListener("toggle", () => {
+        if (!faqItem.open) return;
+
+        document.querySelectorAll(".faq").forEach((otherItem) => {
+          if (otherItem !== faqItem) {
+            otherItem.removeAttribute("open");
+          }
+        });
+      });
     });
   </script>
 </body>
