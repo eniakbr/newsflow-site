@@ -253,10 +253,10 @@
 
     .topbar-inner {
       height: 76px;
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
     }
 
     .brand {
@@ -267,6 +267,7 @@
       letter-spacing: -0.04em;
       color: #ffffff;
       font-size: 1.35rem;
+      min-width: 0;
     }
 
     .brand-mark {
@@ -280,29 +281,36 @@
       background: #ffffff;
       box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
       letter-spacing: -0.05em;
+      flex: 0 0 auto;
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: center;
+      gap: 22px;
       color: #ffffff;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 700;
+      min-width: 0;
     }
 
     .nav a {
       color: #ffffff;
-      transition: opacity .2s ease;
+      opacity: .96;
+      white-space: nowrap;
+      transition: opacity .2s ease, transform .2s ease;
     }
 
     .nav a:hover {
-      opacity: .78;
+      opacity: .76;
+      transform: translateY(-1px);
     }
 
     .top-actions {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 12px;
     }
 
@@ -346,17 +354,6 @@
     .btn-secondary:hover {
       background: #eef2ff;
       border-color: #a5b4fc;
-    }
-
-    .topbar .btn-secondary {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.35);
-    }
-
-    .topbar .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.20);
-      border-color: rgba(255, 255, 255, 0.55);
     }
 
     .topbar .btn-primary {
@@ -414,12 +411,13 @@
       z-index: 2;
       margin: 0 0 14px;
       text-align: center;
+      font-family: "Montserrat", Arial, sans-serif;
       font-size: clamp(3.8rem, 9vw, 8.6rem);
       line-height: .86;
-      letter-spacing: .028em;
-      font-weight: 700;
+      letter-spacing: -0.04em;
+      font-weight: 900;
       color: var(--azul);
-      text-shadow: 0 18px 42px rgba(30, 58, 138, .14);
+      text-shadow: none;
     }
 
     .hero-subtitle {
@@ -1137,89 +1135,6 @@
       width: 100%;
     }
 
-    .lead-box {
-      display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 28px;
-      padding: 34px;
-      background: #fff;
-      border: 1px solid var(--borda);
-      border-radius: 32px;
-      box-shadow: var(--sombra-suave);
-      align-items: center;
-    }
-
-    .lead-download {
-      padding: 28px;
-      border-radius: 26px;
-      background: linear-gradient(135deg, #dbeafe, #eef2ff);
-      border: 1px solid #bfdbfe;
-    }
-
-    .lead-download h3 {
-      margin: 0 0 10px;
-      font-size: 1.6rem;
-      letter-spacing: -0.055em;
-    }
-
-    .lead-download p {
-      margin: 0;
-      color: #475569;
-      font-weight: 600;
-    }
-
-    .form {
-      display: grid;
-      gap: 12px;
-    }
-
-    .field {
-      display: grid;
-      gap: 6px;
-    }
-
-    .field label {
-      font-size: .8rem;
-      font-weight: 900;
-      color: #334155;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      min-height: 48px;
-      border: 1px solid #cbd5e1;
-      border-radius: 14px;
-      padding: 0 14px;
-      outline: none;
-      font: inherit;
-      color: var(--texto);
-      background: #fff;
-      transition: border-color .2s ease, box-shadow .2s ease;
-    }
-
-    .field textarea {
-      min-height: 96px;
-      padding-top: 12px;
-      resize: vertical;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--azul-medio);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, .10);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
     .faq-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1395,9 +1310,17 @@
     }
 
     @media (max-width: 1080px) {
+      .topbar-inner {
+        grid-template-columns: auto auto auto;
+      }
+
+      .nav {
+        gap: 14px;
+        font-size: .82rem;
+      }
+
       .hero-grid,
-      .split,
-      .lead-box {
+      .split {
         grid-template-columns: 1fr;
       }
 
@@ -1427,10 +1350,16 @@
       }
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 920px) {
       .nav,
       .top-actions {
         display: none;
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
 
       .mobile-menu {
@@ -1449,6 +1378,12 @@
         border: 1px solid rgba(255, 255, 255, 0.18);
         border-radius: 18px;
         box-shadow: var(--sombra-suave);
+        justify-content: stretch;
+        text-align: left;
+      }
+
+      .topbar.open .nav a {
+        padding: 6px 0;
       }
 
       .topbar.open .top-actions {
@@ -1456,7 +1391,7 @@
         position: absolute;
         left: 20px;
         right: 20px;
-        top: 382px;
+        top: 344px;
         padding: 18px;
         background: var(--azul);
         border: 1px solid rgba(255, 255, 255, 0.18);
@@ -1502,7 +1437,7 @@
       }
 
       .hero-title {
-        letter-spacing: .018em;
+        letter-spacing: -0.035em;
         margin-bottom: 12px;
       }
 
@@ -1552,11 +1487,6 @@
         text-align: left;
       }
 
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .lead-box,
       .demo-card,
       .low-cost-band {
         padding: 22px;
@@ -1583,16 +1513,15 @@
       </a>
 
       <nav class="nav" aria-label="Menu principal">
+        <a href="#problema">Problema</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#modulos">Módulos</a>
         <a href="#baixo-custo">Baixo custo</a>
         <a href="#planos">Planos</a>
-        <a href="#faq">Dúvidas</a>
-        <a href="#contato">Contato</a>
+        <a href="#faq">FAQ</a>
       </nav>
 
       <div class="top-actions">
-        <a class="btn btn-secondary" href="#lead">Baixar checklist</a>
         <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
       </div>
 
@@ -1975,7 +1904,7 @@
 
             <div class="hero-actions" style="justify-content:flex-start;">
               <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
-              <a class="btn btn-secondary" href="#lead">Receber checklist</a>
+              <a class="btn btn-secondary" href="#modulos">Conhecer módulos</a>
             </div>
           </div>
 
@@ -2071,51 +2000,6 @@
 
             <a class="btn btn-secondary" href="#contato">Falar com comercial</a>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="lead">
-      <div class="container">
-        <div class="lead-box">
-          <div class="lead-download">
-            <div class="section-kicker">Material gratuito</div>
-            <h3>Checklist de fechamento de telejornal</h3>
-            <p>
-              Use este material para revisar espelho, tempos, VTs, notas,
-              chamadas, teleprompter e operação antes do jornal ir ao ar.
-            </p>
-          </div>
-
-          <form class="form" id="leadForm">
-            <div class="form-row">
-              <div class="field">
-                <label for="leadNome">Nome</label>
-                <input id="leadNome" name="nome" type="text" placeholder="Seu nome" required />
-              </div>
-
-              <div class="field">
-                <label for="leadEmissora">Emissora</label>
-                <input id="leadEmissora" name="emissora" type="text" placeholder="Nome da emissora" required />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="field">
-                <label for="leadEmail">E-mail</label>
-                <input id="leadEmail" name="email" type="email" placeholder="voce@email.com" required />
-              </div>
-
-              <div class="field">
-                <label for="leadWhats">WhatsApp</label>
-                <input id="leadWhats" name="whatsapp" type="tel" placeholder="(00) 00000-0000" required />
-              </div>
-            </div>
-
-            <button class="btn btn-primary" type="submit">
-              Quero receber o checklist
-            </button>
-          </form>
         </div>
       </div>
     </section>
@@ -2281,24 +2165,24 @@
 
         <div>
           <h4>Produto</h4>
+          <a href="#problema">Problema</a>
           <a href="#como-funciona">Como funciona</a>
           <a href="#modulos">Módulos</a>
           <a href="#baixo-custo">Baixo custo</a>
-          <a href="#planos">Planos</a>
         </div>
 
         <div>
           <h4>Comercial</h4>
+          <a href="#planos">Planos</a>
           <a href="#contato">Demonstração</a>
-          <a href="#lead">Checklist gratuito</a>
-          <a href="mailto:comercial@newsflow.com.br">Contato</a>
+          <a href="mailto:comercial@newsflow.com.br">Contato por e-mail</a>
         </div>
 
         <div>
           <h4>Para emissoras</h4>
-          <a href="#problema">Organização da redação</a>
           <a href="#resultado">Fechamento do jornal</a>
           <a href="#faq">Dúvidas frequentes</a>
+          <a href="#contato">Falar com comercial</a>
         </div>
       </div>
 
@@ -2317,7 +2201,6 @@
     const topbar = document.getElementById("topbar");
     const mobileMenu = document.getElementById("mobileMenu");
     const year = document.getElementById("year");
-    const leadForm = document.getElementById("leadForm");
     const toast = document.getElementById("toast");
 
     year.textContent = new Date().getFullYear();
@@ -2355,29 +2238,6 @@
         toast.classList.remove("show");
       }, 4200);
     }
-
-    leadForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const formData = new FormData(leadForm);
-      const nome = formData.get("nome") || "";
-      const emissora = formData.get("emissora") || "";
-      const email = formData.get("email") || "";
-      const whatsapp = formData.get("whatsapp") || "";
-
-      console.log("Lead capturado:", {
-        nome,
-        emissora,
-        email,
-        whatsapp
-      });
-
-      leadForm.reset();
-
-      showToast(
-        "Cadastro recebido! No site publicado, este formulário pode enviar os dados para e-mail, WhatsApp ou CRM."
-      );
-    });
 
     document.querySelectorAll(".faq").forEach((faqItem) => {
       faqItem.addEventListener("toggle", () => {
