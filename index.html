@@ -1,3 +1,4 @@
+```html id="zazmgu"
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -175,10 +176,18 @@
 
     * {
       box-sizing: border-box;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     html {
       scroll-behavior: smooth;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     body {
@@ -187,16 +196,42 @@
       color: var(--texto);
       background: var(--fundo);
       line-height: 1.5;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    body::selection,
+    *::selection {
+      background: transparent;
+      color: inherit;
+    }
+
+    body::-moz-selection,
+    *::-moz-selection {
+      background: transparent;
+      color: inherit;
     }
 
     a {
       color: inherit;
       text-decoration: none;
+      -webkit-user-drag: none;
     }
 
     img {
       max-width: 100%;
       display: block;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+      font-family: inherit;
     }
 
     .container {
@@ -205,12 +240,24 @@
     }
 
     .topbar {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       background: var(--azul);
       border-bottom: 1px solid rgba(255, 255, 255, 0.14);
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform .28s ease, opacity .28s ease;
+    }
+
+    .topbar.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .topbar-inner {
@@ -335,11 +382,6 @@
       box-shadow: 0 18px 34px rgba(15, 23, 42, 0.22);
     }
 
-    .btn-dark {
-      background: #0f172a;
-      color: #fff;
-    }
-
     .mobile-menu {
       display: none;
       width: 44px;
@@ -355,32 +397,64 @@
     .hero {
       position: relative;
       overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
       background:
-        radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.16), transparent 32%),
-        radial-gradient(circle at 92% 10%, rgba(30, 58, 138, 0.18), transparent 34%),
+        radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.18), transparent 34%),
+        radial-gradient(circle at 92% 10%, rgba(30, 58, 138, 0.20), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(30, 58, 138, 0.12), transparent 40%),
         linear-gradient(180deg, #fff 0%, #f8fafc 100%);
-      padding: 54px 0 54px;
+      padding: 70px 0 58px;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border: 1px solid rgba(30, 58, 138, .08);
+      border-radius: 36px;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .hero-content {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-brand-spotlight {
       display: inline-flex;
       flex-direction: column;
-      gap: 4px;
-      padding: 18px 22px;
+      align-items: center;
+      gap: 6px;
+      padding: 22px 30px;
       margin-bottom: 22px;
-      border-radius: 26px;
+      border-radius: 30px;
       background:
-        linear-gradient(135deg, rgba(30, 58, 138, 0.10), rgba(37, 99, 235, 0.06)),
+        linear-gradient(135deg, rgba(30, 58, 138, 0.12), rgba(37, 99, 235, 0.06)),
         #ffffff;
       border: 1px solid #bfdbfe;
-      box-shadow: 0 16px 38px rgba(30, 58, 138, 0.12);
+      box-shadow: 0 18px 45px rgba(30, 58, 138, 0.14);
     }
 
     .hero-brand-name {
       display: block;
-      font-size: clamp(2.35rem, 6vw, 5.7rem);
-      line-height: .9;
-      letter-spacing: -0.085em;
+      font-size: clamp(3.4rem, 9vw, 8.2rem);
+      line-height: .82;
+      letter-spacing: -0.095em;
       font-weight: 900;
       color: var(--azul);
     }
@@ -389,20 +463,15 @@
       display: block;
       color: #334155;
       font-weight: 800;
-      font-size: clamp(.88rem, 1.2vw, 1.02rem);
+      font-size: clamp(.9rem, 1.4vw, 1.18rem);
       letter-spacing: -0.02em;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.02fr .98fr;
-      align-items: center;
-      gap: 48px;
+      max-width: 760px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
@@ -416,11 +485,13 @@
     }
 
     .hero h1 {
-      margin: 0;
-      font-size: clamp(2.15rem, 4.6vw, 4.35rem);
-      line-height: 1;
-      letter-spacing: -0.075em;
+      margin: 0 auto;
+      max-width: 1030px;
+      font-size: clamp(2.25rem, 5vw, 5rem);
+      line-height: .98;
+      letter-spacing: -0.078em;
       color: #0f172a;
+      text-align: center;
     }
 
     .hero h1 span {
@@ -428,11 +499,12 @@
     }
 
     .hero-text {
-      margin: 22px 0 0;
-      font-size: clamp(1rem, 1.6vw, 1.22rem);
+      margin: 24px auto 0;
+      font-size: clamp(1rem, 1.5vw, 1.22rem);
       color: #475569;
-      max-width: 720px;
+      max-width: 930px;
       font-weight: 500;
+      text-align: center;
     }
 
     .hero-text strong {
@@ -443,34 +515,62 @@
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 12px;
       margin-top: 30px;
     }
 
     .hero-proof {
-      margin-top: 26px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      width: min(980px, 100%);
+      margin: 34px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      justify-content: center;
     }
 
     .proof-pill {
-      display: inline-flex;
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
-      padding: 9px 12px;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 14px;
       background: #fff;
-      border: 1px solid var(--borda);
-      border-radius: 999px;
-      color: #334155;
-      font-weight: 700;
-      font-size: .84rem;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, .04);
+      border: 1px solid #bfdbfe;
+      border-radius: 24px;
+      color: #0f172a;
+      font-weight: 900;
+      font-size: .95rem;
+      line-height: 1.22;
+      text-align: center;
+      box-shadow: 0 18px 42px rgba(30, 58, 138, .11);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .proof-pill:hover {
+      transform: translateY(-4px);
+      border-color: #93c5fd;
+      box-shadow: 0 24px 54px rgba(30, 58, 138, .16);
+    }
+
+    .proof-pill .proof-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: var(--azul);
+      color: #fff;
+      font-size: 1.35rem;
+      box-shadow: 0 12px 24px rgba(30, 58, 138, .22);
     }
 
     .hero-panel {
+      width: min(900px, 100%);
+      margin: 10px auto 0;
       position: relative;
-      min-height: 520px;
     }
 
     .mockup {
@@ -479,7 +579,6 @@
       border-radius: 28px;
       box-shadow: var(--sombra);
       overflow: hidden;
-      transform: rotate(1.2deg);
     }
 
     .mockup-top {
@@ -552,6 +651,7 @@
       border-radius: 16px;
       background: #eef2ff;
       border: 1px solid #c7d2fe;
+      text-align: left;
     }
 
     .timer small {
@@ -585,6 +685,7 @@
       border: 1px solid var(--borda);
       border-radius: 14px;
       background: #fff;
+      text-align: left;
     }
 
     .tag {
@@ -620,32 +721,6 @@
       text-align: right;
       font-weight: 900;
       color: #0f172a;
-    }
-
-    .float-card {
-      position: absolute;
-      right: -10px;
-      bottom: 34px;
-      width: 250px;
-      padding: 18px;
-      border-radius: 22px;
-      background: #fff;
-      border: 1px solid #bfdbfe;
-      box-shadow: 0 18px 42px rgba(30, 58, 138, .18);
-    }
-
-    .float-card strong {
-      display: block;
-      color: var(--azul);
-      font-size: 1.02rem;
-      margin-bottom: 6px;
-    }
-
-    .float-card p {
-      margin: 0;
-      color: #475569;
-      font-weight: 600;
-      font-size: .88rem;
     }
 
     .section {
@@ -1286,22 +1361,9 @@
     }
 
     @media (max-width: 1080px) {
-      .hero-grid,
       .split,
       .lead-box {
         grid-template-columns: 1fr;
-      }
-
-      .hero-panel {
-        min-height: auto;
-      }
-
-      .float-card {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        width: 100%;
-        margin-top: 16px;
       }
 
       .problem-grid {
@@ -1314,6 +1376,10 @@
 
       .flow {
         grid-template-columns: repeat(4, 1fr);
+      }
+
+      .hero-proof {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -1346,7 +1412,7 @@
         position: absolute;
         left: 20px;
         right: 20px;
-        top: 338px;
+        top: 382px;
         padding: 18px;
         background: var(--azul);
         border: 1px solid rgba(255, 255, 255, 0.18);
@@ -1378,7 +1444,13 @@
       }
 
       .hero {
-        padding-top: 36px;
+        padding-top: 42px;
+        min-height: auto;
+      }
+
+      .hero::before {
+        inset: 14px;
+        border-radius: 24px;
       }
 
       .section {
@@ -1387,12 +1459,21 @@
 
       .hero-brand-spotlight {
         width: 100%;
-        padding: 16px;
+        padding: 18px 14px;
+      }
+
+      .hero-proof {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-pill {
+        min-height: 92px;
       }
 
       .hero-actions,
       .final-cta .hero-actions {
         display: grid;
+        width: 100%;
       }
 
       .hero-actions .btn,
@@ -1441,7 +1522,7 @@
   </style>
 </head>
 
-<body>
+<body onselectstart="return false" ondragstart="return false">
   <header class="topbar" id="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#inicio" aria-label="NewsFlow - sistema de baixo custo para redação de TV">
@@ -1470,7 +1551,7 @@
   <main>
     <section class="hero" id="inicio">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-content">
           <div class="hero-brand-spotlight" aria-label="Destaque do nome NewsFlow">
             <span class="hero-brand-name">NewsFlow</span>
             <span class="hero-brand-subtitle">
@@ -1497,11 +1578,26 @@
             <a class="btn btn-secondary" href="#baixo-custo">Ver solução de baixo custo</a>
           </div>
 
-          <div class="hero-proof">
-            <span class="proof-pill">💰 Alternativa de baixo custo</span>
-            <span class="proof-pill">⚡ Rundown em tempo real</span>
-            <span class="proof-pill">🎙️ Pensado para telejornal local</span>
-            <span class="proof-pill">💻 Instalação local ou em nuvem</span>
+          <div class="hero-proof" aria-label="Diferenciais do NewsFlow">
+            <div class="proof-pill">
+              <span class="proof-icon">💰</span>
+              <span>Alternativa de baixo custo</span>
+            </div>
+
+            <div class="proof-pill">
+              <span class="proof-icon">⚡</span>
+              <span>Rundown em tempo real</span>
+            </div>
+
+            <div class="proof-pill">
+              <span class="proof-icon">🎙️</span>
+              <span>Pensado para telejornal local</span>
+            </div>
+
+            <div class="proof-pill">
+              <span class="proof-icon">💻</span>
+              <span>Instalação local ou em nuvem</span>
+            </div>
           </div>
         </div>
 
@@ -1573,18 +1669,9 @@
               </div>
             </div>
           </div>
-
-          <div class="float-card">
-            <strong>Menos planilha. Mais controle.</strong>
-            <p>
-              Todos acompanham a mesma informação, atualizada em tempo real,
-              do produtor ao diretor do jornal.
-            </p>
-          </div>
         </div>
       </div>
     </section>
-
     <section class="section" id="problema">
       <div class="container">
         <div class="section-head">
@@ -1789,7 +1876,7 @@
             que atrapalham o fechamento de um telejornal.
           </p>
 
-          <div class="hero-actions">
+          <div class="hero-actions" style="justify-content:flex-start;">
             <a class="btn btn-primary" href="#contato">Quero ver uma demonstração</a>
           </div>
         </div>
@@ -1832,7 +1919,7 @@
               teleprompter, direção e operação no ar.
             </p>
 
-            <div class="hero-actions">
+            <div class="hero-actions" style="justify-content:flex-start;">
               <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
               <a class="btn btn-secondary" href="#lead">Receber checklist</a>
             </div>
@@ -2181,6 +2268,19 @@
 
     year.textContent = new Date().getFullYear();
 
+    function updateTopbarVisibility() {
+      const shouldShow = window.scrollY > 90;
+      topbar.classList.toggle("is-visible", shouldShow);
+
+      if (!shouldShow) {
+        topbar.classList.remove("open");
+        mobileMenu.textContent = "☰";
+      }
+    }
+
+    window.addEventListener("scroll", updateTopbarVisibility, { passive: true });
+    window.addEventListener("load", updateTopbarVisibility);
+
     mobileMenu.addEventListener("click", () => {
       topbar.classList.toggle("open");
       mobileMenu.textContent = topbar.classList.contains("open") ? "×" : "☰";
@@ -2227,3 +2327,4 @@
   </script>
 </body>
 </html>
+```
