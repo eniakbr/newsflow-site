@@ -1,4 +1,3 @@
-```html id="zazmgu"
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -406,7 +405,7 @@
         radial-gradient(circle at 50% 100%, rgba(30, 58, 138, 0.12), transparent 40%),
         linear-gradient(180deg, #fff 0%, #f8fafc 100%);
       padding: 70px 0 58px;
-      text-align: center;
+      text-align: left;
     }
 
     .hero::before {
@@ -418,54 +417,40 @@
       pointer-events: none;
     }
 
+    .hero-title {
+      position: relative;
+      z-index: 2;
+      margin: 0 0 34px;
+      text-align: center;
+      font-size: clamp(3.6rem, 9vw, 8.4rem);
+      line-height: .86;
+      letter-spacing: .045em;
+      font-weight: 900;
+      color: var(--azul);
+      text-transform: none;
+      text-shadow: 0 18px 42px rgba(30, 58, 138, .14);
+    }
+
     .hero-grid {
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1.02fr .98fr;
       align-items: center;
-      gap: 34px;
+      gap: 48px;
     }
 
     .hero-content {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      max-width: 720px;
     }
 
-    .hero-brand-spotlight {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      padding: 22px 30px;
-      margin-bottom: 22px;
-      border-radius: 30px;
-      background:
-        linear-gradient(135deg, rgba(30, 58, 138, 0.12), rgba(37, 99, 235, 0.06)),
-        #ffffff;
-      border: 1px solid #bfdbfe;
-      box-shadow: 0 18px 45px rgba(30, 58, 138, 0.14);
-    }
-
-    .hero-brand-name {
+    .hero-subtitle {
       display: block;
-      font-size: clamp(3.4rem, 9vw, 8.2rem);
-      line-height: .82;
-      letter-spacing: -0.095em;
-      font-weight: 900;
-      color: var(--azul);
-    }
-
-    .hero-brand-subtitle {
-      display: block;
+      margin: 0 0 18px;
       color: #334155;
       font-weight: 800;
-      font-size: clamp(.9rem, 1.4vw, 1.18rem);
-      letter-spacing: -0.02em;
-      max-width: 760px;
+      font-size: clamp(.95rem, 1.2vw, 1.08rem);
+      letter-spacing: .015em;
     }
 
     .eyebrow {
@@ -485,13 +470,13 @@
     }
 
     .hero h1 {
-      margin: 0 auto;
-      max-width: 1030px;
-      font-size: clamp(2.25rem, 5vw, 5rem);
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(2.1rem, 4.2vw, 4.35rem);
       line-height: .98;
-      letter-spacing: -0.078em;
+      letter-spacing: -0.074em;
       color: #0f172a;
-      text-align: center;
+      text-align: left;
     }
 
     .hero h1 span {
@@ -499,12 +484,12 @@
     }
 
     .hero-text {
-      margin: 24px auto 0;
-      font-size: clamp(1rem, 1.5vw, 1.22rem);
+      margin: 24px 0 0;
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
       color: #475569;
-      max-width: 930px;
+      max-width: 720px;
       font-weight: 500;
-      text-align: center;
+      text-align: left;
     }
 
     .hero-text strong {
@@ -515,22 +500,21 @@
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 12px;
       margin-top: 30px;
     }
 
     .hero-proof {
-      width: min(980px, 100%);
-      margin: 34px auto 0;
+      width: 100%;
+      margin: 30px 0 0;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      justify-content: center;
     }
 
     .proof-pill {
-      min-height: 112px;
+      min-height: 116px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -568,8 +552,7 @@
     }
 
     .hero-panel {
-      width: min(900px, 100%);
-      margin: 10px auto 0;
+      width: 100%;
       position: relative;
     }
 
@@ -579,6 +562,7 @@
       border-radius: 28px;
       box-shadow: var(--sombra);
       overflow: hidden;
+      transform: rotate(1.2deg);
     }
 
     .mockup-top {
@@ -1361,9 +1345,19 @@
     }
 
     @media (max-width: 1080px) {
+      .hero-grid,
       .split,
       .lead-box {
         grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .hero-panel {
+        max-width: 900px;
+        margin: 10px auto 0;
       }
 
       .problem-grid {
@@ -1379,7 +1373,7 @@
       }
 
       .hero-proof {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
     }
 
@@ -1436,6 +1430,10 @@
       .footer-grid {
         grid-template-columns: 1fr 1fr;
       }
+
+      .hero-proof {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 640px) {
@@ -1453,13 +1451,13 @@
         border-radius: 24px;
       }
 
-      .section {
-        padding: 56px 0;
+      .hero-title {
+        letter-spacing: .025em;
+        margin-bottom: 26px;
       }
 
-      .hero-brand-spotlight {
-        width: 100%;
-        padding: 18px 14px;
+      .section {
+        padding: 56px 0;
       }
 
       .hero-proof {
@@ -1550,723 +1548,134 @@
 
   <main>
     <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="hero-brand-spotlight" aria-label="Destaque do nome NewsFlow">
-            <span class="hero-brand-name">NewsFlow</span>
-            <span class="hero-brand-subtitle">
+      <div class="container">
+        <div class="hero-title">NewsFlow</div>
+
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="hero-subtitle">
               Sistema de redação, espelho e teleprompter de baixo custo para emissoras locais
             </span>
-          </div>
 
-          <div class="eyebrow">Software acessível para redação de TV, rádio e telejornal</div>
+            <div class="eyebrow">Software acessível para redação de TV, rádio e telejornal</div>
 
-          <h1>
-            Sistema de baixo custo para redação, espelho de telejornal e <span>teleprompter integrado</span>.
-          </h1>
+            <h1>
+              Sistema de baixo custo para redação, espelho de telejornal e <span>teleprompter integrado</span>.
+            </h1>
 
-          <p class="hero-text">
-            O <strong>NewsFlow</strong> é um software para emissoras de TV, rádio e jornalismo local
-            que centraliza pauta, reportagem, edição, espelho, rundown, direção,
-            teleprompter, gaveta de VTs e programação em tempo real. Uma alternativa
-            acessível para pequenas emissoras que querem profissionalizar a operação
-            sem depender de planilhas, mensagens soltas ou sistemas caros de grandes redes.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
-            <a class="btn btn-secondary" href="#baixo-custo">Ver solução de baixo custo</a>
-          </div>
-
-          <div class="hero-proof" aria-label="Diferenciais do NewsFlow">
-            <div class="proof-pill">
-              <span class="proof-icon">💰</span>
-              <span>Alternativa de baixo custo</span>
-            </div>
-
-            <div class="proof-pill">
-              <span class="proof-icon">⚡</span>
-              <span>Rundown em tempo real</span>
-            </div>
-
-            <div class="proof-pill">
-              <span class="proof-icon">🎙️</span>
-              <span>Pensado para telejornal local</span>
-            </div>
-
-            <div class="proof-pill">
-              <span class="proof-icon">💻</span>
-              <span>Instalação local ou em nuvem</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-panel" aria-label="Prévia visual do sistema NewsFlow para espelho de telejornal">
-          <div class="mockup">
-            <div class="mockup-top">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-            </div>
-
-            <div class="mockup-body">
-              <div class="app-header">
-                <strong>Espelho do Jornal</strong>
-                <span class="app-status">AO VIVO</span>
-              </div>
-
-              <div class="timers">
-                <div class="timer">
-                  <small>Previsto</small>
-                  <b>00:42:00</b>
-                </div>
-                <div class="timer">
-                  <small>Cronometrado</small>
-                  <b>00:39:18</b>
-                </div>
-                <div class="timer">
-                  <small>Diferença</small>
-                  <b>-02:42</b>
-                </div>
-              </div>
-
-              <div class="rundown">
-                <div class="rundown-row">
-                  <span class="tag">VT</span>
-                  <div class="row-title">
-                    <strong>ABERTURA / MANCHETES DO DIA</strong>
-                    <small>Bloco 1 · Jornalismo Diário</small>
-                  </div>
-                  <div class="time">01:20</div>
-                </div>
-
-                <div class="rundown-row">
-                  <span class="tag">LINK</span>
-                  <div class="row-title">
-                    <strong>ENTRADA AO VIVO DA REPORTAGEM</strong>
-                    <small>Repórter · Centro</small>
-                  </div>
-                  <div class="time">03:40</div>
-                </div>
-
-                <div class="rundown-row">
-                  <span class="tag">NOTA</span>
-                  <div class="row-title">
-                    <strong>GIRO DE SERVIÇOS E PREVISÃO</strong>
-                    <small>Apresentador · Estúdio</small>
-                  </div>
-                  <div class="time">00:55</div>
-                </div>
-
-                <div class="rundown-row">
-                  <span class="tag">BREAK</span>
-                  <div class="row-title">
-                    <strong>INTERVALO ENTRE BLOCOS</strong>
-                    <small>Controle automático de tempo</small>
-                  </div>
-                  <div class="time">02:30</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="problema">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">O problema</div>
-          <h2>Sua emissora ainda monta o espelho do jornal em planilhas e grupos de mensagem?</h2>
-          <p class="section-desc">
-            Em muitas redações locais, a produção jornalística depende de planilhas,
-            mensagens, arquivos soltos e conferência manual. Isso aumenta retrabalho,
-            atraso, ruído entre equipes e risco no fechamento do telejornal. O NewsFlow
-            resolve esse problema com um sistema acessível para organizar o fluxo da redação.
-          </p>
-        </div>
-
-        <div class="problem-grid">
-          <article class="problem-card">
-            <div class="problem-icon">⚠️</div>
-            <strong>Espelho desatualizado</strong>
-            <p>Uma mudança no rundown acontece e nem todo mundo fica sabendo a tempo.</p>
-          </article>
-
-          <article class="problem-card">
-            <div class="problem-icon">📲</div>
-            <strong>Informação espalhada</strong>
-            <p>Roteiros, VTs, pautas e avisos ficam perdidos entre conversas e arquivos.</p>
-          </article>
-
-          <article class="problem-card">
-            <div class="problem-icon">⏱️</div>
-            <strong>Tempo conferido no manual</strong>
-            <p>O fechamento exige cálculo, conferência e ajustes de última hora.</p>
-          </article>
-
-          <article class="problem-card">
-            <div class="problem-icon">🎬</div>
-            <strong>VT pronto sem controle</strong>
-            <p>Material finalizado depende de aviso informal para chegar ao espelho.</p>
-          </article>
-
-          <article class="problem-card">
-            <div class="problem-icon">🧩</div>
-            <strong>Sistemas desconectados</strong>
-            <p>Redação, direção, edição e teleprompter não operam no mesmo fluxo.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section white" id="como-funciona">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Como funciona</div>
-          <h2>Um fluxo único para redação, edição, espelho, direção e teleprompter</h2>
-          <p class="section-desc">
-            O NewsFlow conecta as principais etapas da rotina jornalística de uma
-            emissora, reduzindo ruídos entre produção, reportagem, edição de VT,
-            chefia, direção de TV e apresentação.
-          </p>
-        </div>
-
-        <div class="flow-box">
-          <div class="flow">
-            <div class="flow-step">
-              <span>📝</span>
-              <b>Pauta</b>
-            </div>
-            <div class="flow-step">
-              <span>🎤</span>
-              <b>Reportagem</b>
-            </div>
-            <div class="flow-step">
-              <span>✂️</span>
-              <b>Edição</b>
-            </div>
-            <div class="flow-step">
-              <span>🗃️</span>
-              <b>Gaveta</b>
-            </div>
-            <div class="flow-step">
-              <span>📋</span>
-              <b>Espelho</b>
-            </div>
-            <div class="flow-step">
-              <span>🎛️</span>
-              <b>Direção</b>
-            </div>
-            <div class="flow-step">
-              <span>🖥️</span>
-              <b>Teleprompter</b>
-            </div>
-            <div class="flow-step">
-              <span>📡</span>
-              <b>No ar</b>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="modulos">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Módulos do sistema</div>
-          <h2>Software para emissoras com os principais recursos de uma redação profissional</h2>
-          <p class="section-desc">
-            Da reunião de pauta ao telejornal no ar, o NewsFlow reúne ferramentas
-            para organizar equipes, materiais, laudas, tempos, espelhos e programação.
-            É uma solução para emissoras pequenas que precisam de controle sem alto investimento.
-          </p>
-        </div>
-
-        <div class="module-grid">
-          <article class="module-card">
-            <div class="module-icon">📊</div>
-            <h3>Dashboard da redação</h3>
-            <p>Avisos, agenda, plantão, RSS, previsão do tempo e alertas operacionais.</p>
-          </article>
-
-          <article class="module-card">
-            <div class="module-icon">🗓️</div>
-            <h3>Gestão de pautas</h3>
-            <p>Organização de assuntos, equipes, datas, prioridades e produção jornalística.</p>
-          </article>
-
-          <article class="module-card">
-            <div class="module-icon">📰</div>
-            <h3>Reportagens</h3>
-            <p>Controle de retrancas, editorias, textos, status, responsáveis e histórico.</p>
-          </article>
-
-          <article class="module-card">
-            <div class="module-icon">🎞️</div>
-            <h3>Edição de texto e VT</h3>
-            <p>Acompanhe materiais em produção, em edição, finalizados e prontos para uso.</p>
-          </article>
-
-          <article class="module-card">
-            <div class="module-icon">📋</div>
-            <h3>Espelho de telejornal</h3>
-            <p>Monte blocos, breaks, notas, VTs, links e telas com cálculo automático de tempos.</p>
-          </article>
-
-          <article class="module-card">
-            <div class="module-icon">🎛️</div>
-            <h3>Direção e rundown ao vivo</h3>
-            <p>Tela operacional para acompanhar jornal no ar, cronometragem e diferença.</p>
-          </article>
-
-          <article class="module-card">
-            <div class="module-icon">🖥️</div>
-            <h3>Teleprompter online</h3>
-            <p>Textos integrados às laudas, com controle de fonte, velocidade e navegação.</p>
-          </article>
-
-          <article class="module-card">
-            <div class="module-icon">🗃️</div>
-            <h3>Gaveta de VTs</h3>
-            <p>Materiais prontos e reutilizáveis, organizados por programa e tipo editorial.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section white" id="baixo-custo">
-      <div class="container">
-        <div class="low-cost-band split">
-          <div>
-            <div class="section-kicker" style="color:#93c5fd;">Baixo custo para emissoras</div>
-            <h2>Uma alternativa acessível para pequenas emissoras profissionalizarem a redação</h2>
-            <p>
-              Grandes sistemas de newsroom podem ser caros, complexos e distantes
-              da realidade de uma emissora local. O NewsFlow nasce com outro foco:
-              entregar o essencial para pauta, reportagem, edição, espelho, direção
-              e teleprompter com implantação mais simples e custo compatível com
-              operações menores.
+            <p class="hero-text">
+              O <strong>NewsFlow</strong> é um software para emissoras de TV, rádio e jornalismo local
+              que centraliza pauta, reportagem, edição, espelho, rundown, direção,
+              teleprompter, gaveta de VTs e programação em tempo real. Uma alternativa
+              acessível para pequenas emissoras que querem profissionalizar a operação
+              sem depender de planilhas, mensagens soltas ou sistemas caros de grandes redes.
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contato">Solicitar proposta acessível</a>
-              <a class="btn btn-secondary" href="#planos">Ver planos</a>
-            </div>
-          </div>
-
-          <ul class="low-cost-list">
-            <li>💰 Modelo pensado para emissoras pequenas e médias.</li>
-            <li>📋 Substitui planilhas de espelho, controles paralelos e arquivos soltos.</li>
-            <li>🎙️ Organiza a rotina do telejornal sem exigir estrutura de grande rede.</li>
-            <li>🧑‍💻 Pode rodar em nuvem ou em instalação local, conforme a necessidade.</li>
-            <li>📈 Ajuda a reduzir retrabalho, falhas de comunicação e perda de tempo.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section white" id="resultado">
-      <div class="container split">
-        <div>
-          <div class="section-kicker">Antes e depois</div>
-          <h2>O ganho aparece no fechamento do jornal</h2>
-          <p class="section-desc" style="margin-left:0;">
-            O NewsFlow não substitui a inteligência da equipe. Ele tira da frente
-            o trabalho repetitivo, a conferência manual e o ruído de comunicação
-            que atrapalham o fechamento de um telejornal.
-          </p>
-
-          <div class="hero-actions" style="justify-content:flex-start;">
-            <a class="btn btn-primary" href="#contato">Quero ver uma demonstração</a>
-          </div>
-        </div>
-
-        <div class="compare">
-          <article class="compare-card bad">
-            <h3>Antes do NewsFlow</h3>
-            <ul class="compare-list">
-              <li><span>×</span> Espelho em planilha</li>
-              <li><span>×</span> Roteiros espalhados</li>
-              <li><span>×</span> VT pronto no boca a boca</li>
-              <li><span>×</span> Tempo conferido manualmente</li>
-              <li><span>×</span> Direção sem visão integrada</li>
-            </ul>
-          </article>
-
-          <article class="compare-card good">
-            <h3>Com NewsFlow</h3>
-            <ul class="compare-list">
-              <li><span>✓</span> Espelho em tempo real</li>
-              <li><span>✓</span> Laudas centralizadas</li>
-              <li><span>✓</span> Gaveta de materiais organizada</li>
-              <li><span>✓</span> Cálculo automático de tempos</li>
-              <li><span>✓</span> Direção, teleprompter e redação conectados</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="demo">
-      <div class="container">
-        <div class="demo-card split">
-          <div>
-            <div class="section-kicker" style="color:#93c5fd;">Demonstração do sistema</div>
-            <h2>Veja o NewsFlow funcionando com uma rotina real de telejornal</h2>
-            <p>
-              A melhor forma de entender o NewsFlow é vendo o fluxo completo:
-              pauta, reportagem, edição de VT, gaveta, espelho do jornal,
-              teleprompter, direção e operação no ar.
-            </p>
-
-            <div class="hero-actions" style="justify-content:flex-start;">
               <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
-              <a class="btn btn-secondary" href="#lead">Receber checklist</a>
+              <a class="btn btn-secondary" href="#baixo-custo">Ver solução de baixo custo</a>
+            </div>
+
+            <div class="hero-proof" aria-label="Diferenciais do NewsFlow">
+              <div class="proof-pill">
+                <span class="proof-icon">💰</span>
+                <span>Alternativa de baixo custo</span>
+              </div>
+
+              <div class="proof-pill">
+                <span class="proof-icon">⚡</span>
+                <span>Rundown em tempo real</span>
+              </div>
+
+              <div class="proof-pill">
+                <span class="proof-icon">🎙️</span>
+                <span>Pensado para telejornal local</span>
+              </div>
+
+              <div class="proof-pill">
+                <span class="proof-icon">💻</span>
+                <span>Instalação local ou em nuvem</span>
+              </div>
             </div>
           </div>
 
-          <div class="feature-list">
-            <div class="feature-item">
-              <span>✅</span>
-              <div>
-                <b>Apresentação guiada</b>
-                <small>Mostramos o sistema a partir da rotina da sua emissora.</small>
+          <div class="hero-panel" aria-label="Prévia visual do sistema NewsFlow para espelho de telejornal">
+            <div class="mockup">
+              <div class="mockup-top">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
               </div>
-            </div>
 
-            <div class="feature-item">
-              <span>✅</span>
-              <div>
-                <b>Diagnóstico rápido</b>
-                <small>Identificamos gargalos de pauta, edição, espelho e operação.</small>
-              </div>
-            </div>
+              <div class="mockup-body">
+                <div class="app-header">
+                  <strong>Espelho do Jornal</strong>
+                  <span class="app-status">AO VIVO</span>
+                </div>
 
-            <div class="feature-item">
-              <span>✅</span>
-              <div>
-                <b>Proposta sob medida</b>
-                <small>Plano compatível com estrutura, equipe e volume de produção.</small>
+                <div class="timers">
+                  <div class="timer">
+                    <small>Previsto</small>
+                    <b>00:42:00</b>
+                  </div>
+                  <div class="timer">
+                    <small>Cronometrado</small>
+                    <b>00:39:18</b>
+                  </div>
+                  <div class="timer">
+                    <small>Diferença</small>
+                    <b>-02:42</b>
+                  </div>
+                </div>
+
+                <div class="rundown">
+                  <div class="rundown-row">
+                    <span class="tag">VT</span>
+                    <div class="row-title">
+                      <strong>ABERTURA / MANCHETES DO DIA</strong>
+                      <small>Bloco 1 · Jornalismo Diário</small>
+                    </div>
+                    <div class="time">01:20</div>
+                  </div>
+
+                  <div class="rundown-row">
+                    <span class="tag">LINK</span>
+                    <div class="row-title">
+                      <strong>ENTRADA AO VIVO DA REPORTAGEM</strong>
+                      <small>Repórter · Centro</small>
+                    </div>
+                    <div class="time">03:40</div>
+                  </div>
+
+                  <div class="rundown-row">
+                    <span class="tag">NOTA</span>
+                    <div class="row-title">
+                      <strong>GIRO DE SERVIÇOS E PREVISÃO</strong>
+                      <small>Apresentador · Estúdio</small>
+                    </div>
+                    <div class="time">00:55</div>
+                  </div>
+
+                  <div class="rundown-row">
+                    <span class="tag">BREAK</span>
+                    <div class="row-title">
+                      <strong>INTERVALO ENTRE BLOCOS</strong>
+                      <small>Controle automático de tempo</small>
+                    </div>
+                    <div class="time">02:30</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section white" id="planos">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Planos para emissoras</div>
-          <h2>Planos acessíveis para a operação da sua redação</h2>
-          <p class="section-desc">
-            O NewsFlow pode ser configurado para emissoras pequenas, TVs locais,
-            rádios, produtoras jornalísticas e operações com telejornais diários.
-            A proposta comercial pode considerar quantidade de usuários, módulos,
-            implantação local ou em nuvem e necessidade de suporte.
-          </p>
-        </div>
-
-        <div class="pricing-grid">
-          <article class="price-card">
-            <h3>Essencial</h3>
-            <p>Para emissoras que querem sair das planilhas e organizar a redação com baixo custo.</p>
-            <div class="price">Sob consulta</div>
-
-            <ul class="price-list">
-              <li>Dashboard da redação</li>
-              <li>Pautas e reportagens</li>
-              <li>Espelho básico de telejornal</li>
-              <li>Usuários por função</li>
-              <li>Suporte inicial</li>
-            </ul>
-
-            <a class="btn btn-secondary" href="#contato">Solicitar proposta</a>
-          </article>
-
-          <article class="price-card highlight">
-            <span class="badge">Mais indicado</span>
-            <h3>Profissional</h3>
-            <p>Para operação diária com edição, gaveta, direção e teleprompter integrado.</p>
-            <div class="price">Sob consulta</div>
-
-            <ul class="price-list">
-              <li>Tudo do plano Essencial</li>
-              <li>Edição de texto e VT</li>
-              <li>Gaveta de materiais</li>
-              <li>Visualizar espelho / direção</li>
-              <li>Teleprompter integrado</li>
-              <li>Treinamento da equipe</li>
-            </ul>
-
-            <a class="btn btn-primary" href="#contato">Agendar demonstração</a>
-          </article>
-
-          <article class="price-card">
-            <h3>Implantação Local</h3>
-            <p>Para emissoras que preferem instalar o sistema no próprio servidor.</p>
-            <div class="price">Projeto</div>
-
-            <ul class="price-list">
-              <li>Instalação no ambiente da emissora</li>
-              <li>Configuração de usuários</li>
-              <li>Ajuste de telejornais e programas</li>
-              <li>Treinamento operacional</li>
-              <li>Suporte de implantação</li>
-            </ul>
-
-            <a class="btn btn-secondary" href="#contato">Falar com comercial</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="lead">
-      <div class="container">
-        <div class="lead-box">
-          <div class="lead-download">
-            <div class="section-kicker">Material gratuito</div>
-            <h3>Checklist de fechamento de telejornal</h3>
-            <p>
-              Use este material para revisar espelho, tempos, VTs, notas,
-              chamadas, teleprompter e operação antes do jornal ir ao ar.
-            </p>
-          </div>
-
-          <form class="form" id="leadForm">
-            <div class="form-row">
-              <div class="field">
-                <label for="leadNome">Nome</label>
-                <input id="leadNome" name="nome" type="text" placeholder="Seu nome" required />
-              </div>
-
-              <div class="field">
-                <label for="leadEmissora">Emissora</label>
-                <input id="leadEmissora" name="emissora" type="text" placeholder="Nome da emissora" required />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="field">
-                <label for="leadEmail">E-mail</label>
-                <input id="leadEmail" name="email" type="email" placeholder="voce@email.com" required />
-              </div>
-
-              <div class="field">
-                <label for="leadWhats">WhatsApp</label>
-                <input id="leadWhats" name="whatsapp" type="tel" placeholder="(00) 00000-0000" required />
-              </div>
-            </div>
-
-            <button class="btn btn-primary" type="submit">
-              Quero receber o checklist
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section class="section white" id="faq">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Dúvidas frequentes</div>
-          <h2>Perguntas sobre sistema para redação, custo, espelho de telejornal e teleprompter</h2>
-          <p class="section-desc">
-            Respostas pensadas para quem pesquisa por sistema barato para emissora,
-            software de redação de TV, espelho de jornal, teleprompter online
-            e alternativas acessíveis para pequenas redações.
-          </p>
-        </div>
-
-        <div class="faq-grid">
-          <article class="faq">
-            <h3>O que é o NewsFlow?</h3>
-            <p>
-              O NewsFlow é um sistema web para redação de TV, rádio e emissoras
-              locais, criado para organizar pauta, reportagem, edição, espelho,
-              rundown, teleprompter, gaveta de VTs e programação.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>O NewsFlow é um sistema de baixo custo para emissoras?</h3>
-            <p>
-              Sim. O NewsFlow foi pensado como uma solução acessível para pequenas
-              emissoras, TVs locais, rádios e produtoras jornalísticas que precisam
-              profissionalizar a rotina sem pagar o custo de grandes sistemas corporativos.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>Quanto custa um sistema de redação para TV?</h3>
-            <p>
-              O custo varia conforme número de usuários, módulos, implantação e suporte.
-              O NewsFlow trabalha com proposta sob medida para ser uma alternativa
-              de baixo custo para emissoras locais e pequenas redações.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>Existe sistema barato para montar espelho de telejornal?</h3>
-            <p>
-              Sim. O NewsFlow pode substituir planilhas e controles manuais por um
-              espelho de telejornal em tempo real, com blocos, tempos, laudas, VTs,
-              notas, links e breaks, com custo pensado para operações menores.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>Existe alternativa acessível ao ENPS para emissoras pequenas?</h3>
-            <p>
-              O NewsFlow pode ser uma alternativa acessível para emissoras pequenas
-              que precisam de pauta, reportagem, espelho, rundown e teleprompter
-              sem adotar soluções complexas e caras de grandes redes.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>O NewsFlow substitui planilhas de espelho?</h3>
-            <p>
-              Sim. O sistema permite montar o espelho do telejornal em tempo real,
-              com blocos, breaks, laudas, tempos, VTs, notas, links e telas.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>O NewsFlow tem teleprompter integrado?</h3>
-            <p>
-              Sim. As laudas do espelho podem alimentar o teleprompter, evitando
-              retrabalho e reduzindo erro entre roteiro, direção e apresentação.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>O NewsFlow serve para emissoras pequenas?</h3>
-            <p>
-              Sim. A proposta é profissionalizar a rotina de equipes locais sem
-              exigir a estrutura ou o custo de grandes redes de televisão.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>É melhor contratar um sistema ou continuar usando planilha?</h3>
-            <p>
-              Planilhas podem funcionar no começo, mas tendem a gerar erro quando
-              a rotina cresce. Um sistema como o NewsFlow centraliza informações,
-              reduz retrabalho e ajuda a equipe a acompanhar alterações em tempo real.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>O sistema controla tempo de jornal?</h3>
-            <p>
-              Sim. O espelho trabalha com tempos previstos, cronometrados,
-              diferença, blocos e intervalos, ajudando a direção no fechamento.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>Funciona para rádio ou programas gravados?</h3>
-            <p>
-              Sim. O NewsFlow pode ser configurado para TV, rádio, programas
-              gravados, produção especial e diferentes formatos jornalísticos.
-            </p>
-          </article>
-
-          <article class="faq">
-            <h3>O NewsFlow pode rodar no servidor da própria emissora?</h3>
-            <p>
-              Sim. A implantação pode ser feita em nuvem ou em ambiente local,
-              conforme a infraestrutura, política de segurança e preferência da emissora.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contato">
-      <div class="container">
-        <div class="final-cta">
-          <h2>Pronto para organizar a redação da sua emissora com baixo custo?</h2>
-          <p>
-            Agende uma demonstração e veja como o NewsFlow pode ajudar sua
-            emissora a reduzir improviso, retrabalho e falhas no fechamento
-            do telejornal com uma solução acessível para a realidade local.
-          </p>
-
-          <div class="hero-actions" style="justify-content:center;">
-            <a class="btn btn-secondary" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
-              Chamar no WhatsApp
-            </a>
-            <a class="btn btn-primary" href="mailto:comercial@newsflow.com.br?subject=Quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20NewsFlow">
-              Enviar e-mail
-            </a>
-          </div>
-
-          <p style="font-size:.88rem; margin-top:20px; margin-bottom:0; color:#bfdbfe;">
-            Troque o número do WhatsApp, o e-mail, o domínio canônico e a imagem Open Graph antes de publicar.
-          </p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a class="brand" href="#inicio" style="color:#fff; margin-bottom:12px;">
-            <span class="brand-mark">NF</span>
-            <span>NewsFlow</span>
-          </a>
-          <p>
-            Sistema web de baixo custo para redação de TV, rádio, espelho de telejornal,
-            edição, teleprompter, gaveta de VTs e programação de emissoras.
-          </p>
-        </div>
-
-        <div>
-          <h4>Produto</h4>
-          <a href="#como-funciona">Como funciona</a>
-          <a href="#modulos">Módulos</a>
-          <a href="#baixo-custo">Baixo custo</a>
-          <a href="#planos">Planos</a>
-        </div>
-
-        <div>
-          <h4>Comercial</h4>
-          <a href="#contato">Demonstração</a>
-          <a href="#lead">Checklist gratuito</a>
-          <a href="mailto:comercial@newsflow.com.br">Contato</a>
-        </div>
-
-        <div>
-          <h4>Para emissoras</h4>
-          <a href="#problema">Organização da redação</a>
-          <a href="#resultado">Fechamento do jornal</a>
-          <a href="#faq">Dúvidas frequentes</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© <span id="year"></span> NewsFlow. Todos os direitos reservados.</span>
-        <span>Feito para redações que precisam de controle, velocidade, segurança e baixo custo.</span>
-      </div>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast">
-    Obrigado! Em uma versão publicada, este formulário pode ser ligado ao WhatsApp, e-mail ou CRM.
-  </div>
-
   <script>
     const topbar = document.getElementById("topbar");
     const mobileMenu = document.getElementById("mobileMenu");
-    const year = document.getElementById("year");
-    const leadForm = document.getElementById("leadForm");
-    const toast = document.getElementById("toast");
-
-    year.textContent = new Date().getFullYear();
 
     function updateTopbarVisibility() {
       const shouldShow = window.scrollY > 90;
@@ -2292,39 +1701,6 @@
         mobileMenu.textContent = "☰";
       });
     });
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 4200);
-    }
-
-    leadForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const formData = new FormData(leadForm);
-      const nome = formData.get("nome") || "";
-      const emissora = formData.get("emissora") || "";
-      const email = formData.get("email") || "";
-      const whatsapp = formData.get("whatsapp") || "";
-
-      console.log("Lead capturado:", {
-        nome,
-        emissora,
-        email,
-        whatsapp
-      });
-
-      leadForm.reset();
-
-      showToast(
-        "Cadastro recebido! No site publicado, este formulário pode enviar os dados para e-mail, WhatsApp ou CRM."
-      );
-    });
   </script>
 </body>
 </html>
-```
